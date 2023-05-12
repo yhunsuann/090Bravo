@@ -1,8 +1,8 @@
 <?php
 namespace App\Repositories\Interfaces;
 
-Interface RecruitmentRepositoryInterface{
-    
+Interface RecruitmentRepositoryInterface{ //sai convention 
+    //sai convention
     public function allRecruitments();
     public function addRecruitments($data);
     public function updateCruitments($data, $id); 
@@ -14,4 +14,4 @@ Interface RecruitmentRepositoryInterface{
     public function updatePass($data);
 } 
   
-?>
+?>/sai convention
