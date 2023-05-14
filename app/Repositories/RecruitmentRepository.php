@@ -36,7 +36,7 @@ class RecruitmentRepository implements RecruitmentRepositoryInterface
     public function editCruitments($id)
     {
         return Recruitments::where('id',$id)->get();
-    }
+    } 
     public function searchCruitments($data)
     {  
         $status = $data['status'];
@@ -97,6 +97,7 @@ class RecruitmentRepository implements RecruitmentRepositoryInterface
         $token = $data['token'];
         $data = array();
         $data['password'] = HASH::make($new_pass);
+
         User::Where('token',$token)->update($data);
     }   
 }
