@@ -129,7 +129,7 @@
         <button class="sidebar-toggler" type="button" data-coreui-toggle="unfoldable"></button>
     </div>
     <div class="wrapper d-flex flex-column min-vh-100 bg-light bg-white">
-        <header class="header header-sticky mb-4">
+        <header class="header header-sticky">
             <div class="container-fluid">
                 <button class="header-toggler px-md-0 me-md-3" type="button" onclick="coreui.Sidebar.getInstance(document.querySelector('#sidebar')).toggle()">
                     <svg class="icon icon-lg">
@@ -143,7 +143,12 @@
                 <ul class="header-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                            VIETNAM
+                            VI
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            EN
                         </a>
                     </li>
 
@@ -226,7 +231,7 @@
                 </nav>
             </div>
         </header>
-        <div class="body flex-grow-1 px-3">
+        <div class="body flex-grow-1 px-3 pt-5">
             <div class="container-lg">
                 <div class="row">
                     @if(session()->has('success'))
@@ -235,7 +240,7 @@
                     </div>
                     @php Session::forget('success'); @endphp @endif
                     <div class="col">
-                        <form action="{{ URL::to('/search') }}" method="get">
+                        <form class="mb-0" action="{{ URL::to('/search') }}" method="get">
                             @csrf
                             <div class="row p-0">
                                 <div class="col-sm-6">
@@ -250,7 +255,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div>
-                                        <div class="datepicker date input-group mt-0">
+                                        <div class="datepicker date input-group mt-0 mx-auto">
                                             <input name="dateFrom" type="text" placeholder="From date" class="form-control" id="fecha1">
                                             <div class="input-group-append">
                                                 <span class="input-group-text h-100"><i class="fa fa-calendar"></i></span>
@@ -258,7 +263,7 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <div class="datepicker date input-group">
+                                        <div class="datepicker date input-group mx-auto">
                                             <input name="dateTo" type="text" placeholder="To day" class="form-control" id="fecha1">
                                             <div class="input-group-append">
                                                 <span class="input-group-text h-100"><i class="fa fa-calendar"></i></span>
@@ -271,7 +276,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <input type="submit" class="btn-search btn btn-primary float-end m-2 mr-0 " value="Search"></input>
-                                        <a href="{{URL::to('/home')}}" class="btn btn-secondary float-end m-2" value="Reset">Reset</a>
+                                        <a href="{{URL::to('/home')}}" class="btn btn-secondary float-end m-2 text-white" value="Reset">Reset</a>
                                     </div>
                                 </div>
                             </div>
@@ -282,16 +287,16 @@
                     @csrf
                     <div class="row">
                         <div class="col">
-                            <a href="{{ URL::to('/create') }}" type="button" class="btn-create btn btn-success float-end m-2 mr-0">Create</a>
+                            <a href="{{ URL::to('/create') }}" type="button" class="btn btn-outline-success float-end m-2 mr-0">Create</a>
                             <input type="submit" class="delete_all btn-delete btn btn-danger float-end m-2" value="Delete all select"></input>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col" style="overflow-x:auto;">
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th><input type="checkbox" id="checkAll"></th>
+                            <table class="table bg-white">
+                                <thead class="thead-table">
+                                    <tr class="py-3">
+                                        <th class="text-center"><input type="checkbox" id="checkAll"></th>
                                         <th scope="col"><b>Title</b></th>
                                         <th scope="col"><b>Image</b></th>
                                         <th scope="col"><b>Status</b></th>
@@ -302,7 +307,7 @@
                                 <tbody>
                                     @forelse($result as $data)
                                     <tr>
-                                        <th><input name="ids[]" class="sub_chk" value="{{$data->id}}" id="checkItem" type="checkbox">
+                                        <th class="text-center"><input name="ids[]" class="sub_chk" value="{{$data->id}}" id="checkItem" type="checkbox">
                                         </th>
                                         <td>{{ $data->title }}</td>
                                         <td><img width="100px" height="50px" src="{{ asset('assets/img/cruitments/'.$data->image)}}" alt=""></td>

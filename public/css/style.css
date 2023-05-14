@@ -15161,12 +15161,6 @@ html:not([dir=rtl]) .wrapper {
     border: 1px solid red;
 }
 
-.btn-create {
-    color: #29a653;
-    background-color: transparent;
-    border: 1px solid #29a653;
-}
-
 .btn-search {
     background-color: #3c4b64;
 }
@@ -15192,8 +15186,16 @@ html:not([dir=rtl]) .wrapper {
 }
 
 .date {
-    width: 90%;
+    width: 93%;
+}
+
+.body {
+    background-color: rgba(var(--cui-light-rgb), var(--cui-bg-opacity));
+}
+
+.thead-table {
+    background-color: #d8dbe0;
 }
 
 
-/*# sourceMappingURL=style.css.mapw
+/*# sourceMappingURL=style.css.map

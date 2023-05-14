@@ -1,8 +1,8 @@
 <?php
 namespace App\Repositories\Interfaces;
 
-Interface RecruitmentRepositoryInterface{
-    
+Interface RecruitmentRepositoryInterface
+{    
     public function allRecruitments();
     public function addRecruitments($data);
     public function updateCruitments($data, $id); 
@@ -13,5 +13,4 @@ Interface RecruitmentRepositoryInterface{
     public function recoverPass($data);
     public function updatePass($data);
 } 
-  
 ?>
