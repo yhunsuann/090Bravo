@@ -14,7 +14,7 @@ class RecruitmentRepository implements RecruitmentRepositoryInterface
 {
     public function allRecruitments()
     {
-        return Recruitments::whereNull('deleted_at')->paginate(5);
+        return  Recruitments::paginate(5);
     }
 
     public function addRecruitments($data)
@@ -53,16 +53,16 @@ class RecruitmentRepository implements RecruitmentRepositoryInterface
                         })->paginate();
     }
 
-    public function deleteSelect($ids)
+    public function deleteMutipleBaseIds($ids)
     {
-        return Recruitments::whereIn('id', $ids)->delete();  
+        return Recruitments::destroy($ids);  
     }
 
     public function recoverPass($data)
     {
         $email = $data['email'];
         $now = Carbon::now()->format('d-m-Y');
-        $title_mail = "Lấy Lại Mật Khâu". ' ' .$now;
+        $title_mail = "Forget Password". ' ' .$now;
         $customer = User::where('email', '=', $data['email'])->get();
         $customer_id = $customer[0]->getoriginal('id');
 

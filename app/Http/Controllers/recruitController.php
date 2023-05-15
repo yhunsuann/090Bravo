@@ -30,7 +30,7 @@ class RecruitController extends Controller
             'status' => 'required',
         ]);
         if ($validator->fails()) {
-            return redirect()->back()->with('success', 'Vui lòng nhập đầy đủ thông tin !'); 
+            return redirect()->back()->with('success', 'Please enter full information !'); 
         }
 
         if ($request->has('upload_image')) {
@@ -50,14 +50,14 @@ class RecruitController extends Controller
 
         $this->recruitmentRepository->addRecruitments($data);
 
-        return redirect()->route('index')->with('success', 'Thêm thành công');
+        return redirect()->route('index')->with('success', 'Create Recruitments Successful');
     }
 
     public function deleteRecruitment($id)
     {
         $this->recruitmentRepository->deleteCruitments($id);
 
-        return redirect()->route('index')->with('success', 'Xóa thành công'); 
+        return redirect()->route('index')->with('success', 'Delete Recruitments Successful'); 
     }
 
     public function editRecruitment($id)
@@ -82,21 +82,21 @@ class RecruitController extends Controller
         $data['description'] = $request->description;
         $data['status'] = $request->status;
         $data['image'] = $request->image;
-        
+
         $this->recruitmentRepository->updateCruitments($data,$id);
 
-        return redirect()->route('index')->with('success', 'Sửa thành công');
+        return redirect()->route('index')->with('success', 'Edit Recruitments Successful');
     }
 
     public function deleteSelect(Request $request)
     {
         if (!$request->filled('ids')) {
-            return redirect()->back()->with('success', 'Vui lòng chọn ít nhất 1 đối tượng để xóa'); 
+            return redirect()->back()->with('success', 'Please select at least 1 object to delete'); 
         } else {
             $ids = $request->ids;
-            $this->recruitmentRepository->deleteSelect($ids);
+            $this->recruitmentRepository->deleteMutipleBaseIds($ids);
 
-            return redirect()->route('index')->with('success', 'Xóa thành công');
+            return redirect()->route('index')->with('success', 'Delete Recruitments Successful');
         }
     }
 

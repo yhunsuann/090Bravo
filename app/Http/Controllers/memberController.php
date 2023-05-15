@@ -22,7 +22,7 @@ class MemberController extends Controller
 
             return view('admin.home', ['result' => $data]);    
         } else {
-            return view('welcome')->with('success', 'Vui Lòng Đăng nhập!');
+            return view('welcome')->with('success', 'Please log in !');
         }
     }
 
@@ -44,7 +44,7 @@ class MemberController extends Controller
             if (Auth::attempt($data)) {
                 return redirect()->route('index');
             } else {
-                return redirect()->back()->with('success', 'Sai tài khoản hoặc mật khẩu vui lòng đăng nhập lại !');
+                return redirect()->back()->with('success', 'Wrong account or password, please login again !');
             }
         }
     }
@@ -54,7 +54,7 @@ class MemberController extends Controller
         $data = $request->all();
         $this->recruitmentRepository->recoverPass($data);
 
-        return redirect()->back()->with('message', 'Gửi mail thành công vui lòng vào email để reset pass');
+        return redirect()->back()->with('message', 'Email sent successfully, please go to email to reset password');
     }
 
     public function updateNewPass(Request $request)

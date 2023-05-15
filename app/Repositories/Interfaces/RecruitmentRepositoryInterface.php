@@ -9,7 +9,7 @@ Interface RecruitmentRepositoryInterface
     public function deleteCruitments($id);
     public function editCruitments($id);
     public function searchCruitments($data);
-    public function deleteSelect($ids);
+    public function deleteMutipleBaseIds($ids);
     public function recoverPass($data);
     public function updatePass($data);
 } 
