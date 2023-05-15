@@ -18,9 +18,9 @@ class MemberController extends Controller
     public function index()
     { 
         if (Auth::check()) {
-            $data = $this->recruitmentRepository->allRecruitments();
-
-            return view('admin.home', ['result' => $data]);    
+            $value = $this->recruitmentRepository->allRecruitments();
+    
+            return view('admin.home', ['result' => $value]);    
         } else {
             return view('welcome')->with('success', 'Please log in !');
         }

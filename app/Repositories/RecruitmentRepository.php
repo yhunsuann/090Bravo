@@ -12,9 +12,25 @@ use Illuminate\Support\Facades\Hash;
 
 class RecruitmentRepository implements RecruitmentRepositoryInterface
 {
-    public function allRecruitments()
+    public function allRecruitments($data = [])
     {
-        return  Recruitments::paginate(5);
+        if ($data) {
+            $status = $data['status'];
+            $keyword = $data['keyword'];
+            $dateFrom = $data['dateFrom'];
+            $dateTo = $data['dateTo'];
+
+            return Recruitments::withTrashed()
+                            ->when($keyword, function ($q) use ($keyword) {
+                                $q->where('title', 'like', '%' .$keyword. '%');
+                            })->when($status, function($q) use ($status) {
+                                $q->where('status', $status);
+                            })->when($dateFrom, function($q) use ($dateFrom,$dateTo) {
+                                $q->whereBetween('created_at', [$dateFrom, $dateTo]);
+                            })->paginate(5);
+        } else {
+            return  Recruitments::paginate(5);
+        }
     }
 
     public function addRecruitments($data)
@@ -37,21 +53,6 @@ class RecruitmentRepository implements RecruitmentRepositoryInterface
     {
         return Recruitments::where('id', $id)->get();
     } 
-    public function searchCruitments($data)
-    {  
-        $status = $data['status'];
-        $keyword = $data['keyword'];
-        $dateFrom = $data['dateFrom'];
-        $dateTo = $data['dateTo'];
-
-        return Recruitments::when($keyword, function ($q) use ($keyword) {
-                            $q->where('title', 'like', '%' .$keyword. '%');
-                        })->when($status, function($q) use ($status) {
-                            $q->where('status', $status);
-                        })->when($dateFrom, function($q) use ($dateFrom,$dateTo) {
-                            $q->whereBetween('created_at', [$dateFrom, $dateTo]);
-                        })->paginate();
-    }
 
     public function deleteMutipleBaseIds($ids)
     {

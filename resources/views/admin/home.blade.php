@@ -93,4 +93,5 @@
         </div>
     </div>
 </form>
-{{$result->links()}} @endsection
+{{$result->appends($_GET)->links()}}
+@endsection

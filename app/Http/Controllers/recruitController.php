@@ -105,9 +105,8 @@ class RecruitController extends Controller
         if (!$request->filled('keyword') && !$request->filled('status') && !$request->filled('dateTo') && !$request->filled('dateFrom')) {
             return redirect()->route('index');
         } else {
-            $data = $this->recruitmentRepository->searchCruitments($request->all());
-
-            return view('admin.home', ['result' => $data]); 
+            $result = $this->recruitmentRepository->allRecruitments($request->all());
+            return view('admin.home')->with('result',$result);
         }        
     }
 }
