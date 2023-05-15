@@ -35,7 +35,7 @@ class RecruitmentRepository implements RecruitmentRepositoryInterface
    
     public function editCruitments($id)
     {
-        return Recruitments::where('id',$id)->get();
+        return Recruitments::where('id', $id)->get();
     } 
     public function searchCruitments($data)
     {  
@@ -63,7 +63,7 @@ class RecruitmentRepository implements RecruitmentRepositoryInterface
         $email = $data['email'];
         $now = Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y');
         $title_mail = "Lấy Lại Mật Khâu". ' '.$now;
-        $customer = User::where('email','=',$data['email'])->get();
+        $customer = User::where('email','=', $data['email'])->get();
         $customer_id = $customer[0]->getoriginal('id');
 
         if($customer){
@@ -78,14 +78,14 @@ class RecruitmentRepository implements RecruitmentRepositoryInterface
 
                 $link_reset_pass = url('/reset-new-pass?token='.$token_random);
                 $data = array(
-                    "name"=>$title_mail,
-                    "body"=>$link_reset_pass,
-                    'email'=>$email
+                    "name" => $title_mail,
+                    "body" => $link_reset_pass,
+                    'email' => $email
                 );
 
-                Mail::send('admin.forget_pass_notify',['data'=>$data],function($message) use($title_mail,$data){
-                    $message -> to($data['email'])->subject($title_mail);
-                    $message ->from('bphuoc.20it10@vku.udn.vn',$title_mail);
+                Mail::send('admin.forget_pass_notify',['data' => $data],function($message) use($title_mail, $data){
+                    $message->to($data['email'])->subject($title_mail);
+                    $message->from('bphuoc.20it10@vku.udn.vn', $title_mail);
                 }); 
             }     
         }
@@ -98,6 +98,6 @@ class RecruitmentRepository implements RecruitmentRepositoryInterface
         $data = array();
         $data['password'] = HASH::make($new_pass);
 
-        User::Where('token',$token)->update($data);
+        User::Where('token', $token)->update($data);
     }   
 }

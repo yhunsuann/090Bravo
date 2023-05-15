@@ -19,15 +19,17 @@ class MemberController extends Controller
     { 
         if (Auth::check()) {
             $data = $this->recruitmentRepository->allRecruitments();
+
             return view('admin.home', ['result' => $data]);    
         } else {
-            return view('welcome')->with('success','Vui Lòng Đăng nhập!');
+            return view('welcome')->with('success', 'Vui Lòng Đăng nhập!');
         }
     }
 
     public function logOut()
     { 
-        Auth::logout();
+        Auth::logout();   
+
         return view('welcome');
     }
 
@@ -42,7 +44,7 @@ class MemberController extends Controller
             if (Auth::attempt($data)) {
                 return redirect()->route('index');
             } else {
-                return redirect()->back()->with('success','Sai tài khoản hoặc mật khẩu vui lòng đăng nhập lại !');
+                return redirect()->back()->with('success', 'Sai tài khoản hoặc mật khẩu vui lòng đăng nhập lại !');
             }
         }
     }
@@ -51,13 +53,15 @@ class MemberController extends Controller
     {
         $data = $request->all();
         $this->recruitmentRepository->recoverPass($data);
-        return redirect()->back()->with('message','Gửi mail thành công vui lòng vào email để reset pass');
+
+        return redirect()->back()->with('message', 'Gửi mail thành công vui lòng vào email để reset pass');
     }
 
     public function updateNewPass(Request $request)
     {
         $data = $request->all();
         $this->recruitmentRepository->updatePass($data);
+
         return view('welcome');
     } 
 }
