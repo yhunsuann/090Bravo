@@ -16,7 +16,7 @@ class RecruitController extends Controller
         $this->recruitmentRepository = $recruitmentRepository;
     }
 
-    public function add_recruitment(Request $request)
+    public function addRecruitment(Request $request)
     {
         $time = Carbon::now('Asia/Ho_Chi_Minh');
         
@@ -52,19 +52,19 @@ class RecruitController extends Controller
         return redirect()->route('index')->with('success','Thêm thành công');
     }
 
-    public function delete_recruitment($id)
+    public function deleteRecruitment($id)
     {
         $this->recruitmentRepository->deleteCruitments($id);
         return redirect()->route('index')->with('success','Xóa thành công'); 
     }
 
-    public function edit_recruitment($id)
+    public function editRecruitment($id)
     {
         $data = $this->recruitmentRepository->editCruitments($id);
         return view('admin.edit', ['data' => $data[0]]);
     }
 
-    public function update_recruitment(Request $request,$id)
+    public function updateRecruitment(Request $request,$id)
     { 
         $data = array();
         if($request->has('upload_image')) {
@@ -85,7 +85,7 @@ class RecruitController extends Controller
         return redirect()->route('index')->with('success','Sửa thành công');
     }
 
-    public function delete_select(Request $request)
+    public function deleteSelect(Request $request)
     {
         if (!$request->filled('ids')) {
             return redirect()->back()->with('success','Vui lòng chọn ít nhất 1 đối tượng để xóa'); 
@@ -96,7 +96,7 @@ class RecruitController extends Controller
         }
     }
 
-    public function search_data(Request $request)
+    public function searchData(Request $request)
     {
         if (!$request->filled('keyword') && !$request->filled('status') && !$request->filled('dateTo') && !$request->filled('dateFrom')) {
             return redirect()->back()->with('success','Vui lòng nhập tìm kiếm');

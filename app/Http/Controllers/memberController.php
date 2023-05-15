@@ -25,13 +25,13 @@ class MemberController extends Controller
         }
     }
 
-    public function log_out()
+    public function logOut()
     { 
         Auth::logout();
         return view('welcome');
     }
 
-    public function login(Request $request)
+    public function logIn(Request $request)
     {
         if ($request->has('email') && $request->has('password')) {
             $data = [
@@ -47,14 +47,14 @@ class MemberController extends Controller
         }
     }
 
-    public function recover_pass(Request $request)
+    public function recoverPass(Request $request)
     {
         $data = $request->all();
         $this->recruitmentRepository->recoverPass($data);
         return redirect()->back()->with('message','Gửi mail thành công vui lòng vào email để reset pass');
     }
 
-    public function update_new_pass(Request $request)
+    public function updateNewPass(Request $request)
     {
         $data = $request->all();
         $this->recruitmentRepository->updatePass($data);
