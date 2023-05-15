@@ -36,7 +36,7 @@ class RecruitController extends Controller
         if ($request->has('upload_image')) {
             $file_name = $this->fileUploader->uploadFile($request);
             if ($file_name !== null) {
-                $request->merge(['image'=>$file_name]);
+                $request->merge(['image' => $file_name]);
             }
         }
         
