@@ -1,4 +1,5 @@
-@extends('layout.layout') @section('content')
+@extends('layout.layout')
+@section('content')
 <div class="row">
     @if(session()->has('success'))
     <div class="alert alert-success">

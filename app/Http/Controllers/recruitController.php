@@ -70,20 +70,19 @@ class RecruitController extends Controller
     public function updateRecruitment(Request $request,$id)
     { 
         $data = array();
-        if($request->has('upload_image')) {
-            $file = $request->upload_image;
-            $ext = $request->upload_image->extension();
-            $file_name = time().'-'.'img.'.$ext;
-            $file->move(public_path('assets/img/cruitments'),$file_name);
-            $request->merge(['image' => $file_name]);
-            $data['image'] = $request->image;
+        if ($request->has('upload_image')) {
+            $file_name = $this->fileUploader->uploadFile($request);
+            if ($file_name !== null) {
+                $request->merge(['image' => $file_name]);
+            }
         }
 
         $data['title'] = $request->title;
         $data['content'] = $request->content;
         $data['description'] = $request->description;
         $data['status'] = $request->status;
-
+        $data['image'] = $request->image;
+        
         $this->recruitmentRepository->updateCruitments($data,$id);
 
         return redirect()->route('index')->with('success', 'Sửa thành công');

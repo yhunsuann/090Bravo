@@ -45,11 +45,11 @@ class RecruitmentRepository implements RecruitmentRepositoryInterface
         $dateTo = $data['dateTo'];
 
         return Recruitments::when($keyword, function ($q) use ($keyword) {
-                            return $q->where('title', 'like', '%'.$keyword.'%');
+                            $q->where('title', 'like', '%' .$keyword. '%');
                         })->when($status, function($q) use ($status) {
-                            return $q->where('status', $status);
+                            $q->where('status', $status);
                         })->when($dateFrom, function($q) use ($dateFrom,$dateTo) {
-                            return $q->whereBetween('created_at', [$dateFrom, $dateTo]);
+                            $q->whereBetween('created_at', [$dateFrom, $dateTo]);
                         })->paginate();
     }
 
@@ -61,9 +61,9 @@ class RecruitmentRepository implements RecruitmentRepositoryInterface
     public function recoverPass($data)
     {
         $email = $data['email'];
-        $now = Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y');
-        $title_mail = "Lấy Lại Mật Khâu". ' '.$now;
-        $customer = User::where('email','=', $data['email'])->get();
+        $now = Carbon::now()->format('d-m-Y');
+        $title_mail = "Lấy Lại Mật Khâu". ' ' .$now;
+        $customer = User::where('email', '=', $data['email'])->get();
         $customer_id = $customer[0]->getoriginal('id');
 
         if($customer){
