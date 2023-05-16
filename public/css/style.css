@@ -15190,11 +15190,54 @@ html:not([dir=rtl]) .wrapper {
 }
 
 .body {
-    background-color: rgba(var(--cui-light-rgb), var(--cui-bg-opacity));
+    background-color: #EBEEF0;
 }
 
 .thead-table {
     background-color: #d8dbe0;
+}
+
+.active {
+    color: white;
+}
+
+.nav-pills .nav-item .lang {
+    color: #000015;
+    background-color: transparent;
+}
+
+.nav-pills .nav-item .active {
+    background-color: white;
+    border: 1px solid var(--cui-border-color);
+    color: rgba(var(--cui-black-rgb));
+}
+
+.title-create {
+    background-color: #F8F8F9;
+    padding: 10px 1.5rem;
+    margin-bottom: 0;
+    border: 2px solid #E6E6EA;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    font-weight: normal;
+}
+
+.form-create {
+    border: 2px solid #E6E6EA;
+}
+
+.btn-create {
+    background-color: #5133A2;
+    border: 1px solid #5133A2;
+}
+
+.note-toolbar {
+    background-color: #F8F8F9;
+    border-bottom: 1px solid #9e9ea3;
+}
+
+.card-block {
+    color: black;
 }
 
 

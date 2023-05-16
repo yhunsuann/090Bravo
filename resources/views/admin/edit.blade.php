@@ -1,7 +1,8 @@
 @extends('layout.layout')
 @section('content')
-    <h1 class="mb-4">Edit Cruitments</h1>
-    <form action="{{ URL::to('/update-recruitment/'.$data->id)}}" method="POST" enctype="multipart/form-data">
+    <h4 class="mb-4">Edit Cruitments</h4>
+    <h5 class="title-create">Form edit</h5>
+    <form class="form-create bg-white p-4" action="{{ URL::to('/update-recruitment/'.$data->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
@@ -13,7 +14,7 @@
         </div>
         <div class="mb-3">
             <label for="content" class="form-label">Content</label>
-            <textarea class="form-control" id="content" name="content" rows="5" value="{{ $data->content }}"  placeholder="Enter content">{{ $data->content }}</textarea>
+            <textarea value="{{ $data->content }}" class="summernote"  rows="5" name="content">{{ $data->content }}</textarea>
         </div>
         <div class="mb-3">
             <label for="image" class="form-label">Image</label>

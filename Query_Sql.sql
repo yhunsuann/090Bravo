@@ -50,7 +50,7 @@ SELECT recruitments.id, recruitment_translates.language_code, recruitment_transl
 FROM recruitments
 LEFT JOIN recruitment_translates
 ON recruitments.id = recruitment_translates.recruitment_id
-WHERE recruitment_translates.language_code = 'en' AND recruitment_translates.recruitment_id IS NOT NULL AND recruitments.deleted_at IS NULL;
+WHERE recruitment_translates.language_code = 'en';
 
 SELECT language_code
 FROM recruitment_translates

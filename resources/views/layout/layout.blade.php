@@ -140,19 +140,13 @@
                     <svg width="118" height="46" alt="CoreUI Logo">
                         <use xlink:href="{{ asset('assets/brand/coreui.svg#full') }}"></use>
                     </svg></a>
-                <ul class="header-nav ms-auto">
+                <ul class="nav nav-pills header-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            VI
-                        </a>
+                        <!-- <a class="nav-link active language" aria-current="page" >VI</a> -->
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            EN
-                        </a>
-                    </li>
-
+                   
                 </ul>
+                
                 <ul class="header-nav ms-3">
                     <li class="nav-item dropdown">
                         <a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
@@ -266,7 +260,9 @@
     <script src="{{ asset('js/main.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Datepicker -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+    
     <script>
         $(function(e) {
             $('#checkAll').click(function() {
@@ -283,6 +279,15 @@
                     autoclose: true,
                     format: "yyyy-mm-dd"
                 });
+            });
+            $('.language').click(function() {
+                $(".language").removeClass('active');
+                $(this).addClass('active')
+            })
+            $('.summernote').summernote({
+                placeholder: 'Enter Content',
+                tabsize: 2,
+                height: 100
             });
         });
     </script>
