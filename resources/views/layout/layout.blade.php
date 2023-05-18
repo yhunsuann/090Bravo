@@ -34,6 +34,7 @@
     <!-- We use those styles to show code examples, you should remove them in your application.-->
     <link rel="stylesheet" href="{{ asset('https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism.css')}}">
     <link href="{{ asset('css/examples.css')}}" rel="stylesheet">
+ 
     <!-- Global site tag (gtag.js) - Google Analytics-->
     <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
     <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
@@ -46,7 +47,10 @@
     <!-- font-awesome -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- datepicker styles -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker3.min.css') }}">
+    <link href="{{ asset('vendors/@coreui/chartjs/css/coreui-chartjs.css') }}" rel="stylesheet">
+    <link href="{{ asset('summernot/summernote-bs4.min.css') }}" rel="stylesheet">
+    
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -59,7 +63,8 @@
         // Bootstrap ID
         gtag('config', 'UA-118965717-5');
     </script>
-    <link href="{{ asset('vendors/@coreui/chartjs/css/coreui-chartjs.css') }}" rel="stylesheet">
+  
+
 </head>
 
 <body>
@@ -259,10 +264,10 @@
     <script src="{{ asset('vendors/@coreui/utils/js/coreui-utils.js')}}"></script>
     <script src="{{ asset('js/main.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <!-- summernote -->
+    <script src="{{ asset('summernot/summernote-bs4.min.js') }}"></script>
     <!-- Datepicker -->
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
-    
+    <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
     <script>
         $(function(e) {
             $('#checkAll').click(function() {

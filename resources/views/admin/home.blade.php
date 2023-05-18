@@ -76,7 +76,7 @@
                     <tr>
                         <th class="text-center"><input name="ids[]" class="sub_chk" value="{{$data->id}}" id="checkItem" type="checkbox">
                         </th>
-                        <td>{{ $data->title }}</td>
+                        <td>{{ $data->recruitmentTranslates->first()->title }}</td>
                         <td><img width="100px" height="50px" src="{{ asset('assets/img/cruitments/'.$data->image)}}" alt=""></td>
                         <td>{{ $data->status }}</td>
                         <td>{{ $data->created_at}}</td>

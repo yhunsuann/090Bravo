@@ -19,9 +19,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/create', function () {
-    return view('admin.create');
-});
+
 Route::post('/login',[MemberController::class,'logIn']);
 
 Route::group(['middleware' => 'CheckLogin'], function() {
@@ -33,6 +31,7 @@ Route::group(['middleware' => 'CheckLogin'], function() {
     Route::get('/log-out', [MemberController::class, 'logOut']);
     Route::get('/search', [RecruitController::class, 'searchData']);
     Route::post('/delete-select', [RecruitController::class, 'deleteSelect']);
+    Route::get('/create', [RecruitController::class, 'createRecruitment']);
 });
 Route::get('/forgot-password', function () {
     return view('admin.forgot-password');
