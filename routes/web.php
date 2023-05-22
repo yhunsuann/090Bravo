@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\RecruitController;
+use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,7 +32,16 @@ Route::group(['middleware' => 'CheckLogin'], function() {
     Route::get('/log-out', [MemberController::class, 'logOut']);
     Route::get('/search', [RecruitController::class, 'searchData']);
     Route::post('/delete-select', [RecruitController::class, 'deleteSelect']);
-    Route::get('/create', [RecruitController::class, 'createRecruitment']);
+    Route::get('/create', [RecruitController::class, 'createRecruitment']);  
+
+    Route::get('/blog',[BlogController::class,'index'])->name('index_blog');
+    Route::get('/blog/create',[BlogController::class, 'createBlog']);
+    Route::post('/add-blog',[BlogController::class,'addBlog']);
+    Route::get('blog/search',[BlogController::class, 'searchData']);
+    Route::post('/blog/delete-select', [BlogController::class, 'deleteSelect']);
+    Route::get('/blog/delete/{id}',[BlogController::class,'deleteBlog']);
+    Route::get('/blog/edit/{id}',[BlogController::class,'editBlog']);
+    Route::post('/blog/update/{id}',[BlogController::class,'updateBlog']);
 });
 Route::get('/forgot-password', function () {
     return view('admin.forgot-password');

@@ -13,4 +13,8 @@ class Language extends Model
     {
         return $this->hasMany(RecruitmentTranslate::class,'language_code', 'language_code');
     }
+    public function blogTranslates()
+    {
+        return $this->hasMany(BlogTranslate::class,'language_code', 'language_code');
+    }
 }

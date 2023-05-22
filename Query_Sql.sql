@@ -15,18 +15,18 @@ PRIMARY KEY (id)
 );
 INSERT INTO users(email,password) VALUES('mienphi221@gmail.com','$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm');
 
-INSERT INTO recruitments(image, status, created_at) VALUES('full.jpg', 'active', now());
-INSERT INTO recruitment_translates(recruitment_id, language_code, title, content,description) 
+INSERT INTO blogs(image, status, created_at) VALUES('2.jpg', 'Inactive', now());
+INSERT INTO blog_translates(blog_id, language_code, title, content,description) 
 VALUES(LAST_INSERT_ID(),'en','title_en','content_en','description_en'),
-	  (LAST_INSERT_ID(),'vi','title_vi','content_vi','description_vi');
+	  (LAST_INSERT_ID(),'vi','nha phat trien full stack','nha phat trien full stack','description_vi');
 
-INSERT INTO languages(language_code,language_name) VALUES ('en','english');
+INSERT INTO languages(language_code,language_name) VALUES ('vi','vietnamese');
 
 ALTER TABLE recruitments
 ADD content varchar(255);
 
-UPDATE recruitments
-SET password = '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm'
+UPDATE blogs
+SET image = '1.jpg'
 WHERE id = 1;
 
 ALTER TABLE users
@@ -59,7 +59,7 @@ SELECT * FROM recruitments WHERE deleted_at IS NULL;
 TRUNCATE TABLE recruitments;
 TRUNCATE TABLE recruitment_translates;
 TRUNCATE TABLE languages;
-DELETE FROM recruitment_translates where id >0;
+DELETE FROM recruitments where id >0;
 
 SELECT recruitment_translates.id,  recruitment_translates.recruitment_id, recruitment_translates.title, recruitment_translates.content, recruitment_translates.description, created_at, image, recruitments.deleted_at ,recruitment_translates.language_code
 FROM recruitments

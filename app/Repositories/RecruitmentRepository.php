@@ -87,7 +87,7 @@ class RecruitmentRepository implements RecruitmentRepositoryInterface
 
     public function deleteCruitments($id)
     {
-        $recruitments =  $this->model->find($id);
+        $recruitments = $this->model->find($id);
         $recruitments->delete();
     }
    

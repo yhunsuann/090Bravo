@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('recruitment_translates',function(Blueprint $table){
+        Schema::create('blog_translates',function(Blueprint $table){
             $table->increments('id');
-            $table->unsignedInteger('recruitment_id');
+            $table->unsignedInteger('blog_id');
             $table->string('language_code',5);
-            $table->foreign('recruitment_id')->references('id')->on('recruitments')->onDelete('cascade');
+            $table->foreign('blog_id')->references('id')->on('blogs')->onDelete('cascade');
             $table->foreign('language_code')->references('language_code')->on('languages')->onDelete('cascade');
             $table->string('title',255);
-            $table->string('content',255);
-            $table->string('description',255);
+            $table->text('content');
+            $table->string('description',2000);
         });
     }
 
@@ -28,13 +28,13 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('recruitment_translates', function (Blueprint $table) {
-            $table->dropForeign(['recruitment_id']);
+        Schema::table('blog_translates', function (Blueprint $table) {
+            $table->dropForeign(['blog_id']);
+
         });
         Schema::table('languages', function (Blueprint $table) {
-            $table->dropForeign(['recruitment_id']);
+            $table->dropForeign(['blog_id']);
         });
-        Schema::dropIfExists('recruitment_translates');
+        Schema::dropIfExists('blog_translates');
     }
 };
-

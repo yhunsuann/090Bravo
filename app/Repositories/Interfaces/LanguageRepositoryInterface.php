@@ -3,6 +3,7 @@ namespace App\Repositories\Interfaces;
 
 Interface LanguageRepositoryInterface
 {    
-    public function listLanguage();
+    public function listLanguageRecruitment();
+    public function listLanguageBlog();
 } 
 ?>

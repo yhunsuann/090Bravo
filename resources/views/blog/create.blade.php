@@ -1,11 +1,13 @@
-@extends('layout.layout') @section('content') @if(session()->has('success'))
+@extends('layout.layout')
+<h4 class="mb-4">Create Blog</h4>
+@section('content') @if(session()->has('success'))
 <div class="alert alert-success">
     {{ session()->get('success') }}
 </div>
 @php Session::forget('success'); @endphp @endif
-<h4 class="mb-4">Create Cruitments</h4>
+
 <h5 class="title-create">Form create</h5>
-<form class="form-create bg-white p-4" action="{{ URL::to('/add-recruitment')}}" method="POST" enctype="multipart/form-data">
+<form class="form-create bg-white p-4" action="{{ URL::to('/add-blog')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <ul class="nav nav-pills" id="pills-tab" role="tablist">
         @forelse ($result as $key => $data)
@@ -48,9 +50,7 @@
             <label for="status" class="form-label">Status</label>
             <select name="status" class="form-select" id="status">
                         <option value="Active">Active</option>
-                        <option value="UnActive">UnActive</option>
-                        <option value="Expired">Expired</option>
-                        <option value="Closed">Closed</option>
+                        <option value="InActive">InActive</option>
             </select>
         </div>
     </div>

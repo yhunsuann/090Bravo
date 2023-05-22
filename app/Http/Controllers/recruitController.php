@@ -24,7 +24,7 @@ class RecruitController extends Controller
 
     public function createRecruitment()
     {
-        $data = $this->languageRepository->listLanguage();
+        $data = $this->languageRepository->listLanguageRecruitment();
         return view('admin.create')->with('result',$data);
     }
 
@@ -44,7 +44,7 @@ class RecruitController extends Controller
         }
 
         if ($request->has('upload_image')) {
-            $file_name = $this->fileUploader->uploadFile($request);
+            $file_name = $this->fileUploader->uploadFileRecruitment($request);
             if ($file_name !== null) {
                 $request->merge(['image' => $file_name]);
             }
@@ -84,7 +84,7 @@ class RecruitController extends Controller
         $qty = count($request['count']);
         $data = array();
         if ($request->has('upload_image')) {
-            $file_name = $this->fileUploader->uploadFile($request);
+            $file_name = $this->fileUploader->uploadFileRecruitment($request);
             if ($file_name !== null) {
                 $request->merge(['image' => $file_name]);
             }

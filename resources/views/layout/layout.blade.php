@@ -95,15 +95,15 @@
                                         </svg> Menbers</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="index.html">
+                                    <a class="nav-link" href="{{ URL::to('/blog')}}">
                                         <svg class="nav-icon">
                                             <use
                                                 xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-address-book') }}">
                                             </use>
                                         </svg> Blogs</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.html">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="{{ URL::to('/home')}}">
                                         <svg class="nav-icon">
                                             <use
                                                 xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-speedometer') }}">
@@ -116,7 +116,8 @@
                                             <use
                                                 xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-contact') }}">
                                             </use>
-                                        </svg> Contact</a>
+                                        </svg> Contact
+                                    </a>
                                 </li>
                             </div>
                         </div>
@@ -218,19 +219,19 @@
                     </li>
                 </ul>
             </div>
-            <div class="header-divider"></div>
+            <!-- <div class="header-divider"></div>
             <div class="container-fluid">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb my-0 ms-2">
                         <li class="breadcrumb-item">
-                            <!-- if breadcrumb is single--><span>Home</span>
+                           <span>Home</span>
                         </li>
                         <li class="breadcrumb-item active"><span class="text-limit">Dashboard</span></li>
                     </ol>
                 </nav>
-            </div>
+            </div> -->
         </header>
-        <div class="body flex-grow-1 px-3 pt-5">
+        <div class="body flex-grow-1 px-3 pt-4">
             <div class="container-lg">             
                 @yield('content')
             </div>
@@ -250,6 +251,24 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>
                     <a id="btn-delete-recruitments" type="button" href="" class="btn btn-danger px-4">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteBlog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog bg-white">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+                    <button type="button" class="btn-close" data-coreui-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    You are sure that it delete ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-coreui-dismiss="modal">Close</button>
+                    <a id="btn-delete-blog" type="button" href="" class="btn btn-danger px-4">Delete</a>
                 </div>
             </div>
         </div>
@@ -278,6 +297,11 @@
                 var url = "{{ url('/delete/') }}/" + id;
                 $('#btn-delete-recruitments').attr("href", url);
             });
+            $('.open-modal-blog').click(function() {
+                var id = $(this).data('id');
+                var url = "{{ url('/blog/delete/') }}/" + id;
+                $('#btn-delete-blog').attr("href", url);
+            });
             $(function() {
                 $('.datepicker').datepicker({
                     language: "es",
@@ -294,6 +318,7 @@
                 tabsize: 2,
                 height: 100
             });
+            $('.dropdown-toggle').dropdown()
         });
     </script>
 </body>
