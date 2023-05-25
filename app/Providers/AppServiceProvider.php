@@ -15,6 +15,10 @@ use App\Repositories\Interfaces\BlogRepositoryInterface;
 use App\Repositories\BlogRepository;
 use App\Repositories\Interfaces\BlogTranslateRepositoryInterface;
 use App\Repositories\BlogTranslateRepository;
+use App\Repositories\Interfaces\PostTranslateRepositoryInterface;
+use App\Repositories\PostTranslateRepository;
+use App\Repositories\Interfaces\PostRepositoryInterface;
+use App\Repositories\PostRepository;
 
 use Illuminate\Pagination\Paginator;
 class AppServiceProvider extends ServiceProvider
@@ -46,6 +50,13 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->bind(
             BlogTranslateRepositoryInterface::class, BlogTranslateRepository::class
+        );
+
+        $this->app->bind(
+            PostRepositoryInterface::class, PostRepository::class
+        );
+        $this->app->bind(
+            PostTranslateRepositoryInterface::class, PostTranslateRepository::class
         );
     }
     

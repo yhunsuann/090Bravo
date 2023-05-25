@@ -10,7 +10,7 @@ class BlogTranslate extends Model
     use HasFactory;
     protected $table = 'blog_translates';
     const UPDATED_AT =  NULL;
-    const CREATED_AT =  NULL;
+
     protected $fillable = [
         'blog_id', 
         'language_code', 

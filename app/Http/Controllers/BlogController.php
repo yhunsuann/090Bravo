@@ -52,13 +52,13 @@ class BlogController extends Controller
           'title' => 'required',
           'description' => 'required',
           'content' => 'required',
-          'upload_image' => 'required',
+          'upload_image' => 'required|image',
           'status' => 'required',
       ]);
       if ($validator->fails()) {
           return redirect()->back()->with('success', 'Please enter full information !'); 
       }
-
+    
       if ($request->has('upload_image')) {
           $file_name = $this->fileUploader->uploadFileBlog($request);
           if ($file_name !== null) {
@@ -114,7 +114,7 @@ class BlogController extends Controller
               $request->merge(['image' => $file_name]);
           }
       }
-      
+      dd($request->all());
       $data['title'] = $request->title;
       $data['content'] = $request->content;
       $data['description'] = $request->description;

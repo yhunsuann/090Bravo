@@ -15,7 +15,8 @@ return new class extends Migration
             $table->increments('id');
             $table->string('image',50);
             $table->enum('status',['Active','InActive']);
-            $table->timestamp('created_at');
+            $table->timestamp('created_at'); 
+            $table->timestamp('updated_at'); 
             $table->softDeletes();
         });
     }

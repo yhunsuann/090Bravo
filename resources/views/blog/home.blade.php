@@ -33,7 +33,7 @@
     <div class="row">
         <div class="col p-0 bottom-search">
             <input type="submit" class="py-1 btn-search btn btn-primary float-end m-2 mr-0 " value="Search"></input>
-            <a href="{{URL::to('/home')}}" class="py-1 btn btn-secondary float-end m-2 text-white" value="Reset">Reset</a>
+            <a href="{{URL::to('/blog')}}" class="py-1 btn btn-secondary float-end m-2 text-white" value="Reset">Reset</a>
         </div>
     </div>
 </form>

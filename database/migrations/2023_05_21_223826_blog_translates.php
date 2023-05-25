@@ -28,13 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('blog_translates', function (Blueprint $table) {
-            $table->dropForeign(['blog_id']);
-
-        });
-        Schema::table('languages', function (Blueprint $table) {
-            $table->dropForeign(['blog_id']);
-        });
-        Schema::dropIfExists('blog_translates');
+      //
     }
 };

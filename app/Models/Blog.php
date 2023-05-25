@@ -12,7 +12,7 @@ class Blog extends Model
     protected $table = 'blogs';
     use HasFactory;
     use SoftDeletes;
-    const UPDATED_AT = null;
+    const UPDATED_AT = NULL;
   
     protected $fillable = [
     'status',

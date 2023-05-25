@@ -3,6 +3,7 @@
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\RecruitController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,6 +43,10 @@ Route::group(['middleware' => 'CheckLogin'], function() {
     Route::get('/blog/delete/{id}',[BlogController::class,'deleteBlog']);
     Route::get('/blog/edit/{id}',[BlogController::class,'editBlog']);
     Route::post('/blog/update/{id}',[BlogController::class,'updateBlog']);
+
+    Route::get('/post/{type}',[PostController::class,'index'])->name('index_office');
+    Route::get('/post/{type}',[PostController::class,'index'])->name('index_member');
+    Route::post('/post/update/{type}',[PostController::class,'updatePost'])->name('index_member');
 });
 Route::get('/forgot-password', function () {
     return view('admin.forgot-password');

@@ -34,7 +34,7 @@
     <!-- We use those styles to show code examples, you should remove them in your application.-->
     <link rel="stylesheet" href="{{ asset('https://cdn.jsdelivr.net/npm/prismjs@1.23.0/themes/prism.css')}}">
     <link href="{{ asset('css/examples.css')}}" rel="stylesheet">
- 
+
     <!-- Global site tag (gtag.js) - Google Analytics-->
     <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
     <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
@@ -50,7 +50,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker3.min.css') }}">
     <link href="{{ asset('vendors/@coreui/chartjs/css/coreui-chartjs.css') }}" rel="stylesheet">
     <link href="{{ asset('summernot/summernote-bs4.min.css') }}" rel="stylesheet">
-    
+
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -63,7 +63,7 @@
         // Bootstrap ID
         gtag('config', 'UA-118965717-5');
     </script>
-  
+
 
 </head>
 
@@ -71,10 +71,10 @@
     <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
         <div class="sidebar-brand d-none d-md-flex">
             <svg class="sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
-                <use xlink:href="assets/brand/coreui.svg#full"></use>
+                <use xlink:href="{{ asset('assets/brand/coreui.svg#full') }}"></use>
             </svg>
             <svg class="sidebar-brand-narrow" width="46" height="46" alt="CoreUI Logo">
-                <use xlink:href="assets/brand/coreui.svg#signet"></use>
+                <use xlink:href="{{ asset('assets/brand/coreui.svg#signet') }}"></use>
             </svg>
         </div>
         <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="init">
@@ -110,14 +110,15 @@
                                             </use>
                                         </svg> Recruitmens</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.html">
+                                <li class="nav-group">
+                                    <a class="nav-link nav-group-toggle" href="#">
                                         <svg class="nav-icon">
-                                            <use
-                                                xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-contact') }}">
-                                            </use>
-                                        </svg> Contact
-                                    </a>
+                                    <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-cursor') }}"></use>
+                                    </svg> Post</a>
+                                    <ul class="nav-group-items">
+                                        <li class="nav-item"><a class="nav-link" href="{{ URL::to('/post/member')}}"><span class="nav-icon"></span>Member</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="{{ URL::to('/post/office')}}"><span class="nav-icon"></span>Office</a></li>
+                                    </ul>
                                 </li>
                             </div>
                         </div>
@@ -150,12 +151,12 @@
                     <li class="nav-item">
                         <!-- <a class="nav-link active language" aria-current="page" >VI</a> -->
                     </li>
-                   
+
                 </ul>
-                
+
                 <ul class="header-nav ms-3">
                     <li class="nav-item dropdown">
-                        <a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link py-0" data-coreui-toggle="dropdown" href="#" role="button" aria-haspopup="true">
                             <div class="avatar avatar-md"><img class="avatar-img" src="{{ asset('assets/img/avatars/8.jpg') }}" alt="user@email.com"></div>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end pt-0">
@@ -232,7 +233,7 @@
             </div> -->
         </header>
         <div class="body flex-grow-1 px-3 pt-4">
-            <div class="container-lg">             
+            <div class="container-lg">
                 @yield('content')
             </div>
         </div>
@@ -283,7 +284,7 @@
     <script src="{{ asset('vendors/@coreui/utils/js/coreui-utils.js')}}"></script>
     <script src="{{ asset('js/main.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-     <!-- summernote -->
+    <!-- summernote -->
     <script src="{{ asset('summernot/summernote-bs4.min.js') }}"></script>
     <!-- Datepicker -->
     <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
@@ -319,6 +320,89 @@
                 height: 100
             });
             $('.dropdown-toggle').dropdown()
+            jQuery(document).ready(function() {
+                ImgUpload();
+            });
+
+            var allImages = [];
+            var imgArray = [];
+            var imagesList = $('.images-list');
+            imagesList = imagesList[imagesList.length - 1];
+            var imagesData = imagesList.getAttribute('value');
+
+            allImages = JSON.parse(imagesData);
+
+            function ImgUpload() {
+                var imgWrap = "";
+                $(document).ready(function() {
+                    $('.upload__inputfile').on('change', function(e) {
+                        var files = e.target.files;
+                        var rowImage = $('.row.image.mb-2');
+                        var maxLength = parseInt($(this).attr('data-max_length'));
+
+                        if (rowImage.children('.col-3').length >= maxLength) {
+                            // Đã đạt đến số lượng ảnh tối đa
+                            return;
+                        }
+
+                        for (var i = 0; i < files.length; i++) {
+                            var file = files[i];
+
+                            if (!file.type.match('image.*')) {
+                                // Loại bỏ các tệp không phải ảnh
+                                continue;
+                            }
+
+                            var reader = new FileReader();
+
+                            reader.onload = (function(f) {
+                                return function(e) {
+                                    var html = '<div class="col-3 mt-2">' +
+                                        '<img src="' + e.target.result + '" class="" alt="' + f.name + '">' +
+                                        '<div class="upload__img-close"></div>' +
+                                        '</div>';
+
+                                    rowImage.append(html);
+                                    imgArray.push(f.name);
+
+                                    var mergedImages = allImages.concat(imgArray);
+                                    var imagesList = $('.images-list');
+                                    imagesList.attr('value', mergedImages);
+                                };
+                            })(file);
+                            reader.readAsDataURL(file);
+                        }
+                    });
+                });
+
+                $('body').on('click', ".upload__img-close", function(e) {
+                    var file = $(this).parent().data("file");
+                    for (var i = 0; i < imgArray.length; i++) {
+                        if (imgArray[i].name === file) {
+                            imgArray.splice(i, 1);
+                            break;
+                        }
+                    }
+                    var mergedImages = allImages.concat(imgArray);
+                    var imagesList = $('.images-list');
+                    imagesList.attr('value', mergedImages);
+                    $(this).parent().remove();
+
+                });
+                $('.upload__img-closes').click(function() {
+                    var file = $(this).parent().data("file");
+                    for (var i = 0; i < allImages.length; i++) {
+                        if (allImages[i].name === file) {
+                            allImages.splice(i, 1);
+                            break;
+                        }
+                    }
+                    var mergedImages = allImages.concat(imgArray);
+                    var imagesList = $('.images-list');
+                    imagesList.attr('value', mergedImages);
+                    $(this).parent().remove();
+                });
+            }
         });
     </script>
 </body>

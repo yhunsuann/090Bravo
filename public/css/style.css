@@ -15393,5 +15393,141 @@ td {
     text-overflow: ellipsis;
 }
 
+.modal-content {
+    color: #000015;
+}
+
+.image .col-3 {
+    position: relative;
+}
+
+.image .col-3 img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.col-image {
+    width: 50%;
+}
+
+.col-image img {
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+/* select mutil */
+
+html * {
+    box-sizing: border-box;
+}
+
+p {
+    margin: 0;
+}
+
+.upload__box {
+    padding: 40px;
+}
+
+.upload__inputfile {
+    width: .1px;
+    height: .1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.upload__btn {
+    display: inline-block;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    min-width: 116px;
+    padding: 5px;
+    transition: all .3s ease;
+    cursor: pointer;
+    border: 2px solid;
+    background-color: #4045ba;
+    border-color: #4045ba;
+    border-radius: 10px;
+    line-height: 26px;
+    font-size: 14px;
+    &:hover {
+        background-color: unset;
+        color: #4045ba;
+        transition: all .3s ease;
+    }
+}
+
+.upload-box {
+    margin-bottom: 10px;
+    padding: 0;
+}
+
+.upload__img-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px -10px;
+}
+
+.upload__img-box {
+    width: 200px;
+    padding: 0 10px;
+    margin-bottom: 12px;
+}
+
+.upload__img-close {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    text-align: center;
+    line-height: 24px;
+    z-index: 1;
+    cursor: pointer;
+    &:after {
+        content: "✖";
+        font-size: 14px;
+        color: white;
+    }
+}
+
+.upload__img-closes {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    text-align: center;
+    line-height: 24px;
+    z-index: 1;
+    cursor: pointer;
+    &:after {
+        content: "✖";
+        font-size: 14px;
+        color: white;
+    }
+}
+
+.img-bg {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    padding-bottom: 100%;
+}
+
+.note-editable {
+    height: 180px !important;
+}
+
 
 /*# sourceMappingURL=style.css.ma

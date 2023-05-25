@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('image',50);
             $table->enum('status',['Active','UnActive','Expired','Closed']);
             $table->timestamp('created_at');
+            $table->timestamp('updated_at');
             $table->softDeletes();
         });
     }
@@ -25,6 +26,5 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('recruitments');
     }
 };

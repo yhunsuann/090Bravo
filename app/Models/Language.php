@@ -17,4 +17,8 @@ class Language extends Model
     {
         return $this->hasMany(BlogTranslate::class,'language_code', 'language_code');
     }
+    public function postTranslates()
+    {   
+        return $this->hasMany(PostTranslate::class,'language_code', 'language_code');
+    }
 }

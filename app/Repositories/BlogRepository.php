@@ -21,10 +21,8 @@ class BlogRepository implements BlogRepositoryInterface
         $status = $data['status'] ?? null;
         $keyword = $data['keyword'] ?? null;
  
-        $recruitments =  $this->model->whereHas('blogTranslates', function ($query) use ($keyword) {
-                                            $query->when($keyword, function ($q) use ($keyword) {
-                                                $q->where('title', 'like', '%' . $keyword . '%');
-                                            });
+        $recruitments = $this->model->whereHas('blogTranslates', function ($query) use ($keyword) {
+                                            $query->where('title', 'like', '%' . $keyword . '%');
                                         })
                                         ->when($status, function ($query) use ($status) {
                                             $query->where('status', $status);
@@ -69,7 +67,6 @@ class BlogRepository implements BlogRepositoryInterface
         $blog = $this->model->find($id);
         $data = $blog->blogTranslates;
         return $data;
-
     }
     public function updateBlog($data, $id)
     {

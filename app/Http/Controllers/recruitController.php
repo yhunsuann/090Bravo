@@ -36,7 +36,7 @@ class RecruitController extends Controller
             'title' => 'required',
             'description' => 'required',
             'content' => 'required',
-            'upload_image' => 'required',
+            'upload_image' => 'required|image',
             'status' => 'required',
         ]);
         if ($validator->fails()) {

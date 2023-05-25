@@ -12,7 +12,7 @@ class Recruitment extends Model
     protected $table = 'recruitments';
     use HasFactory;
     use SoftDeletes;
-    const UPDATED_AT = null;
+    const UPDATED_AT = NULL;
   
     protected $fillable = [
     'status',
