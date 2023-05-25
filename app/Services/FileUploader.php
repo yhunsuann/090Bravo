@@ -3,7 +3,7 @@ namespace App\Services;
 
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
-use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Str;
 
 class FileUploader
 {
@@ -41,23 +41,23 @@ class FileUploader
     }
     public function uploadFilePost(Request $request)
     {
-        if ($request->upload_image) {
+        if ($request->hasFile('upload_new')) {
             $imageData = [];
+            foreach ($request->file('upload_new') as $file) {
+                $ext = $file->getClientOriginalExtension();
+                $stringRamdom = bin2hex(Str::random(3));
+                $file_name = time() . '-'. $stringRamdom . '-img.' . $ext;
     
-            foreach ($request->upload_image as $file) {
-                $ext = pathinfo($file, PATHINFO_EXTENSION);
-                $file_name = time() . '-' . 'img.' . $ext;
-                $file->save(public_path('assets/img/post'), $file_name);
+                $image = Image::make($file);
+                $image->fit(535, 480);
+                $image->save(public_path('assets/img/post') . '/' . $file_name);
+    
                 $imageData[] = $file_name;
             }
-    
-            $imageJson = json_encode($imageData);
-            dd($imageJson);
-            return $imageJson;
+            $image = json_encode($imageData);
+            return $image;
         }
-    
-        dd('ket thuc');
         return null;
-    }
+    }  
 }
 ?>

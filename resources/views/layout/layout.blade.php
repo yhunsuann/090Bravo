@@ -325,11 +325,9 @@
             });
 
             var allImages = [];
-            var imgArray = [];
             var imagesList = $('.images-list');
             imagesList = imagesList[imagesList.length - 1];
             var imagesData = imagesList.getAttribute('value');
-
             allImages = JSON.parse(imagesData);
 
             function ImgUpload() {
@@ -364,10 +362,8 @@
 
                                     rowImage.append(html);
                                     imgArray.push(f.name);
-
-                                    var mergedImages = allImages.concat(imgArray);
                                     var imagesList = $('.images-list');
-                                    imagesList.attr('value', mergedImages);
+                                    imagesList.attr('value', imgArray);
                                 };
                             })(file);
                             reader.readAsDataURL(file);
@@ -383,23 +379,21 @@
                             break;
                         }
                     }
-                    var mergedImages = allImages.concat(imgArray);
                     var imagesList = $('.images-list');
-                    imagesList.attr('value', mergedImages);
+                    imagesList.attr('value', imgArray);
                     $(this).parent().remove();
 
                 });
                 $('.upload__img-closes').click(function() {
-                    var file = $(this).parent().data("file");
+                    var file = $(this).closest('.col-3').find('input[name-image]').attr('name-image');
                     for (var i = 0; i < allImages.length; i++) {
-                        if (allImages[i].name === file) {
+                        if (allImages[i] === file) {
                             allImages.splice(i, 1);
                             break;
                         }
                     }
-                    var mergedImages = allImages.concat(imgArray);
                     var imagesList = $('.images-list');
-                    imagesList.attr('value', mergedImages);
+                    imagesList.attr('value', allImages);
                     $(this).parent().remove();
                 });
             }
