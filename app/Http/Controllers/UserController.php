@@ -15,7 +15,7 @@ class UserController extends Controller
     public function __construct(
         RecruitmentRepositoryInterface $recruitmentRepository, 
         UserRepositoryInterface $userRepository
-    ){
+    ) {
         $this->recruitmentRepository = $recruitmentRepository;
         $this->userRepository = $userRepository;
     }

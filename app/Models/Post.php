@@ -20,6 +20,7 @@ class Post extends Model
     'updated_at',
     'deleted_at'
     ];
+    
     public function postTranslates()
     {
         return $this->hasMany(PostTranslate::class, 'post_id', 'id');
