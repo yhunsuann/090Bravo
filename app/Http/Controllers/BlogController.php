@@ -18,11 +18,12 @@ class BlogController extends Controller
     BlogRepositoryInterface $blogRepository, 
     FileUploader $fileUploader, 
     LanguageRepositoryInterface $languageRepository
-    ) {
+  ) {
       $this->blogRepository = $blogRepository;
       $this->languageRepository = $languageRepository;
       $this->fileUploader = $fileUploader;
   }
+
   public function index()
   {
     $value = $this->blogRepository->allBlog();
@@ -65,7 +66,7 @@ class BlogController extends Controller
     
       if ($request->has('upload_image')) {
           $file_name = $this->fileUploader->uploadFileBlog($request);
-          
+
           if ($file_name !== null) {
               $request->merge(['image' => $file_name]);
           }

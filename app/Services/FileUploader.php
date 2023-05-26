@@ -23,6 +23,7 @@ class FileUploader
     
         return null;
     }
+    
     public function uploadFileBlog(Request $request)
     {
         if ($request->hasFile('upload_image')) {

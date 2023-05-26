@@ -15,8 +15,11 @@ class RecruitController extends Controller
     private $languageRepository;
     protected $fileUploader;
 
-    public function __construct(RecruitmentRepositoryInterface $recruitmentRepository, FileUploader $fileUploader,LanguageRepositoryInterface $languageRepository)
-    {
+    public function __construct(
+        RecruitmentRepositoryInterface $recruitmentRepository, 
+        FileUploader $fileUploader,
+        LanguageRepositoryInterface $languageRepository
+    ) {
         $this->recruitmentRepository = $recruitmentRepository;
         $this->languageRepository = $languageRepository;
         $this->fileUploader = $fileUploader;
