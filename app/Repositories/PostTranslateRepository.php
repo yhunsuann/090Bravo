@@ -8,6 +8,7 @@ use App\Repositories\Interfaces\PostTranslateRepositoryInterface;
 class PostTranslateRepository implements PostTranslateRepositoryInterface
 {
     protected $model;
+    
     public function __construct(PostTranslate $model)
     {
         $this->model = $model;

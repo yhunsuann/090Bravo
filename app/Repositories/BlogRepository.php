@@ -53,21 +53,25 @@ class BlogRepository implements BlogRepositoryInterface
 
         $this->model->blogTranslates()->insert($blogTranslateValue);
     }
+
     public function deleteMutipleBaseIds($ids)
     {
         return $this->model->destroy($ids);  
     } 
+
     public function deleteBlog($id)
     {
         $blog = $this->model->find($id);
         $blog->delete();
     } 
+
     public function editBlog($id)
     {
         $blog = $this->model->find($id);
         $data = $blog->blogTranslates;
         return $data;
     }
+    
     public function updateBlog($data, $id)
     {
         $blogValue = [

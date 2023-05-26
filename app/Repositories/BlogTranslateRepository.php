@@ -8,6 +8,7 @@ use App\Repositories\Interfaces\BlogTranslateRepositoryInterface;
 class BlogTranslateRepository implements BlogTranslateRepositoryInterface
 {
     protected $model;
+    
     public function __construct(BlogTranslate $model)
     {
         $this->model = $model;

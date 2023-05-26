@@ -10,11 +10,13 @@ class PostRepository implements PostRepositoryInterface
 {
     protected $model;
     protected $postTranslateRepository;
+    
     public function __construct(Post $model, PostTranslateRepositoryInterface $postTranslateRepository)
     {
         $this->model = $model;
         $this->postTranslateRepository = $postTranslateRepository;
     }
+
     public function allPost($type)
     {
         $posts = $this->model->where('type', $type)
@@ -23,6 +25,7 @@ class PostRepository implements PostRepositoryInterface
 
         return $posts;
     }
+
     public function updatePost($data, $type)
     {
         $blogValue = [];

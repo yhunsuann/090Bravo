@@ -8,6 +8,7 @@ use App\Repositories\Interfaces\RecruitmentTranslateRepositoryInterface;
 class RecruitmentTranslateRepository implements RecruitmentTranslateRepositoryInterface
 {
     protected $model;
+    
     public function __construct(RecruitmentTranslate $model)
     {
         $this->model = $model;

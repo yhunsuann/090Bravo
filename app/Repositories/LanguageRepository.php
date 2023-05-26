@@ -10,6 +10,7 @@ use App\Models\Language;
 class LanguageRepository implements LanguageRepositoryInterface
 {
     protected $model;
+    
     public function __construct(Language $model)
     {
         $this->model = $model;

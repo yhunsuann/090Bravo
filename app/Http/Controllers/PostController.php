@@ -9,11 +9,13 @@ class PostController extends Controller
 {
     private $postRepository;
     protected $fileUploader;
+    
     public function __construct(PostRepositoryInterface $postRepository, FileUploader $fileUploader)
     {
         $this->postRepository = $postRepository;
         $this->fileUploader = $fileUploader;
     }
+
     public function index($type){;
         $value = $this->postRepository->allPost($type);
      
