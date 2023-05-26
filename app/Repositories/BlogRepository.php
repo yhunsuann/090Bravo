@@ -11,8 +11,10 @@ class BlogRepository implements BlogRepositoryInterface
     protected $model;
     protected $blogTranslateRepository;
 
-    public function __construct(Blog $model, BlogTranslateRepositoryInterface $blogTranslateRepository)
-    {
+    public function __construct(
+        Blog $model, 
+        BlogTranslateRepositoryInterface $blogTranslateRepository
+    ) {
         $this->model = $model;
         $this->blogTranslateRepository = $blogTranslateRepository;
     }
@@ -35,7 +37,7 @@ class BlogRepository implements BlogRepositoryInterface
     
         return $recruitments;
     }
-    
+
     public function addBlog($data){
         $BlogValue = [
             'image' => $data['image'],

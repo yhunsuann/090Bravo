@@ -10,9 +10,11 @@ class RecruitmentRepository implements RecruitmentRepositoryInterface
 {
     protected $model;
     protected $recruitmentTranslateRepository;
-    
-    public function __construct(Recruitment $model,  RecruitmentTranslateRepositoryInterface $recruitmentTranslateRepository)
-    {
+
+    public function __construct(
+        Recruitment $model,  
+        RecruitmentTranslateRepositoryInterface $recruitmentTranslateRepository
+    ) {
         $this->model = $model;
         $this->recruitmentTranslateRepository = $recruitmentTranslateRepository;
     }
