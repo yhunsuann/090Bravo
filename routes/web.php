@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\MemberController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\RecruitController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\PostController;
@@ -22,15 +22,15 @@ Route::get('/', function () {
 });
 
 
-Route::post('/login',[MemberController::class,'logIn']);
+Route::post('/login',[UserController::class,'logIn']);
 
 Route::group(['middleware' => 'CheckLogin'], function() {
-    Route::get('/home',[MemberController::class,'index'])->name('index');
+    Route::get('/home',[UserController::class,'index'])->name('index');
     Route::post('/add-recruitment',[RecruitController::class,'addRecruitment']);
     Route::get('/delete/{id}',[RecruitController::class,'deleteRecruitment']);
     Route::get('/edit/{id}',[RecruitController::class,'editRecruitment']);
     Route::post('update-recruitment/{id}',[RecruitController::class,'updateRecruitment']);
-    Route::get('/log-out', [MemberController::class, 'logOut']);
+    Route::get('/log-out', [UserController::class, 'logOut']);
     Route::get('/search', [RecruitController::class, 'searchData']);
     Route::post('/delete-select', [RecruitController::class, 'deleteSelect']);
     Route::get('/create', [RecruitController::class, 'createRecruitment']);  
@@ -51,8 +51,8 @@ Route::group(['middleware' => 'CheckLogin'], function() {
 Route::get('/forgot-password', function () {
     return view('admin.forgot-password');
 });
-Route::post('/recover-pass', [MemberController::class,'recoverPass']);
+Route::post('/recover-pass', [UserController::class,'recoverPass']);
 Route::get('/reset-new-pass', function () {
     return view('admin.reset_new_pass');  
 });
-Route::post('/update-new-pass', [MemberController::class,'updateNewPass']);
+Route::post('/update-new-pass', [UserController::class,'updateNewPass']);

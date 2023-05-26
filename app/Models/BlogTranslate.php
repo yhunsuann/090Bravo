@@ -16,7 +16,9 @@ class BlogTranslate extends Model
         'language_code', 
         'title', 
         'content', 
-        'description'];
+        'description'
+    ];
+
     public function language()
     {
         return $this->belongsTo(Language::class,'language_code', 'language_code');

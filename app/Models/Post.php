@@ -17,6 +17,7 @@ class Post extends Model
     'status',
     'images',
     'created_at',
+    'updated_at',
     'deleted_at'
     ];
     public function postTranslates()

@@ -18,6 +18,7 @@ class Recruitment extends Model
     'status',
     'image',
     'created_at',
+    'updated_at',
     'deleted_at'
     ];
     public function recruitmentTranslates()

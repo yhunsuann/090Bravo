@@ -13,8 +13,12 @@ class BlogController extends Controller
   protected $blogRepository;
   private $languageRepository;
   protected $fileUploader;
-  public function __construct(BlogRepositoryInterface $blogRepository, FileUploader $fileUploader, LanguageRepositoryInterface $languageRepository)
-  {
+  
+  public function __construct(
+    BlogRepositoryInterface $blogRepository, 
+    FileUploader $fileUploader, 
+    LanguageRepositoryInterface $languageRepository
+    ) {
       $this->blogRepository = $blogRepository;
       $this->languageRepository = $languageRepository;
       $this->fileUploader = $fileUploader;
@@ -61,6 +65,7 @@ class BlogController extends Controller
     
       if ($request->has('upload_image')) {
           $file_name = $this->fileUploader->uploadFileBlog($request);
+          
           if ($file_name !== null) {
               $request->merge(['image' => $file_name]);
           }
@@ -92,18 +97,21 @@ class BlogController extends Controller
           return redirect()->route('index_blog')->with('success', 'Delete Blog Successful');
       }
   }
+
   public function deleteBlog($id)
   {
       $this->blogRepository->deleteBlog($id);
 
       return redirect()->route('index_blog')->with('success', 'Delete Blog Successful'); 
   }
+
   public function editBlog($id)
   {
       $data = $this->blogRepository->editBlog($id);
 
       return view('blog.edit', ['result' => $data]);
   }
+
   public function updateBlog(Request $request, $id)
   { 
       $qty = count($request['count']);

@@ -18,8 +18,9 @@ class Blog extends Model
     'status',
     'image',
     'created_at',
-    'deleted_at'
+    'updated_at'
     ];
+    
     public function blogTranslates()
     {
         return $this->hasMany(BlogTranslate::class, 'blog_id', 'id');
