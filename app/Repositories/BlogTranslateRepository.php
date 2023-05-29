@@ -16,7 +16,7 @@ class BlogTranslateRepository implements BlogTranslateRepositoryInterface
     
     public function updateBlogTranslate($id, $languageCode, $data)
     {
-        BlogTranslate::where('blog_id', $id)
+        $this->model->where('blog_id', $id)
             ->where('language_code', $languageCode)
             ->update($data);
     }

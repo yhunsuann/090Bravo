@@ -19,6 +19,8 @@ use App\Repositories\Interfaces\PostTranslateRepositoryInterface;
 use App\Repositories\PostTranslateRepository;
 use App\Repositories\Interfaces\PostRepositoryInterface;
 use App\Repositories\PostRepository;
+use App\Repositories\Interfaces\ContactRepositoryInteface;
+use App\Repositories\ContactRepository;
 
 use Illuminate\Pagination\Paginator;
 class AppServiceProvider extends ServiceProvider
@@ -57,6 +59,9 @@ class AppServiceProvider extends ServiceProvider
         );
         $this->app->bind(
             PostTranslateRepositoryInterface::class, PostTranslateRepository::class
+        );
+        $this->app->bind(
+            ContactRepositoryInteface::class, ContactRepository::class
         );
     }
     

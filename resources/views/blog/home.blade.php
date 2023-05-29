@@ -1,10 +1,5 @@
 @extends('layout.layout') @section('content')
 <h4 class="mb-4">Blogs</h4>
-@if(session()->has('success'))
-<div class="alert alert-success">
-    {{ session()->get('success') }}
-</div>
-@php Session::forget('success'); @endphp @endif
 <div class="row">
     <div class="col p-0">
         <h6 class="title">Search</h6>

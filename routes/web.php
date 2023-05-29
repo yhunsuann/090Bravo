@@ -3,6 +3,7 @@
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RecruitController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
@@ -47,6 +48,10 @@ Route::group(['middleware' => 'CheckLogin'], function() {
     Route::get('/post/{type}',[PostController::class,'index'])->name('index_office');
     Route::get('/post/{type}',[PostController::class,'index'])->name('index_member');
     Route::post('/post/update/{type}',[PostController::class,'updatePost'])->name('index_member');
+
+    Route::get('/contact',[ContactController::class, 'index'])->name('contact.index');
+    Route::get('/contact/search', [ContactController::class, 'searchData']);
+ 
 });
 Route::get('/forgot-password', function () {
     return view('admin.forgot-password');

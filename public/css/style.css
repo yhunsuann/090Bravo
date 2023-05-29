@@ -15160,10 +15160,12 @@ html:not([dir=rtl]) .wrapper {
 
 .btn-search {
     background-color: #5233A3;
+    font-size: 13px;
 }
 
 .btn-reset {
     background-color: #EBEEF0;
+    font-size: 13px;
 }
 
 .keyword {
@@ -15529,5 +15531,22 @@ p {
     height: 180px !important;
 }
 
+.see-details {
+    width: 100px;
+}
 
-/*# sourceMappingURL=style.css.ma
+.th-table {
+    width: 150px;
+    background-color: rgba(0, 0, 21, 0.05) !important;
+}
+
+.table-modal table td {
+    padding: 5px 10px;
+}
+
+.btn-see-detail {
+    font-size: 10px;
+}
+
+
+/*# sourceMappingURL=style.css.ma.btn-search

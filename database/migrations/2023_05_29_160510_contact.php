@@ -11,9 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('posts', function (Blueprint $table) {
-            // Xóa trường "avatar" nếu cần rollback migration
-            $table->dropColumn('avartar');
+        Schema::create('contact', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('full_name',30);
+            $table->string('email',30);
+            $table->string('address',255);
+            $table->string('phone',20);
+            $table->text('message');
+            $table->timestamp('created_at');
         });
     }
 

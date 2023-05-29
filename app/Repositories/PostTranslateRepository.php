@@ -16,7 +16,7 @@ class PostTranslateRepository implements PostTranslateRepositoryInterface
     
     public function updatePostTranslate($id, $languageCode, $data)
     {
-        PostTranslate::where('post_id', $id)
+        $this->model->where('post_id', $id)
             ->where('language_code', $languageCode)
             ->update($data);
     }

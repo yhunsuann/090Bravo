@@ -86,22 +86,6 @@
                     <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
                         <div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" style="height: 100%; overflow: hidden scroll;">
                             <div class="simplebar-content" style="padding: 0px;">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="index.html">
-                                        <svg class="nav-icon">
-                                            <use
-                                                xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-user') }}">
-                                            </use>
-                                        </svg> Menbers</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ URL::to('/blog')}}">
-                                        <svg class="nav-icon">
-                                            <use
-                                                xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-address-book') }}">
-                                            </use>
-                                        </svg> Blogs</a>
-                                </li>
                                 <li class="nav-item active">
                                     <a class="nav-link" href="{{ URL::to('/home')}}">
                                         <svg class="nav-icon">
@@ -119,6 +103,22 @@
                                         <li class="nav-item"><a class="nav-link" href="{{ URL::to('/post/member')}}"><span class="nav-icon"></span>Member</a></li>
                                         <li class="nav-item"><a class="nav-link" href="{{ URL::to('/post/office')}}"><span class="nav-icon"></span>Office</a></li>
                                     </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ URL::to('/blog')}}">
+                                        <svg class="nav-icon">
+                                            <use
+                                                xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-address-book') }}">
+                                            </use>
+                                        </svg> Blogs</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ URL::to('/contact')}}">
+                                        <svg class="nav-icon">
+                                            <use
+                                                xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-user') }}">
+                                            </use>
+                                        </svg> Contacts</a>
                                 </li>
                             </div>
                         </div>
@@ -326,9 +326,12 @@
 
             var allImages = [];
             var imagesList = $('.images-list');
-            imagesList = imagesList[imagesList.length - 1];
-            var imagesData = imagesList.getAttribute('value');
-            allImages = JSON.parse(imagesData);
+            if (imagesList.length > 0) {
+                imagesList = imagesList[imagesList.length - 1];
+                var imagesData = imagesList.getAttribute('value');
+                allImages = JSON.parse(imagesData);
+            }
+          
 
             function ImgUpload() {
                 var imgWrap = "";
@@ -337,12 +340,10 @@
                         var files = e.target.files;
                         var rowImage = $('.row.image.mb-2');
                         var maxLength = parseInt($(this).attr('data-max_length'));
-
                         if (rowImage.children('.col-3').length >= maxLength) {
                             // Đã đạt đến số lượng ảnh tối đa
                             return;
                         }
-
                         for (var i = 0; i < files.length; i++) {
                             var file = files[i];
 
@@ -361,9 +362,6 @@
                                         '</div>';
 
                                     rowImage.append(html);
-                                    imgArray.push(f.name);
-                                    var imagesList = $('.images-list');
-                                    imagesList.attr('value', imgArray);
                                 };
                             })(file);
                             reader.readAsDataURL(file);
@@ -371,18 +369,8 @@
                     });
                 });
 
-                $('body').on('click', ".upload__img-close", function(e) {
-                    var file = $(this).parent().data("file");
-                    for (var i = 0; i < imgArray.length; i++) {
-                        if (imgArray[i].name === file) {
-                            imgArray.splice(i, 1);
-                            break;
-                        }
-                    }
-                    var imagesList = $('.images-list');
-                    imagesList.attr('value', imgArray);
+                $('body').on('click', ".upload__img-close", function(e) { 
                     $(this).parent().remove();
-
                 });
                 $('.upload__img-closes').click(function() {
                     var file = $(this).closest('.col-3').find('input[name-image]').attr('name-image');
