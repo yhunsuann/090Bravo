@@ -1,36 +1,58 @@
-@extends('layout.layout')
-@section('content')
+@extends('layout.layout') @section('content')
 <div class="row">
-    @if(session()->has('success'))
-    <div class="alert alert-success">
-        {{ session()->get('success') }}
+    <div class="col p-0">
+        <h5 class="mb-4">Recruitments</h5>
     </div>
-    @php Session::forget('success'); @endphp @endif
-    <div class="col">
-        <form class="mb-0" action="{{ URL::to('/search') }}" method="get">
+</div>
+@if(session()->has('success'))
+<div class="alert alert-success">
+    {{ session()->get('success') }}
+</div>
+@php Session::forget('success'); @endphp @endif
+<div class="row">
+    <div class="col p-0">
+        <h6 class="title">Search</h6>
+    </div>
+</div>
+<form class="mb-0" action="{{ URL::to('/search') }}" method="get">
+    <div class="row search">
+        <div class="col">
             @csrf
             <div class="row p-0">
                 <div class="col-sm-6">
-                    <input class="mx-auto keyword" type="text" placeholder="Keyword" name="keyword" id="">
-                    <select class="form-select" aria-label="Default select example" name="status">
-                            <option selected="selected" value="">Select Status</option>
-                            <option value="Active">Active</option>
-                            <option value="UnActive">UnActive</option>
-                            <option value="Expired">Expired</option>
-                            <option value="Closed">Closed</option>
-                </select>
-                </div>
-                <div class="col-sm-6">
-                    <div>
-                        <div class="datepicker date input-group mt-0 mx-auto">
-                            <input name="dateFrom" type="text" placeholder="From date" class="form-control" id="fecha1">
-                            <div class="input-group-append">
-                                <span class="input-group-text h-100"><i class="fa fa-calendar"></i></span>
-                            </div>
+                    <div class="row">
+                        <div class="col">
+                            <label class="label-search" for="">Keyword</label>
+                            <input class="mx-auto keyword" type="text" placeholder="Keyword" name="keyword" id="">
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col">
+                            <div>
+                                <div class="datepicker date input-group mt-0 mx-auto">
+                                    <label class="label-search" for="">Date From</label>
+                                    <input name="dateFrom" type="text" placeholder="From date" class="form-control" id="fecha1">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text h-100"><i class="fa fa-calendar"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <label class="label-search" for="">Status</label>
+                    <select class="form-select" aria-label="Default select example" name="status">
+                                    <option selected="selected" value="">Select...</option>
+                                    <option value="Active">Active</option>
+                                    <option value="UnActive">UnActive</option>
+                                    <option value="Expired">Expired</option>
+                                    <option value="Closed">Closed</option>
+                        </select>
                     <div>
                         <div class="datepicker date input-group mx-auto">
+                            <label class="label-search" for="">Date to</label>
                             <input name="dateTo" type="text" placeholder="To day" class="form-control" id="fecha1">
                             <div class="input-group-append">
                                 <span class="input-group-text h-100"><i class="fa fa-calendar"></i></span>
@@ -39,45 +61,49 @@
                     </div>
 
                 </div>
-
-                <div class="row">
-                    <div class="col">
-                        <input type="submit" class="btn-search btn btn-primary float-end m-2 mr-0 " value="Search"></input>
-                        <a href="{{URL::to('/home')}}" class="btn btn-secondary float-end m-2 text-white" value="Reset">Reset</a>
-                    </div>
-                </div>
             </div>
-        </form>
+        </div>
     </div>
-</div>
+    <div class="row">
+        <div class="col p-0 bottom-search">
+            <input type="submit" class="btn-search btn btn-primary float-end m-2 mr-0 py-1" value="Search"></input>
+            <a href="{{URL::to('/home')}}" class="btn-reset btn btn-secondary text-dark float-end m-2 py-1" value="Reset">Reset</a>
+        </div>
+    </div>
+</form>
 <form action="{{ URL::to('/delete-select') }}" method="post">
     @csrf
-    <div class="row">
+    <div class="row my-3">
         <div class="col">
             <a href="{{ URL::to('/create') }}" type="button" class="btn btn-outline-success float-end m-2 mr-0">Create</a>
             <input type="submit" class="delete_all btn-delete btn btn-danger float-end m-2" value="Delete all select"></input>
         </div>
     </div>
     <div class="row">
-        <div class="col" style="overflow-x:auto;">
-            <table class="table bg-white">
-                <thead class="thead-table">
+        <div class="col p-0">
+            <h6 class="title">List recruitments</h6>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col col-table px-3 bg-white" style="overflow-x:auto;">
+            <table class="table caption-top bg-white table table-striped">
+                <thead>
                     <tr class="py-3">
                         <th class="text-center"><input type="checkbox" id="checkAll"></th>
                         <th scope="col"><b>Title</b></th>
                         <th scope="col"><b>Image</b></th>
                         <th scope="col"><b>Status</b></th>
-                        <th scope="col"><b>Create_at</b></th>
+                        <th scope="col"><b>Create At</b></th>
                         <th scope="col" class="text-center"><b>Action</b></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="table-group-divider">
                     @forelse($result as $data)
                     <tr>
                         <th class="text-center"><input name="ids[]" class="sub_chk" value="{{$data->id}}" id="checkItem" type="checkbox">
                         </th>
-                        <td>{{ $data->title }}</td>
-                        <td><img width="100px" height="50px" src="{{ asset('assets/img/cruitments/'.$data->image)}}" alt=""></td>
+                        <td>{{ $data->recruitmentTranslates->first()->title }}</td>
+                        <td><img width="70px" height="40px" src="{{ asset('assets/img/cruitments/'.$data->image)}}" alt=""></td>
                         <td>{{ $data->status }}</td>
                         <td>{{ $data->created_at}}</td>
                         <td class="text-center">
@@ -93,5 +119,4 @@
         </div>
     </div>
 </form>
-{{$result->appends($_GET)->links()}}
-@endsection
+{{$result->appends($_GET)->links()}} @endsection

@@ -13,12 +13,10 @@ return new class extends Migration
     {
         Schema::create('recruitments',function(Blueprint $table){
             $table->increments('id');
-            $table->string('title',255);
-            $table->string('content',255);
-            $table->string('description',255);
             $table->string('image',50);
             $table->enum('status',['Active','UnActive','Expired','Closed']);
             $table->timestamp('created_at');
+            $table->timestamp('updated_at');
             $table->softDeletes();
         });
     }
@@ -28,6 +26,5 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('recruitments');
     }
 };

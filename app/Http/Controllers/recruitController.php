@@ -6,27 +6,40 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
 use App\Repositories\Interfaces\RecruitmentRepositoryInterface;
+use App\Repositories\Interfaces\LanguageRepositoryInterface;
 use App\Services\FileUploader;
 
 class RecruitController extends Controller
 {
     private $recruitmentRepository;
+    private $languageRepository;
     protected $fileUploader;
 
-    public function __construct(RecruitmentRepositoryInterface $recruitmentRepository, FileUploader $fileUploader)
-    {
+    public function __construct(
+        RecruitmentRepositoryInterface $recruitmentRepository, 
+        FileUploader $fileUploader,
+        LanguageRepositoryInterface $languageRepository
+    ) {
         $this->recruitmentRepository = $recruitmentRepository;
+        $this->languageRepository = $languageRepository;
         $this->fileUploader = $fileUploader;
+    }
+
+    public function createRecruitment()
+    {
+        $data = $this->languageRepository->listLanguageRecruitment();
+        return view('admin.create')->with('result',$data);
     }
 
     public function addRecruitment(Request $request)
     {
+        $qty = count($request['count']);
         $time = Carbon::now();
         $validator = Validator::make($request->all(), [
             'title' => 'required',
             'description' => 'required',
             'content' => 'required',
-            'upload_image' => 'required',
+            'upload_image' => 'required|image',
             'status' => 'required',
         ]);
         if ($validator->fails()) {
@@ -34,19 +47,21 @@ class RecruitController extends Controller
         }
 
         if ($request->has('upload_image')) {
-            $file_name = $this->fileUploader->uploadFile($request);
+            $file_name = $this->fileUploader->uploadFileRecruitment($request);
             if ($file_name !== null) {
                 $request->merge(['image' => $file_name]);
             }
         }
-        
+     
         $data = array();
-        $data['title'] = $request->title;
-        $data['content'] = $request->content;
-        $data['description'] = $request->description;
         $data['image'] = $request->image;
         $data['created_at'] =  $time->toDateTimeString();
         $data['status'] = $request->status;
+        $data['title'] = $request->input('title');
+        $data['content'] = $request->input('content');
+        $data['description'] = $request->input('description');
+        $data['language_code'] = $request->input('language_code');
+        $data['count'] = $qty;
 
         $this->recruitmentRepository->addRecruitments($data);
 
@@ -64,24 +79,27 @@ class RecruitController extends Controller
     {
         $data = $this->recruitmentRepository->editCruitments($id);
 
-        return view('admin.edit', ['data' => $data[0]]);
+        return view('admin.edit', ['result' => $data]);
     }
 
     public function updateRecruitment(Request $request,$id)
     { 
+        $qty = count($request['count']);
         $data = array();
         if ($request->has('upload_image')) {
-            $file_name = $this->fileUploader->uploadFile($request);
+            $file_name = $this->fileUploader->uploadFileRecruitment($request);
             if ($file_name !== null) {
                 $request->merge(['image' => $file_name]);
             }
         }
-
+        
         $data['title'] = $request->title;
         $data['content'] = $request->content;
         $data['description'] = $request->description;
         $data['status'] = $request->status;
         $data['image'] = $request->image;
+        $data['count'] = $qty;
+        $data['language_code'] = $request->language_code;
 
         $this->recruitmentRepository->updateCruitments($data,$id);
 
@@ -106,6 +124,7 @@ class RecruitController extends Controller
             return redirect()->route('index');
         } else {
             $result = $this->recruitmentRepository->allRecruitments($request->all());
+            
             return view('admin.home')->with('result',$result);
         }        
     }

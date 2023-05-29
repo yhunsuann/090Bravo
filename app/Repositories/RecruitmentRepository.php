@@ -3,97 +3,107 @@
 namespace App\Repositories;
 
 use App\Repositories\Interfaces\RecruitmentRepositoryInterface;
-use App\Models\Recruitments;
-use App\Models\User;
-use Illuminate\Support\Facades\Mail;
-use Carbon\Carbon;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Hash;
-
+use App\Repositories\Interfaces\RecruitmentTranslateRepositoryInterface;
+use App\Models\Recruitment;
+use App\Models\RecruitmentTranslate;
 class RecruitmentRepository implements RecruitmentRepositoryInterface
 {
+    protected $model;
+    protected $recruitmentTranslateRepository;
+
+    public function __construct(
+        Recruitment $model,  
+        RecruitmentTranslateRepositoryInterface $recruitmentTranslateRepository
+    ) {
+        $this->model = $model;
+        $this->recruitmentTranslateRepository = $recruitmentTranslateRepository;
+    }
+    
+
     public function allRecruitments($data = [])
-    {       
+    {
         $status = $data['status'] ?? null;
         $keyword = $data['keyword'] ?? null;
         $dateFrom = $data['dateFrom'] ?? null;
         $dateTo = $data['dateTo'] ?? null;
-        
-        return Recruitments::when($keyword, function ($q) use ($keyword) {
-                            $q->where('title', 'like', '%' .$keyword. '%');
-                        })->when($status, function($q) use ($status) {
-                            $q->where('status', $status);
-                        })->when($dateFrom, function($q) use ($dateFrom,$dateTo) {
-                            $q->whereBetween('created_at', [$dateFrom, $dateTo]);
-                        })->paginate(5);
+    
+        $recruitments =  $this->model->whereHas('recruitmentTranslates', function ($query) use ($keyword) {
+                                            $query->when($keyword, function ($q) use ($keyword) {
+                                                $q->where('title', 'like', '%' . $keyword . '%');
+                                            });
+                                        })
+                                        ->when($status, function ($query) use ($status) {
+                                            $query->where('status', $status);
+                                        })
+                                        ->when($dateFrom && $dateTo, function ($query) use ($dateFrom, $dateTo) {
+                                            $query->whereBetween('created_at', [$dateFrom, $dateTo]);
+                                        })
+                                        ->with(['recruitmentTranslates' => function ($query) {
+                                            $query->where('language_code', 'vi');
+                                        }])
+                                        ->paginate(5);
+    
+        return $recruitments;
     }
 
     public function addRecruitments($data)
     {
-        return Recruitments::create($data);
-    }
+        $recruitmentValue = [
+            'image' => $data['image'],
+            'status' => $data['status'],
+        ];
+        $recruitment = $this->model->create($recruitmentValue);
+        $qty = $data['count'];
+        for($i = 0; $i < $qty; $i++){
+            $recruitmentTranslateValue[] = [
+                'recruitment_id' => $recruitment->id,
+                'language_code' => $data['language_code'][$i],
+                'title' => $data['title'][$i],
+                'content' => $data['content'][$i],
+                'description' => $data['description'][$i]
+            ];
+        } 
 
+        $this->model->recruitmentTranslates()->insert($recruitmentTranslateValue);
+    }
+    
     public function updateCruitments($data, $id)
     {
-        return Recruitments::Where('id', $id)->update($data);
+        $recruitmentValue = [
+            'status' => $data['status']
+        ];
+        if($data['image']){
+            $recruitmentValue['image'] = $data['image'];
+        }
+        $this->model->Where('id', $id)->update($recruitmentValue);
+        $qty = $data['count'];
+        for($i = 0; $i < $qty; $i++){
+            $recruitmentTranslateValue[$i] = [
+                'title' => $data['title'][$i],
+                'content' => $data['content'][$i],
+                'description' => $data['description'][$i]
+            ];
+            $this->recruitmentTranslateRepository
+            ->updateRecruitmentTranslate($id, $data['language_code'][$i], $recruitmentTranslateValue[$i]);
+        } 
     }
 
     public function deleteCruitments($id)
     {
-        $recruitments = Recruitments::find($id);
+        $recruitments = $this->model->find($id);
         $recruitments->delete();
     }
    
     public function editCruitments($id)
     {
-        return Recruitments::where('id', $id)->get();
+        $recruitment = $this->model->find($id);
+        $data = $recruitment->recruitmentTranslates;
+        return $data;
+
     } 
 
     public function deleteMutipleBaseIds($ids)
     {
-        return Recruitments::destroy($ids);  
-    }
-
-    public function recoverPass($data)
-    {
-        $email = $data['email'];
-        $now = Carbon::now()->format('d-m-Y');
-        $title_mail = "Forget Password". ' ' .$now;
-        $customer = User::where('email', '=', $data['email'])->get();
-        $customer_id = $customer[0]->getoriginal('id');
-
-        if($customer){
-            $count_customer = $customer->count();
-            if ( $count_customer == 0) {
-                return redirect()->back();
-            } else {
-                $token_random = bin2hex(Str::random(20));
-                $data = array();
-                $data['token'] = $token_random;
-                User::Where('id', $customer_id)->update($data);
-
-                $link_reset_pass = url('/reset-new-pass?token='.$token_random);
-                $data = array(
-                    "name" => $title_mail,
-                    "body" => $link_reset_pass,
-                    'email' => $email
-                );
-
-                Mail::send('admin.forget_pass_notify',['data' => $data],function($message) use($title_mail, $data){
-                    $message->to($data['email'])->subject($title_mail);
-                    $message->from('bphuoc.20it10@vku.udn.vn', $title_mail);
-                }); 
-            }     
-        }
-    }
-
-    public function updatePass($data)
-    {
-        $new_pass = $data['new_pass'];
-        $token = $data['token'];
-        $data = array();
-        $data['password'] = HASH::make($new_pass);
-
-        User::Where('token', $token)->update($data);
-    }   
+        return $this->model->destroy($ids);  
+    }  
 }
