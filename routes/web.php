@@ -26,19 +26,20 @@ Route::get('/', function () {
 Route::post('/login',[UserController::class,'logIn']);
 
 Route::group(['middleware' => 'CheckLogin'], function() {
-    Route::get('/home',[UserController::class,'index'])->name('index');
-    Route::post('/add-recruitment',[RecruitController::class,'addRecruitment']);
-    Route::get('/delete/{id}',[RecruitController::class,'deleteRecruitment']);
-    Route::get('/edit/{id}',[RecruitController::class,'editRecruitment']);
-    Route::post('update-recruitment/{id}',[RecruitController::class,'updateRecruitment']);
     Route::get('/log-out', [UserController::class, 'logOut']);
-    Route::get('/search', [RecruitController::class, 'searchData']);
-    Route::post('/delete-select', [RecruitController::class, 'deleteSelect']);
-    Route::get('/create', [RecruitController::class, 'createRecruitment']);  
+
+    Route::get('/home',[RecruitController::class,'index'])->name('index');
+    Route::post('/recruitment/add',[RecruitController::class,'addRecruitment']);
+    Route::get('/recruitment/delete/{id}',[RecruitController::class,'deleteRecruitment']);
+    Route::get('/recruitment/edit/{id}',[RecruitController::class,'editRecruitment']);
+    Route::post('recruitment/update/{id}',[RecruitController::class,'updateRecruitment']);
+    Route::get('/recruitment/create', [RecruitController::class, 'createRecruitment']); 
+    Route::post('/recruitment/delete-select', [RecruitController::class, 'deleteSelect']);
+    Route::get('/recruitment/search', [RecruitController::class, 'searchData']);
 
     Route::get('/blog',[BlogController::class,'index'])->name('index_blog');
     Route::get('/blog/create',[BlogController::class, 'createBlog']);
-    Route::post('/add-blog',[BlogController::class,'addBlog']);
+    Route::post('/blog/add',[BlogController::class,'addBlog']);
     Route::get('blog/search',[BlogController::class, 'searchData']);
     Route::post('/blog/delete-select', [BlogController::class, 'deleteSelect']);
     Route::get('/blog/delete/{id}',[BlogController::class,'deleteBlog']);
@@ -50,9 +51,11 @@ Route::group(['middleware' => 'CheckLogin'], function() {
     Route::post('/post/update/{type}',[PostController::class,'updatePost'])->name('index_member');
 
     Route::get('/contact',[ContactController::class, 'index'])->name('contact.index');
+    Route::get('/contact/config',[ContactController::class,'configContact'])->name('index_config');
     Route::get('/contact/search', [ContactController::class, 'searchData']);
- 
+    Route::post('/contact/config/save', [ContactController::class, 'save']);
 });
+
 Route::get('/forgot-password', function () {
     return view('admin.forgot-password');
 });

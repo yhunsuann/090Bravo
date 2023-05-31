@@ -2547,10 +2547,10 @@ textarea.form-control-lg {
 
 .form-select {
     -moz-padding-start: calc(0.75rem - 3px);
-    font-size: 1rem;
+    font-size: 13px;
     font-weight: 400;
     line-height: 1.5;
-    color: var(--cui-form-select-color, rgba(44, 56, 74, 0.95));
+    color: var(--cui-form-select-color, rgba(105, 106, 109, 0.95));
     background-color: var(--cui-form-select-bg, #fff);
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23636f83' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
     background-repeat: no-repeat;
@@ -15148,7 +15148,6 @@ html:not([dir=rtl]) .wrapper {
     border: 1px solid var(--cui-gray-200);
     width: 70%;
     float: right;
-    color: #000015;
 }
 
 .btn-delete {
@@ -15252,7 +15251,6 @@ th {
 
 .form-control {
     border-radius: 5px !important;
-    height: 35px !important;
     font-size: 13px !important;
 }
 
@@ -15548,5 +15546,48 @@ p {
     font-size: 10px;
 }
 
+.div_add_contact {
+    width: 100%;
+}
 
-/*# sourceMappingURL=style.css.ma.btn-search
+.add_contact {
+    padding: 4px;
+    font-size: 15px;
+    border: 1px solid var(--cui-success);
+    border-radius: 5px;
+    display: inline-block;
+}
+
+.image-contact {
+    width: 150px;
+    margin: 10px 0px;
+    display: block;
+}
+
+.row_add_contact {
+    border: 1px solid var(--cui-gray-300);
+    border-radius: 5px;
+    background: #EBEEF0;
+}
+
+.lable_add_contact {
+    line-height: 35px;
+    font-size: 13px;
+    font-weight: normal !important;
+    margin-bottom: 0 !important;
+}
+
+.option-default {
+    color: var(--cui-gray) !important;
+}
+
+.form-label {
+    font-weight: bold;
+}
+
+.type-contact {
+    width: 100%;
+}
+
+
+/*# sourceMappingURL=style.css.ma.btn-searchw

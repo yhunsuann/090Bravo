@@ -112,13 +112,15 @@
                                             </use>
                                         </svg> Blogs</a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ URL::to('/contact')}}">
+                                <li class="nav-group">
+                                    <a class="nav-link nav-group-toggle" href="">
                                         <svg class="nav-icon">
-                                            <use
-                                                xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-user') }}">
-                                            </use>
-                                        </svg> Contacts</a>
+                                    <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-user') }}"></use>
+                                    </svg>Contact</a>
+                                    <ul class="nav-group-items">
+                                        <li class="nav-item"><a class="nav-link" href="{{ URL::to('/contact')}}"><span class="nav-icon"></span>Information Contact</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="{{ URL::to('/contact/config')}}"><span class="nav-icon"></span>Config</a></li>
+                                    </ul>
                                 </li>
                             </div>
                         </div>
@@ -288,105 +290,7 @@
     <script src="{{ asset('summernot/summernote-bs4.min.js') }}"></script>
     <!-- Datepicker -->
     <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
-    <script>
-        $(function(e) {
-            $('#checkAll').click(function() {
-                $('.sub_chk').prop('checked', $(this).prop('checked'));
-            });
-            $('.open-modal').click(function() {
-                var id = $(this).data('id');
-                var url = "{{ url('/delete/') }}/" + id;
-                $('#btn-delete-recruitments').attr("href", url);
-            });
-            $('.open-modal-blog').click(function() {
-                var id = $(this).data('id');
-                var url = "{{ url('/blog/delete/') }}/" + id;
-                $('#btn-delete-blog').attr("href", url);
-            });
-            $(function() {
-                $('.datepicker').datepicker({
-                    language: "es",
-                    autoclose: true,
-                    format: "yyyy-mm-dd"
-                });
-            });
-            $('.language').click(function() {
-                $(".language").removeClass('active');
-                $(this).addClass('active')
-            })
-            $('.summernote').summernote({
-                placeholder: 'Enter Content',
-                tabsize: 2,
-                height: 100
-            });
-            $('.dropdown-toggle').dropdown()
-            jQuery(document).ready(function() {
-                ImgUpload();
-            });
-
-            var allImages = [];
-            var imagesList = $('.images-list');
-            if (imagesList.length > 0) {
-                imagesList = imagesList[imagesList.length - 1];
-                var imagesData = imagesList.getAttribute('value');
-                allImages = JSON.parse(imagesData);
-            }
-          
-
-            function ImgUpload() {
-                var imgWrap = "";
-                $(document).ready(function() {
-                    $('.upload__inputfile').on('change', function(e) {
-                        var files = e.target.files;
-                        var rowImage = $('.row.image.mb-2');
-                        var maxLength = parseInt($(this).attr('data-max_length'));
-                        if (rowImage.children('.col-3').length >= maxLength) {
-                            // Đã đạt đến số lượng ảnh tối đa
-                            return;
-                        }
-                        for (var i = 0; i < files.length; i++) {
-                            var file = files[i];
-
-                            if (!file.type.match('image.*')) {
-                                // Loại bỏ các tệp không phải ảnh
-                                continue;
-                            }
-
-                            var reader = new FileReader();
-
-                            reader.onload = (function(f) {
-                                return function(e) {
-                                    var html = '<div class="col-3 mt-2">' +
-                                        '<img src="' + e.target.result + '" class="" alt="' + f.name + '">' +
-                                        '<div class="upload__img-close"></div>' +
-                                        '</div>';
-
-                                    rowImage.append(html);
-                                };
-                            })(file);
-                            reader.readAsDataURL(file);
-                        }
-                    });
-                });
-
-                $('body').on('click', ".upload__img-close", function(e) { 
-                    $(this).parent().remove();
-                });
-                $('.upload__img-closes').click(function() {
-                    var file = $(this).closest('.col-3').find('input[name-image]').attr('name-image');
-                    for (var i = 0; i < allImages.length; i++) {
-                        if (allImages[i] === file) {
-                            allImages.splice(i, 1);
-                            break;
-                        }
-                    }
-                    var imagesList = $('.images-list');
-                    imagesList.attr('value', allImages);
-                    $(this).parent().remove();
-                });
-            }
-        });
-    </script>
+    <script src="{{ asset('js/layout.js') }}"></script>
 </body>
 
 </html>

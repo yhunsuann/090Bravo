@@ -117,6 +117,6 @@
                 </label>
             </div>
         </div>
-        <input type="submit" class="btn btn-search btn m-2 mr-0 py-1 text-white" value="Save"></input>
+        <input type="submit" class="btn btn-primary" value="Save">
     </form>
 @endsection

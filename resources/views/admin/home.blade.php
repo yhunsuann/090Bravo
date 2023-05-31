@@ -14,7 +14,7 @@
         <h6 class="title">Search</h6>
     </div>
 </div>
-<form class="mb-0" action="{{ URL::to('/search') }}" method="get">
+<form class="mb-0" action="{{ URL::to('/recruitment/search') }}" method="get">
     <div class="row search">
         <div class="col">
             @csrf
@@ -71,11 +71,11 @@
         </div>
     </div>
 </form>
-<form action="{{ URL::to('/delete-select') }}" method="post">
+<form action="{{ URL::to('/recruitment/delete-select') }}" method="post">
     @csrf
     <div class="row my-3">
         <div class="col">
-            <a href="{{ URL::to('/create') }}" type="button" class="btn btn-outline-success float-end m-2 mr-0">Create</a>
+            <a href="{{ URL::to('/recruitment/create') }}" type="button" class="btn btn-outline-success float-end m-2 mr-0">Create</a>
             <input type="submit" class="delete_all btn-delete btn btn-danger float-end m-2" value="Delete all select"></input>
         </div>
     </div>
@@ -108,7 +108,7 @@
                         <td>{{ $data->created_at}}</td>
                         <td class="text-center">
                             <a data-id="{{ $data->id }}" type="button" data-coreui-toggle="modal" data-coreui-target="#exampleModal" class=" btn-delete btn btn-danger open-modal"><i class="fa fa-solid fa-trash"></i></a>
-                            <a href="{{ URL::to('/edit/'.$data->id)}}" type="button" class="btn-search btn btn-primary"><i class="fa fa-solid fa-wrench"></i></a>
+                            <a href="{{ URL::to('/recruitment/edit/'.$data->id)}}" type="button" class="btn-search btn btn-primary"><i class="fa fa-solid fa-wrench"></i></a>
                         </td>
                     </tr>
                     @empty

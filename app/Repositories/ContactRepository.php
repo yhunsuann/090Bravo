@@ -5,11 +5,10 @@ namespace App\Repositories;
 use App\Repositories\Interfaces\ContactRepositoryInteface;
 use App\Models\Contact;
 
-
-
 class ContactRepository implements ContactRepositoryInteface
 {
     protected $model;
+    protected $configContact;
 
     public function __construct(Contact $model)
     {
@@ -35,6 +34,5 @@ class ContactRepository implements ContactRepositoryInteface
                                     ->paginate(5);
     
         return $recruitments;
-    }
-    
+    }  
 }    

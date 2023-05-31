@@ -25,6 +25,13 @@ class RecruitController extends Controller
         $this->fileUploader = $fileUploader;
     }
 
+    public function index()
+    { 
+        $value = $this->recruitmentRepository->allRecruitments();
+        
+        return view('admin.home', ['result' => $value]);    
+    }
+
     public function createRecruitment()
     {
         $data = $this->languageRepository->listLanguageRecruitment();

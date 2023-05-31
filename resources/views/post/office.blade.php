@@ -14,9 +14,9 @@
             <input type="hidden" name="" value="">
             @if ($result->isEmpty())
                 <li class="nav-item" role="presentation">
-                <button class="nav-link px-5 rounded-0 lang active" id="en" data-coreui-toggle="pill" data-coreui-target="#1en" type="button" role="tab" aria-controls="en"
+                <button class="nav-link px-5 rounded-0 lang active" id="en" data-coreui-toggle="pill" data-coreui-target="#en" type="button" role="tab" aria-controls="en"
                                     aria-selected="true">EngLish</button>
-                <button class="nav-link px-5 rounded-0 lang" id="vi" data-coreui-toggle="pill" data-coreui-target="#1vi" type="button" role="tab" aria-controls="en"
+                <button class="nav-link px-5 rounded-0 lang" id="vi" data-coreui-toggle="pill" data-coreui-target="#vi" type="button" role="tab" aria-controls="en"
                 aria-selected="false">Vietnamese</button>
                 </li>
             @else
@@ -35,7 +35,7 @@
 
         <div class="tab-content p-4 border border-dark-2 bg-white" id="pills-tabContent">
             @if ($result->isEmpty())
-                <div class="tab-pane fade show active" id="1en" role="tabpanel" tabindex="0">
+                <div class="tab-pane fade show active" id="en" role="tabpanel" tabindex="0">
                     <div class="mb-3">
                         <label for="title" class="form-label text-black">Title Default</label>
                         <input type="text" class="form-control" name="title[]" id="title" placeholder="Enter title" value="">
@@ -50,7 +50,7 @@
                         <textarea class="summernote" name="content[]"></textarea>
                     </div>
                 </div>
-                <div class="tab-pane fade" id="1vi" role="tabpanel" tabindex="0">
+                <div class="tab-pane fade" id="vi" role="tabpanel" tabindex="0">
                     <div class="mb-3">
                         <label for="title" class="form-label text-black">Title Default</label>
                         <input type="text" class="form-control" name="title[]" id="title" placeholder="Enter title" value="">
@@ -92,22 +92,19 @@
             @php 
             $allImages = []; 
             @endphp 
-            @if ($result->isEmpty())
-                <div class="col-3 mt-2">
-                    <input type="hidden" name-image="" name="upload_image" class="images-list" value="">
-                    <div class="upload__img-closes"></div>
-                </div>
-            @else
+            @if (!$result->isEmpty())
                 @foreach ($result as $post)
                     @php $images = json_decode($post->images); @endphp
-                    @foreach ($images as $image)
-                        @php $allImages[] = $image; @endphp
-                        <div class="col-3 mt-2">
-                            <input type="hidden" name-image="{{$image}}" name="upload_image" class="images-list" value="{{ json_encode($allImages) }}">
-                            <img src="{{ asset('assets/img/post/'.$image) }}" class="" alt="{{ $image }}">
-                            <div class="upload__img-closes"></div>
-                        </div>
-                    @endforeach
+                        @if(!empty($images))
+                            @foreach ($images as $image)
+                                @php $allImages[] = $image; @endphp
+                                <div class="col-3 mt-2">
+                                    <input type="hidden" name-image="{{$image}}" name="upload_image" class="images-list" value="{{ json_encode($allImages) }}">
+                                    <img src="{{ asset('assets/img/post/'.$image) }}" class="" alt="{{ $image }}" alt="{{$image ?? image}}">
+                                    <div class="upload__img-closes"></div>
+                                </div>
+                            @endforeach
+                        @endif
                 @endforeach
             @endif
         </div>
@@ -120,7 +117,6 @@
                 </label>
             </div>
         </div>
-
-        <input type="submit" class="btn btn-primary" value="Save">
+        <input type="submit" class="btn btn-search btn m-2 mr-0 py-1 text-white" value="Save"></input>
     </form>
 @endsection

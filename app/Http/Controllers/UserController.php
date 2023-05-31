@@ -20,17 +20,6 @@ class UserController extends Controller
         $this->userRepository = $userRepository;
     }
 
-    public function index()
-    { 
-        if (Auth::check()) {
-            $value = $this->recruitmentRepository->allRecruitments();
-           
-            return view('admin.home', ['result' => $value]);    
-        } else {
-            return view('welcome')->with('success', 'Please log in !');
-        }
-    }
-
     public function logOut()
     { 
         Auth::logout();   

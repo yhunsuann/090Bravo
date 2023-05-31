@@ -63,47 +63,44 @@
     <div class="row">
         <div class="col p-0 bottom-search">
             <input type="submit" class="btn-search btn btn-primary float-end m-2 mr-0 py-1" value="Search"></input>
-            <a href="{{URL::to('/home')}}" class="btn-reset btn btn-secondary text-dark float-end m-2 py-1" value="Reset">Reset</a>
+            <a href="{{URL::to('/contact')}}" class="btn-reset btn btn-secondary text-dark float-end m-2 py-1" value="Reset">Reset</a>
         </div>
     </div>
 </form>
-<form action="{{ URL::to('/delete-select') }}" method="post">
-    @csrf
-    <div class="row mt-5">
-        <div class="col p-0">
-            <h6 class="title">List recruitments</h6>
-        </div>
+@csrf
+<div class="row mt-5">
+    <div class="col p-0">
+        <h6 class="title">List recruitments</h6>
     </div>
-    <div class="row">
-        <div class="col col-table px-3 bg-white" style="overflow-x:auto;">
-            <table class="table caption-top bg-white table table-striped">
-                <thead>
-                    <tr class="py-3">
-                        <th scope="col"><b>Full name</b></th>
-                        <th scope="col"><b>Email</b></th>
-                        <th scope="col"><b>Phone</b></th>
-                        <th scope="col" class="text-center"><b>Date contact</b></th>
-                        <th scope="col" class="see-details text-center"><b>Action</b></th>
-                    </tr>
-                </thead>
-                <tbody class="table-group-divider">
-                    @forelse($result as $data)
-                    <tr>
-                        <td>{{ $data->full_name }}</td>
-                        <td>{{ $data->email }}</td>
-                        <td>{{ $data->phone }}</td>
-                        <td class="text-center">{{ $data->created_at }}</td>
-                        <td class="text-center"><button data-coreui-toggle="modal" data-coreui-target="#contact_{{ $data->id }}" class="btn-search btn btn-primary m-2 py-1 btn-see-detail">Details</button> </td>
-                    </tr>
-                    @empty
-                    <td>No data</td>
-                    @endforelse
-                </tbody>
-            </table>
-        </div>
+</div>
+<div class="row">
+    <div class="col col-table px-3 bg-white" style="overflow-x:auto;">
+        <table class="table caption-top bg-white table table-striped">
+            <thead>
+                <tr class="py-3">
+                    <th scope="col"><b>Full name</b></th>
+                    <th scope="col"><b>Email</b></th>
+                    <th scope="col"><b>Phone</b></th>
+                    <th scope="col" class="text-center"><b>Date contact</b></th>
+                    <th scope="col" class="see-details text-center"><b>Action</b></th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                @forelse($result as $data)
+                <tr>
+                    <td>{{ $data->full_name }}</td>
+                    <td>{{ $data->email }}</td>
+                    <td>{{ $data->phone }}</td>
+                    <td class="text-center">{{ $data->created_at }}</td>
+                    <td class="text-center"><button data-coreui-toggle="modal" data-coreui-target="#contact_{{ $data->id }}" class="btn-search btn btn-primary m-2 py-1 btn-see-detail">Details</button> </td>
+                </tr>
+                @empty
+                <td>No data</td>
+                @endforelse
+            </tbody>
+        </table>
     </div>
-</form>
-
+</div>
 @foreach($result as $data)
 <div class="modal fade table-modal" id="contact_{{ $data->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg bg-white">
@@ -169,6 +166,4 @@
         </div>
     </div>
 </div>
-@endforeach 
-{{$result->appends($_GET)->links()}} 
-@endsection
+@endforeach {{$result->appends($_GET)->links()}} @endsection
