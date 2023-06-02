@@ -57,6 +57,7 @@ class FileUploader
     {
         if ($request->hasFile('upload_new')) {
             $imageData = [];
+
             foreach ($request->file('upload_new') as $file) {
                 $ext = $file->getClientOriginalExtension();
                 $stringRamdom = bin2hex(Str::random(3));
@@ -68,7 +69,9 @@ class FileUploader
     
                 $imageData[] = $file_name;
             }
+
             $image = json_encode($imageData);
+            
             return $image;
         }
         return null;

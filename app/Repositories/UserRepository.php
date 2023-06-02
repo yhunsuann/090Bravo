@@ -29,6 +29,7 @@ class UserRepository implements UserRepositoryInterface
 
         if($customer){
             $count_customer = $customer->count();
+
             if ( $count_customer == 0) {
                 return redirect()->back();
             } else {
@@ -37,7 +38,7 @@ class UserRepository implements UserRepositoryInterface
                 $data['token'] = $token_random;
                 $this->model->Where('id', $customer_id)->update($data);
 
-                $link_reset_pass = url('/reset-new-pass?token='.$token_random);
+                $link_reset_pass = url('/admin/user/reset-new-pass?token='.$token_random);
                 $data = array(
                     "name" => $title_mail,
                     "body" => $link_reset_pass,
@@ -46,7 +47,7 @@ class UserRepository implements UserRepositoryInterface
 
                 Mail::send('admin.forget_pass_notify',['data' => $data],function($message) use($title_mail, $data){
                     $message->to($data['email'])->subject($title_mail);
-                    $message->from('bphuoc.20it10@vku.udn.vn', $title_mail);
+                    $message->from('mienphi221@gmail.com', $title_mail);
                 }); 
             }     
         }

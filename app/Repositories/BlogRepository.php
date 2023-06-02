@@ -45,6 +45,7 @@ class BlogRepository implements BlogRepositoryInterface
         ];
         $recruitment = $this->model->create($BlogValue);
         $qty = $data['count'];
+
         for($i = 0; $i < $qty; $i++){
             $blogTranslateValue[] = [
                 'blog_id' => $recruitment->id,
@@ -81,12 +82,14 @@ class BlogRepository implements BlogRepositoryInterface
         $blogValue = [
             'status' => $data['status']
         ];
+        
         if($data['image']){
             $blogValue['image'] = $data['image'];
         }
         
         $this->model->Where('id', $id)->update($blogValue);
         $qty = $data['count'];
+
         for($i = 0; $i < $qty; $i++){
             $blogTranslateValue[$i] = [
                 'title' => $data['title'][$i],
