@@ -82,14 +82,19 @@ Route::group(['middleware' => 'CheckLogin'], function() {
     }); 
 });
 
-Route::get('/recruitment',[RecruitmentController::class,'index']);
-Route::get('/recruitment/detail/{id}',[RecruitmentController::class,'recruitmentDetails']);
+Route::group(['prefix' => 'recruitment'], function () {
+    Route::get('/',[RecruitmentController::class,'index']);
+    Route::get('/detail/{id}',[RecruitmentController::class,'recruitmentDetails']);
+});
 
-Route::get('/blog',[BlogController::class,'index']);
-Route::get('/blog/detail/{id}',[BlogController::class,'recruitmentDetails']);
+Route::group(['prefix' => 'blog'], function () {
+    Route::get('/',[BlogController::class,'index']);
+    Route::get('/detail/{id}',[BlogController::class,'recruitmentDetails']);
+});
 
 Route::get('/post/{type}',[PostController::class,'index']);
 
-Route::get('/contact',[ContactController::class,'index'])->name('index_contact');
-
-Route::post('/contact/submit',[ContactController::class,'submitContact']);
+Route::group(['prefix' => 'contact'], function () {
+    Route::get('/',[ContactController::class,'index'])->name('index_contact');
+    Route::post('/submit',[ContactController::class,'submitContact']);
+});
