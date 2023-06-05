@@ -33,10 +33,11 @@ class ConfigContactRepository implements ConfigContactRepositoryInterface
                     $file_name = $this->fileUploader->uploadFileContact($item['value']);
 
                     if ($file_name !== null) {
-                        $item['value_edit'] = $file_name;
+                        $item['value'] = $file_name;
                     }
                 }
-                $updateData = ['value' => $item['value_edit']];
+         
+                $updateData['value'] = $item['value'];
                 $this->model->where('contact_key', $item['contact_key'])->update($updateData);
             } else if(is_array($item) && array_key_exists('add', $item)) {
                 $configContact = [];
@@ -45,14 +46,14 @@ class ConfigContactRepository implements ConfigContactRepositoryInterface
                     $file_name = $this->fileUploader->uploadFileContact($item['value']);
 
                     if ($file_name !== null) {
-                        $item['value_add'] = $file_name;
+                        $item['value'] = $file_name;
                     }
                 }
 
                 $configContact['name'] = $item['name'];
                 $configContact['contact_key'] = $item['contact_key'];
                 $configContact['type'] = $item['type'];
-                $configContact['value'] = $item['value_add'];
+                $configContact['value'] = $item['value'];
       
                 $this->model->create($configContact);
             }

@@ -2102,7 +2102,7 @@ body {
 /*Core Values*/
 
 .core_value_wrapper {
-    background-image: url("images/bgimg4.png");
+    background-image: url("../assets/img_client/layout/bgimg4.png");
     position: relative;
     width: 100%;
     height: 100%;
@@ -3254,7 +3254,7 @@ body {
 /*History Infos*/
 
 .history_infos {
-    background-image: url("images/bgimg4.png");
+    background-image: url("../assets/img_client/layout/bgimg4.png");
     position: relative;
     width: 100%;
     height: 100%;
@@ -3687,7 +3687,7 @@ body {
 /*Herro Banner*/
 
 .contact_us_hero_banner {
-    background-image: url("images/about-us-banner.jpg");
+    background-image: url("../assets/img_client/recruitment/about-us-banner.jpg");
     position: relative;
     width: 100%;
     height: 100%;
@@ -3917,7 +3917,7 @@ body {
 
 .content_message {
     padding: 80px 16px;
-    background-image: url("images/bgimg4.png");
+    background-image: url("../assets/img_client/layout/bgimg4.png");
     position: relative;
     width: 100%;
     height: 100%;
@@ -4035,7 +4035,7 @@ body {
 /*Hero Banner*/
 
 .hero_banner2.on_about_people_page {
-    background-image: url("images/bg-featured-list.png");
+    background-image: url("../assets/img_client/recruitment/bg-featured-list.png");
     position: relative;
     width: 100%;
     height: 100%;
@@ -4242,7 +4242,7 @@ body {
 /*List Games*/
 
 .list_games {
-    background-image: url("images/bgimg4.png");
+    background-image: url("../assets/img_client/layout/bgimg4.png");
     position: relative;
     width: 100%;
     height: 100%;
@@ -4595,7 +4595,7 @@ body {
 /*Blogs list*/
 
 .blogs_list {
-    background-image: url("images/bgimg4.png");
+    background-image: url("../assets/img_client/layout/bgimg4.png");
     position: relative;
     width: 100%;
     height: 100%;
@@ -6140,6 +6140,10 @@ figcaption {
         -webkit-transform: rotate(360deg);
         transform: rotate(360deg);
     }
+}
+
+.send_contact {
+    color: white !important;
 }
 
 

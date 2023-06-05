@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Services\FileUploader;
 use App\Http\Controllers\Controller;
 
-class PostController extends Controller
+class PostAdminController extends Controller
 {
     private $postRepository;
     protected $fileUploader;
@@ -21,7 +21,7 @@ class PostController extends Controller
 
     public function index($type){;
         $value = $this->postRepository->allPost($type);
-     
+    
         return view('admin.post.'.$type,['result' => $value]);
     }
 
@@ -63,7 +63,7 @@ class PostController extends Controller
         $data['description'] = $request->description;
         $data['images'] = $request->image;
         $data['language_code'] = $request->language_code;
-
+   
         $this->postRepository->updatePost($data, $type);
         
         return redirect()->back();

@@ -8,16 +8,16 @@
         @php Session::forget('success'); @endphp
     @endif
     <h5 class="title-create">Post office edit</h5>
-    <form class="form-create bg-white p-4" action="{{ URL::to('/admin/post/update/'.$result[0]->type)}}" method="POST" enctype="multipart/form-data">
+    <form class="form-create bg-white p-4" action="{{ URL::to('/admin/post/update/'. request()->segment(3))}}" method="POST" enctype="multipart/form-data">
         @csrf
         <ul class="nav nav-pills" id="pills-tab" role="tablist">
             <input type="hidden" name="" value="">
             @if ($result->isEmpty())
                 <li class="nav-item" role="presentation">
-                <button class="nav-link px-5 rounded-0 lang active" id="en" data-coreui-toggle="pill" data-coreui-target="#en" type="button" role="tab" aria-controls="en"
-                                    aria-selected="true">EngLish</button>
-                <button class="nav-link px-5 rounded-0 lang" id="vi" data-coreui-toggle="pill" data-coreui-target="#vi" type="button" role="tab" aria-controls="en"
-                aria-selected="false">Vietnamese</button>
+                    <button class="nav-link px-5 rounded-0 lang active" id="en" data-coreui-toggle="pill" data-coreui-target="#en" type="button" role="tab" aria-controls="en" aria-selected="true">EngLish</button>
+                </li>  
+                <li class="nav-item" role="presentation">                
+                    <button class="nav-link px-5 rounded-0 lang" id="vi" data-coreui-toggle="pill" data-coreui-target="#vi" type="button" role="tab" aria-controls="en" aria-selected="false">Vietnamese</button>
                 </li>
             @else
                 @foreach ($result as $post)
@@ -71,7 +71,7 @@
                         <div class="tab-pane fade{{ $key == 0 ? ' show active' : '' }}" id="1{{ $postTranslate->language_code}}" role="tabpanel" aria-labelledby="{{ $postTranslate->language_code }}" tabindex="0">
                             <div class="mb-3">
                                 <label for="title" class="form-label text-black">Title {{ $postTranslate->language_code }}</label>
-                                <input type="text" class="form-control" name="title[]" id="title" placeholder="Enter title" value="{{ $postTranslate->description }}">
+                                <input type="text" class="form-control" name="title[]" id="title" placeholder="Enter title" value="{{ $postTranslate->title }}">
                                 <input type="hidden" class="form-control" name="language_code[]" id="title" placeholder="Enter title" value="{{ $postTranslate->language_code }}">
                             </div>
                             <div class="mb-3">

@@ -34,5 +34,15 @@ class ContactRepository implements ContactRepositoryInteface
                                     ->paginate(5);
     
         return $recruitments;
-    }  
+    }
+    
+    public function submitContact($data)
+    {
+        $submitContact = [];
+        $submitContact['email'] = $data['email'];
+        $submitContact['full_name'] = $data['name'];
+        $submitContact['phone'] = $data['phone'];
+        $submitContact['message'] = $data['message'];
+        $this->model->create($submitContact);
+    }
 }    

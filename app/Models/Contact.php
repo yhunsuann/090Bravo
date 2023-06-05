@@ -9,7 +9,7 @@ class Contact extends Model
 {
     protected $table = 'contact';
     use HasFactory;
-  
+    const UPDATED_AT = NULL;
     protected $fillable = [
     'full_name',
     'email',

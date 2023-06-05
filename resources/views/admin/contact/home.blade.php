@@ -146,14 +146,6 @@
                         </tr>
                         <tr>
                             <td class="th-table">
-                                <b>Address</b>
-                            </td>
-                            <td>
-                                {{ $data->address }}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="th-table">
                                 <b>Message</b>
                             </td>
                             <td>

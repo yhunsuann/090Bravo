@@ -36,7 +36,6 @@
 <body>
 
     <div class="page pg-home">
-        <form role="form" method="get" action="#" style="display:contents !important;">
             <header class="header header-sticky" id="header">
                 <div class="container-fluid">
                     <div class="row align-items-center justify-content-between">
@@ -80,10 +79,10 @@
                                                     </div>
                                                     <ul class="sub_menu">
                                                         <li class="level2">
-                                                            <a href="office.html">Văn Phòng</a>
+                                                            <a href="{{ URL::to('/post/office') }}">Văn Phòng</a>
                                                         </li>
                                                         <li class="level2">
-                                                            <a href="people.html">Con Người</a>
+                                                            <a href="{{ URL::to('/post/member') }}">Con Người</a>
                                                         </li>
                                                         <li class="level2">
                                                             <a href="games.html">Trò Chơi</a>
@@ -91,13 +90,13 @@
                                                     </ul>
                                                 </li>
                                                 <li class="level1">
-                                                    <a href="article.html">Hoạt Động</a>
+                                                    <a href="{{ URL::to('/post') }}">Hoạt Động</a>
                                                 </li>
                                                 <li class="level1">
-                                                    <a href="career.html">Tuyển Dụng</a>
+                                                    <a href="{{ URL::to('/recruitment') }}">Tuyển Dụng</a>
                                                 </li>
                                                 <li class="level1">
-                                                    <a href="contact-us.html">Liên Hệ</a>
+                                                    <a href="{{ URL::to('/contact') }}">Liên Hệ</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -127,24 +126,24 @@
                                         </div>
                                         <ul class="sub_menu">
                                             <li class="">
-                                                <a href="office.html">Văn Phòng</a>
+                                                <a href="{{ URL::to('/post/office') }}">Văn Phòng</a>
                                             </li>
                                             <li class="">
-                                                <a href="people.html">Con Người</a>
+                                                <a href="{{ URL::to('/post/member') }}">Con Người</a>
                                             </li>
                                             <li class="">
                                                 <a href="games.html">Trò Chơi</a>
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="level1  ">
-                                        <a class="link_lv1 " href="article.html">Hoạt Động</a>
+                                    <li class="level1">
+                                        <a class="link_lv1 " href="{{ URL::to('/blog') }}">Hoạt Động</a>
                                     </li>
                                     <li class="level1 active ">
-                                        <a class="link_lv1 " href="career.html">Tuyển Dụng</a>
+                                        <a class="link_lv1 " href="{{ URL::to('/recruitment') }}">Tuyển Dụng</a>
                                     </li>
                                     <li class="level1  ">
-                                        <a class="link_lv1 " href="contact-us.html">Liên Hệ</a>
+                                        <a class="link_lv1 "href="{{ URL::to('/contact') }}">Liên Hệ</a>
                                     </li>
                                 </ul>
                             </div>
@@ -285,7 +284,6 @@
 
                 </div>
             </footer>
-        </form>
     </div>
 
 

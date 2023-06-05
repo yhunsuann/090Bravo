@@ -15,23 +15,39 @@
 
     <div class="content_message">
         <div class="t_container t_flex content_message_wrapper">
-            <div class="message">Sonat tin rằng thành tựu chỉ có thể được tạo nên khi có sự đồng lòng, góp sức từ một tập thể đoàn kết và vững mạnh. Cùng lắng nghe, cùng học tập và cùng thành công!</div>
+            <div class="message">Sonat mong muốn xây dựng môi trường làm việc tuyệt vời, nơi mà mỗi nhân viên luôn cảm thấy thoải mái như ở chính ngôi nhà của mình.</div>
         </div>
     </div>
 
     <div class="our_cultural">
-        @forelse($result as $members) @forelse($members->postTranslates as $datas) @if($datas->language_code == 'vi')
-        <div class="message">{!! $datas->content !!}</div>
-        @endif @empty
-        <div></div>
-        @endforelse @empty
-        <div></div>
-        @endforelse
+            <div class="t_container our_cultural_wrapper">
+                <div class="heading">Tâm huyết của Đội ngũ Lãnh đạo</div>
+                <div class="message">Văn phòng mới tại tầng 11 tại BamBoo Airways Tower  là tâm huyết trong nhiều tháng trời của CEO Sonat - anh Trần Xuân Thơ.  Từ khâu thiết kế, thi công  đến lựa chọn nội thất, cảnh quan đều được trau chuốt vô cùng tỉ mỉ, kỹ lưỡng. Đây không chỉ là cột mốc ghi nhớ thành công của Sonat trong thời gian qua mà chính là lời khẳng định hướng đến tương lai với những mục tiêu cao hơn nữa.
+                </div>
+                <div class="image">
+                    <img src="{{ asset('assets/img_client/layout/2022-05-04-09-06-03-view-phong-hop-2.png') }}">
+                </div>
+                <div class="message">Với điều kiện làm việc tốt như hiện tại, Sonat Team sẽ càng có thêm động lực, có thêm những nguồn cảm hứng để làm việc,công hiến, chinh phục mục tiêu "TOP 1 Puzzle Game" Toàn cầu trong tương lai.</div>
+                
+            </div>
+            
+        </div>
+
     </div>
 
-
-
     <div class="hero_banner2 on_about_people_page">
+        <div class="t_container t_flex banner_content">
+            <div class="t_flex title">
+                @forelse($result as $members) @forelse($members->postTranslates as $datas) @if($datas->language_code == 'vi')
+                <div class="message">{!! $datas->content !!}</div>
+                @endif @empty
+                <div></div>
+                @endforelse @empty
+                <div></div>
+                @endforelse
+
+            </div>
+        </div>
         <div class="image_gallery">
             @if (!$result->isEmpty()) @php $rowCount = 1; @endphp
             <div class="gallery_row row{{ $rowCount }}">

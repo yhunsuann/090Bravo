@@ -95,7 +95,7 @@
                                         </svg> Recruitmens</a>
                                 </li>
                                 <li class="nav-group">
-                                    <a class="nav-link nav-group-toggle" href="#">
+                                    <a class="nav-link nav-group-toggle" href="{{ URL::to('/admin/post')}}">
                                         <svg class="nav-icon">
                                     <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-cursor') }}"></use>
                                     </svg> Post</a>

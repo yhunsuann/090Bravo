@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Repositories\Interfaces\RecruitmentRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 use App\Http\Controllers\Controller;
-class UserController extends Controller
+class UserAdminController extends Controller
 {
     private $userRepository;
 

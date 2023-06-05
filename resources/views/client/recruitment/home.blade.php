@@ -31,7 +31,7 @@
                         <div class="item_wrapper">
                             <div class="item">
                                 <div class="content_item">
-                                    <a href="c/market-research-intern-16704004.html" class="desc">
+                                    <a class="desc">
                                         <div class="heading">{{ $data->title}}</div>
                                         <div class="message">{{ $data->description}}</div>
                                     </a>

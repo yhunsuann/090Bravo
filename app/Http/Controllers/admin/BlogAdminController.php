@@ -9,7 +9,7 @@ use Carbon\Carbon;
 use App\Services\FileUploader;
 use App\Http\Controllers\Controller;
 
-class BlogController extends Controller
+class BlogAdminController extends Controller
 {
   protected $blogRepository;
   private $languageRepository;
@@ -110,7 +110,7 @@ class BlogController extends Controller
   public function editBlog($id)
   {
       $data = $this->blogRepository->editBlog($id);
-
+ 
       return view('admin.blog.edit', ['result' => $data]);
   }
 

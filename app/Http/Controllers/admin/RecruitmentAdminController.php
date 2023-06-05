@@ -10,7 +10,7 @@ use App\Repositories\Interfaces\LanguageRepositoryInterface;
 use App\Services\FileUploader;
 use App\Http\Controllers\Controller;
 
-class RecruitController extends Controller
+class RecruitmentAdminController extends Controller
 {
     private $recruitmentRepository;
     private $languageRepository;

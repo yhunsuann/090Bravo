@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Repositories\Interfaces\ContactRepositoryInteface;
 use App\Repositories\Interfaces\ConfigContactRepositoryInterface;
 use App\Http\Controllers\Controller;
-class ContactController extends Controller
+class ContactAdminController extends Controller
 {
     private $contactRepository;
     private $configContactRepository;
