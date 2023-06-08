@@ -67,7 +67,7 @@
                                                 <li class="level1">
                                                     <a href="index.html">Trang Chủ</a>
                                                 </li>
-                                                <li class="level1">
+                                                <li class="level1 {{ request()->segment(1) === 'post' ? 'active' : '' }}">
                                                     <div class="sub_menutitle">
                                                         <a href="about-us.html">Giới Thiệu</a>
                                                         <div class="arrow">
@@ -89,13 +89,13 @@
                                                         </li>
                                                     </ul>
                                                 </li>
-                                                <li class="level1">
+                                                <li class="level1 {{ request()->segment(1) === 'post' ? 'active' : '' }}">
                                                     <a href="{{ URL::to('/post') }}">Hoạt Động</a>
                                                 </li>
-                                                <li class="level1">
-                                                    <a href="{{ URL::to('/recruitment') }}">Tuyển Dụng</a>
+                                                <li class="level1 {{ request()->segment(1) === null ? 'active' : '' }}">
+                                                    <a href="{{ URL::to('/') }}">Tuyển Dụng</a>
                                                 </li>
-                                                <li class="level1">
+                                                <li class="level1 {{ request()->segment(1) === 'contact' ? 'active' : '' }}">
                                                     <a href="{{ URL::to('/contact') }}">Liên Hệ</a>
                                                 </li>
                                             </ul>
@@ -114,7 +114,7 @@
                                     <li class="level1  ">
                                         <a class="link_lv1" href="index.html">Trang Chủ</a>
                                     </li>
-                                    <li class="level1 has_submenu      ">
+                                    <li class="level1 has_submenu  {{ request()->segment(1) === 'post' ? 'active' : '' }}     ">
                                         <div class="sub_menu_title toggle">
                                             <a class="link_lv1" href="about-us.html">Giới Thiệu</a>
                                             <div class="icon">
@@ -136,13 +136,13 @@
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="level1">
+                                    <li class="level1 {{ request()->segment(1) === 'blog' ? 'active' : '' }}">
                                         <a class="link_lv1 " href="{{ URL::to('/blog') }}">Hoạt Động</a>
                                     </li>
-                                    <li class="level1 active ">
-                                        <a class="link_lv1 " href="{{ URL::to('/recruitment') }}">Tuyển Dụng</a>
+                                    <li class="level1 {{ request()->segment(1) === null ? 'active' : '' }} ">
+                                        <a class="link_lv1" href="{{ URL::to('/') }}">Tuyển Dụng</a>
                                     </li>
-                                    <li class="level1  ">
+                                    <li class="level1 {{ request()->segment(1) === 'contact' ? 'active' : '' }}">
                                         <a class="link_lv1 "href="{{ URL::to('/contact') }}">Liên Hệ</a>
                                     </li>
                                 </ul>
@@ -298,9 +298,6 @@
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('js/toastr.min3d82.js?1683168695') }}"></script>
 
-
-    <script type="text/javascript">
-    </script>
     <script type="text/javascript">
         $(function() {
             toastr.options = {

@@ -31,7 +31,7 @@
                             <div>
                                 <div class="datepicker date input-group mt-0 mx-auto">
                                     <label class="label-search" for="">Date From</label>
-                                    <input name="dateFrom" type="text" placeholder="From date" class="form-control" id="fecha1">
+                                    <input name="dateFrom" type="text" placeholder="From date" class="form-control date-picker" id="fecha1">
                                     <div class="input-group-append">
                                         <span class="input-group-text h-100"><i class="fa fa-calendar"></i></span>
                                     </div>
@@ -49,7 +49,7 @@
                     <div>
                         <div class="datepicker date input-group mx-auto">
                             <label class="label-search" for="">Date to</label>
-                            <input name="dateTo" type="text" placeholder="To day" class="form-control" id="fecha1">
+                            <input name="dateTo" type="text" placeholder="To day" class="form-control date-picker" id="fecha1">
                             <div class="input-group-append">
                                 <span class="input-group-text h-100"><i class="fa fa-calendar"></i></span>
                             </div>

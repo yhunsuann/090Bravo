@@ -28,7 +28,7 @@
     <div class="row">
         <div class="col p-0 bottom-search">
             <input type="submit" class="py-1 btn-search btn btn-primary float-end m-2 mr-0 " value="Search"></input>
-            <a href="{{URL::to('/admin/blog')}}" class="py-1 btn btn-secondary float-end m-2 text-white" value="Reset">Reset</a>
+            <a href="{{URL::to('/admin/blog')}}" class="py-1 btn btn-secondary float-end m-2 text-white btn-size" value="Reset">Reset</a>
         </div>
     </div>
 </form>
@@ -36,8 +36,8 @@
     @csrf
     <div class="row my-3">
         <div class="col">
-            <a href="{{ URL::to('/blog/create') }}" type="button" class="btn btn-outline-success float-end m-2 mr-0">Create</a>
-            <input type="submit" class="delete_all btn-delete btn btn-danger float-end m-2" value="Delete all select"></input>
+            <a href="{{ URL::to('/admin/blog/create') }}" type="button" class="btn btn-success float-end m-2 mr-0 text-white btn-size">Create</a>
+            <input type="submit" class="delete_all btn-delete btn btn-danger float-end m-2 text-white btn-size" value="Delete all select"></input>
         </div>
     </div>
     <div class="row">
@@ -68,7 +68,7 @@
                         <td>{{ $data->status }}</td>
                         <td>{{ $data->created_at}}</td>
                         <td class="text-center">
-                            <a data-id="{{ $data->id }}" type="button" data-coreui-toggle="modal" data-coreui-target="#deleteBlog" class=" btn-delete btn btn-danger open-modal-blog"><i class="fa fa-solid fa-trash"></i></a>
+                            <a data-id="{{ $data->id }}" type="button" data-coreui-toggle="modal" data-coreui-target="#deleteBlog" class=" btn-delete btn btn-danger open-modal-blog text-white"><i class="fa fa-solid fa-trash"></i></a>
                             <a href="{{ URL::to('/admin/blog/edit/'.$data->id)}}" type="button" class="btn-search btn btn-primary"><i class="fa fa-solid fa-wrench"></i></a>
                         </td>
                     </tr>

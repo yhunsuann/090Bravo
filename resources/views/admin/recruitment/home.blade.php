@@ -31,7 +31,7 @@
                             <div>
                                 <div class="datepicker date input-group mt-0 mx-auto">
                                     <label class="label-search" for="">Date From</label>
-                                    <input name="dateFrom" type="text" placeholder="From date" class="form-control" id="fecha1">
+                                    <input name="dateFrom" type="text" placeholder="From date" class="form-control date-picker" id="fecha1">
                                     <div class="input-group-append">
                                         <span class="input-group-text h-100"><i class="fa fa-calendar"></i></span>
                                     </div>
@@ -53,7 +53,7 @@
                     <div>
                         <div class="datepicker date input-group mx-auto">
                             <label class="label-search" for="">Date to</label>
-                            <input name="dateTo" type="text" placeholder="To day" class="form-control" id="fecha1">
+                            <input name="dateTo" type="text" placeholder="To day" class="form-control date-picker" id="fecha1">
                             <div class="input-group-append">
                                 <span class="input-group-text h-100"><i class="fa fa-calendar"></i></span>
                             </div>
@@ -67,7 +67,7 @@
     <div class="row">
         <div class="col p-0 bottom-search">
             <input type="submit" class="btn-search btn btn-primary float-end m-2 mr-0 py-1" value="Search"></input>
-            <a href="{{URL::to('/admin/recruitment')}}" class="btn-reset btn btn-secondary text-dark float-end m-2 py-1" value="Reset">Reset</a>
+            <a href="{{URL::to('/admin/recruitment')}}" class="btn-reset btn btn-secondary text-dark float-end m-2 py-1 btn-size" value="Reset">Reset</a>
         </div>
     </div>
 </form>
@@ -75,8 +75,8 @@
     @csrf
     <div class="row my-3">
         <div class="col">
-            <a href="{{ URL::to('/admin/recruitment/create') }}" type="button" class="btn btn-outline-success float-end m-2 mr-0">Create</a>
-            <input type="submit" class="delete_all btn-delete btn btn-danger float-end m-2" value="Delete all select"></input>
+            <a href="{{ URL::to('/admin/recruitment/create') }}" type="button" class="btn btn-success float-end m-2 mr-0 text-white btn-size">Create</a>
+            <input type="submit" class="delete_all btn-delete btn btn-danger float-end m-2 text-white btn-size" value="Delete all select"></input>
         </div>
     </div>
     <div class="row">
@@ -107,7 +107,7 @@
                         <td>{{ $data->status }}</td>
                         <td>{{ $data->created_at}}</td>
                         <td class="text-center">
-                            <a data-id="{{ $data->id }}" type="button" data-coreui-toggle="modal" data-coreui-target="#exampleModal" class=" btn-delete btn btn-danger open-modal"><i class="fa fa-solid fa-trash"></i></a>
+                            <a data-id="{{ $data->id }}" type="button" data-coreui-toggle="modal" data-coreui-target="#exampleModal" class=" btn-delete btn btn-danger open-modal text-white"><i class="fa fa-solid fa-trash"></i></a>
                             <a href="{{ URL::to('/admin/recruitment/edit/'.$data->id)}}" type="button" class="btn-search btn btn-primary"><i class="fa fa-solid fa-wrench"></i></a>
                         </td>
                     </tr>

@@ -6,13 +6,13 @@ $(function(e) {
 
     $('.open-modal').click(function() {
         var id = $(this).data('id');
-        var url = "/recruitment/delete/" + id;
+        var url = "/admin/recruitment/delete/" + id;
         $('#btn-delete-recruitments').attr("href", url);
     });
 
     $('.open-modal-blog').click(function() {
         var id = $(this).data('id');
-        var url = "/blog/delete/" + id;
+        var url = "/admin/blog/delete/" + id;
         $('#btn-delete-blog').attr("href", url);
     });
 

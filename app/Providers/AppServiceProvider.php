@@ -3,29 +3,36 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+
 use App\Repositories\Interfaces\RecruitmentRepositoryInterface;
 use App\Repositories\RecruitmentRepository;
-use App\Repositories\Interfaces\LanguageRepositoryInterface;
-use App\Repositories\LanguageRepository;
-use App\Repositories\Interfaces\UserRepositoryInterface;
-use App\Repositories\UserRepository;
 use App\Repositories\Interfaces\RecruitmentTranslateRepositoryInterface;
 use App\Repositories\RecruitmentTranslateRepository;
+
+use App\Repositories\Interfaces\LanguageRepositoryInterface;
+use App\Repositories\LanguageRepository;
+
+use App\Repositories\Interfaces\UserRepositoryInterface;
+use App\Repositories\UserRepository;
+
 use App\Repositories\Interfaces\BlogRepositoryInterface;
 use App\Repositories\BlogRepository;
 use App\Repositories\Interfaces\BlogTranslateRepositoryInterface;
 use App\Repositories\BlogTranslateRepository;
+
 use App\Repositories\Interfaces\PostTranslateRepositoryInterface;
 use App\Repositories\PostTranslateRepository;
 use App\Repositories\Interfaces\PostRepositoryInterface;
 use App\Repositories\PostRepository;
+
 use App\Repositories\Interfaces\ContactRepositoryInteface;
 use App\Repositories\ContactRepository;
 use App\Repositories\Interfaces\ConfigContactRepositoryInterface;
 use App\Repositories\ConfigContactRepository;
 use Illuminate\Support\Facades\URL;
-
 use Illuminate\Pagination\Paginator;
+use Illuminate\Http\Request;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -71,12 +78,13 @@ class AppServiceProvider extends ServiceProvider
         );
     }
     
-    public function boot(\Illuminate\Http\Request $request)
+    public function boot(Request $request)
     {
-        if (!empty( env('NGROK_URL') ) && $request->server->has('HTTP_X_ORIGINAL_HOST')) {
-            $this->app['url']->forceRootUrl(env('NGROK_URL'));
+        $protocol = $request->header('X-Forwarded-Proto');
+        if ($protocol && strtolower($protocol) === 'https') {
+            URL::forceScheme(scheme:'https');
         }
-
+        
         Paginator::useBootstrap();  
     }
 }

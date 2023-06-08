@@ -20,7 +20,7 @@ class CheckLogin
         }else{
             session()->put('success','Vui Long Dang Nhap');
             
-            return redirect('/');
+            return redirect('/admin/login');
         }
     }
 }

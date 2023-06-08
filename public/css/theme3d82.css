@@ -6146,5 +6146,13 @@ figcaption {
     color: white !important;
 }
 
+.box_item {
+    width: 500px !important;
+}
+
+.hero_banner2.on_about_people_page .image_gallery .gallery_row .row_content {
+    justify-content: center;
+}
+
 
 /*# sourceMappingURL=theme.css.map */

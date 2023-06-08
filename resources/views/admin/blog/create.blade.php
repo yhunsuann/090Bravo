@@ -1,5 +1,4 @@
-@extends('layout.layout')
-<h4 class="mb-4">Create Blog</h4>
+@extends('admin.layout.layout')
 @section('content') @if(session()->has('success'))
 <div class="alert alert-success">
     {{ session()->get('success') }}

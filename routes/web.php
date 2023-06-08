@@ -11,6 +11,7 @@ use App\Http\Controllers\client\BlogController;
 use App\Http\Controllers\client\PostController;
 use App\Http\Controllers\client\ContactController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,8 +24,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/admin', function () {
-    return view('admin.welcome');
+Route::get('/admin/login', function () {
+    if (Auth::guest()) {
+        return view('admin.welcome');
+    }else{
+        return redirect()->route('index');  
+    }
 });
 
 Route::group(['prefix' => 'admin'], function () {
@@ -42,7 +47,7 @@ Route::group(['prefix' => 'admin'], function () {
 }); 
 
 Route::group(['middleware' => 'CheckLogin'], function() {
-    Route::get('/user/log-out', [UserAdminController::class, 'logOut']);
+    Route::get('admin/user/log-out', [UserAdminController::class, 'logOut']);
 
     Route::group(['prefix' => 'admin'], function () {
         Route::group(['prefix' => 'recruitment'], function () {
@@ -81,9 +86,9 @@ Route::group(['middleware' => 'CheckLogin'], function() {
         });
     }); 
 });
+Route::get('/',[RecruitmentController::class,'index']);
 
 Route::group(['prefix' => 'recruitment'], function () {
-    Route::get('/',[RecruitmentController::class,'index']);
     Route::get('/detail/{id}',[RecruitmentController::class,'recruitmentDetails']);
 });
 
