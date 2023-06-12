@@ -10,12 +10,7 @@
                 
             </div>
         </div>
-
-        <div class="article_content">
-            <div class="t_container article_content_wrapper">
                 {!! $data->content !!}
-            </div>
-        </div>
         @endif
         @empty 
         <div></div>
