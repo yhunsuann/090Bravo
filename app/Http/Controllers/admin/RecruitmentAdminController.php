@@ -54,6 +54,10 @@ class RecruitmentAdminController extends Controller
             return redirect()->back()->with('success', 'Please enter full information !'); 
         }
 
+        if (in_array(null, $request['content']) |in_array(null, $request['title']) | in_array(null, $request['description'])  ) {
+            return redirect()->back()->with('success', 'Please enter full information !'); 
+        }
+
         if ($request->has('upload_image')) {
             $file_name = $this->fileUploader->uploadFileRecruitment($request);
             if ($file_name !== null) {
@@ -92,6 +96,20 @@ class RecruitmentAdminController extends Controller
 
     public function updateRecruitment(Request $request,$id)
     { 
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'description' => 'required',
+            'content' => 'required',
+            'status' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->with('success', 'Please enter full information !'); 
+        }
+
+        if (in_array(null, $request['content']) |in_array(null, $request['title']) | in_array(null, $request['description'])  ) {
+            return redirect()->back()->with('success', 'Please enter full information !'); 
+        }
+
         $qty = count($request['count']);
         $data = array();
         if ($request->has('upload_image')) {
