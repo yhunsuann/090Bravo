@@ -1,0 +1,38 @@
+<?php
+return [
+    'home' => 'Trang Chủ',
+    'about' => "Giới Thiệu",
+    'news' => "Hoạt Động",
+    'careers' => "Tuyển Dụng",
+    'contact' => "Liên Hệ",
+    'member' => 'Member',
+    'office' => 'Văn Phòng',
+    'careers_title' => "Tìm thấy vị trí dành cho mình",
+    'careers_lable' => "Nếu bạn là người sáng tạo, yêu thích những thử thách và mong muốn lan tỏa niềm vui tới cộng đồng thông qua những tựa game giải đố thú vị thì hãy gia nhập Bravo ngay hôm nay!",
+    'office_title' => "Bravo mong muốn xây dựng môi trường làm việc tuyệt vời, nơi mà mỗi nhân viên luôn cảm thấy thoải mái như ở chính ngôi nhà của mình.",
+    'title_member' => 'Bravo mong muốn xây dựng môi trường làm việc tuyệt vời, nơi mà mỗi nhân viên luôn cảm thấy thoải mái như ở chính ngôi nhà của mình.',
+    'careers_description' => "Về với Bravo bạn có cơ hội được đào tạo và phát triển bản thân , nhận được chế độ đãi ngộ hấp dẫn và được làm việc trong văn phòng hạng A đầy cây xanh và những tiện ích hiện đại",
+    'intership_program' => 'CHƯƠNG TRÌNH THỰC TẬP',
+    'content_intership_program' => '​​​​​​​​​​​​​​Cơ hội trở thành Marketer tại Top 1 Puzzle Game Studio Việt Nam',
+    'btn_intership_program' => 'Tham gia cùng chúng tôi',
+    'member_bravo' => "Con người Bravo",
+    'content_member_bravo' => "  Đến với Bravo, thứ bạn có được không chỉ là một mức lương chất lượng, nhiều đãi ngộ xứng đáng, môi trường làm việc trẻ trung, mà còn là những người đồng đội tài năng, nhiệt huyết và tận tình. <br><br> 06 yếu tố làm
+    nên một Bravo-ers hoàn hảo: <br>- Tinh thần nhiệt huyết, luôn sẵn sàng chiến đấu <br>- Tinh thần hướng đến tư duy đổi mới - sáng tạo <br>- Thái độ ham học hỏi, tìm tòi và phát triển bản thân <br>- Hòa đồng, thân thiện,
+    cùng nhau tiến bộ và thành công <br>- Luôn hỗ trợ lẫn nhau trong cả công việc và cuộc sống<br>- Dám đương đầu thử thách, luôn hướng tới mục tiêu cao hơn",
+    'btn_member_bravo' => "Đọc Thêm",
+    'culture' => "Văn Hóa ở Bravo",
+    'content_culture' => " 1. Làm việc nhóm<br><br>2. Chia sẻ <br><br>3. Trao đổi thông tin<br><br>4. Khai phá tiềm năng<br><br>5. Trách nhiệm với tập thể<br><br>6. Thái độ chuyên nghiệp",
+    'company' => "CÔNG TY",
+    'follow' => "THEO DÕI",
+    'policy' => "PHÁP LÝ",
+    'hotline' => "Điện thoại",
+    'email' => "Email",
+    'address' => "Địa chỉ",
+    'work_time' => "Thời gian làm việc",
+    'full_name' => "Họ và tên",
+    'phone_number'=> "Số điện thoại(*)",
+    'message' => "Lời nhắn",
+    'send' => "Gửi",
+    'read_more' => 'Đọc Thêm'
+];
+?>

@@ -29,7 +29,7 @@ class RecruitmentAdminController extends Controller
     public function index()
     { 
         $value = $this->recruitmentRepository->allRecruitments();
-        
+        // dd($value);
         return view('admin.recruitment.home', ['result' => $value]);    
     }
 

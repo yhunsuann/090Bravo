@@ -1,3 +1,6 @@
+@php
+    use Illuminate\Support\Facades\App;
+@endphp
 <!DOCTYPE html>
 <html class="no-js" lang="vi">
 
@@ -9,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sonat Game | Sonat Game</title>
+    <title>090Bravo</title>
     <meta name="description" content="Sonat Game">
     <meta name="keywords" content="Sonat Game">
     <meta name="robots" content="index, follow">
@@ -37,7 +40,7 @@
 
     <div class="page pg-home">
             <header class="header header-sticky" id="header">
-                <div class="container-fluid">
+                <div class="container-fluid  container-header">
                     <div class="row align-items-center justify-content-between">
                         <div class="t_flex t_container header_wrapper">
                             <div class="menu_mobile">
@@ -65,11 +68,11 @@
                                         <div class="menu_body">
                                             <ul>
                                                 <li class="level1">
-                                                    <a href="index.html">Trang Chủ</a>
+                                                    <a href="index.html">{{ __('message.home') }}</a>
                                                 </li>
                                                 <li class="level1 {{ request()->segment(1) === 'post' ? 'active' : '' }}">
                                                     <div class="sub_menutitle">
-                                                        <a href="about-us.html">Giới Thiệu</a>
+                                                        <a href="about-us.html">{{ __('message.about') }}</a>
                                                         <div class="arrow">
                                                             <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M0.528575 1.02859C0.788925 0.768241 1.21103 0.768241 1.47138 1.02859L4.99998 4.55719L8.52858 1.02859C8.78893 0.768241 9.21103 0.768241 9.47138 1.02859C9.73173 1.28894 9.73173 1.71105 9.47138 1.9714L5.47138 5.9714C5.21103 6.23175 4.78892 6.23175 4.52858 5.9714L0.528575 1.9714C0.268226 1.71105 0.268226 1.28894 0.528575 1.02859Z" fill="white"/>
@@ -79,24 +82,21 @@
                                                     </div>
                                                     <ul class="sub_menu">
                                                         <li class="level2">
-                                                            <a href="{{ URL::to('/post/office') }}">Văn Phòng</a>
+                                                            <a href="{{ URL::to('/post/office') }}">{{ __('message.office') }}</a>
                                                         </li>
                                                         <li class="level2">
-                                                            <a href="{{ URL::to('/post/member') }}">Con Người</a>
-                                                        </li>
-                                                        <li class="level2">
-                                                            <a href="games.html">Trò Chơi</a>
+                                                            <a href="{{ URL::to('/post/member') }}">{{ __('message.member') }}</a>
                                                         </li>
                                                     </ul>
                                                 </li>
                                                 <li class="level1 {{ request()->segment(1) === 'post' ? 'active' : '' }}">
-                                                    <a href="{{ URL::to('/post') }}">Hoạt Động</a>
+                                                    <a href="{{ URL::to('/post') }}">{{ __('message.news') }}</a>
                                                 </li>
                                                 <li class="level1 {{ request()->segment(1) === null ? 'active' : '' }}">
-                                                    <a href="{{ URL::to('/') }}">Tuyển Dụng</a>
+                                                    <a href="{{ URL::to('/') }}">{{ __('message.careers') }}</a>
                                                 </li>
                                                 <li class="level1 {{ request()->segment(1) === 'contact' ? 'active' : '' }}">
-                                                    <a href="{{ URL::to('/contact') }}">Liên Hệ</a>
+                                                    <a href="{{ URL::to('/contact') }}">{{ __('message.contact') }}</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -112,11 +112,11 @@
                             <div class="menu_wrapper">
                                 <ul class="t_nav menu_desk">
                                     <li class="level1  ">
-                                        <a class="link_lv1" href="index.html">Trang Chủ</a>
+                                        <a class="link_lv1" href="index.html">{{ __('message.home') }}</a>
                                     </li>
                                     <li class="level1 has_submenu  {{ request()->segment(1) === 'post' ? 'active' : '' }}     ">
                                         <div class="sub_menu_title toggle">
-                                            <a class="link_lv1" href="about-us.html">Giới Thiệu</a>
+                                            <a class="link_lv1" href="about-us.html">{{ __('message.about') }}</a>
                                             <div class="icon">
                                                 <svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0.873485 0.52859C1.13383 0.268241 1.55594 0.268241 1.81629 0.52859L5.34489 4.05719L8.87349 0.52859C9.13383 0.268241 9.55594 0.268241 9.81629 0.52859C10.0766 0.78894 10.0766 1.21105 9.81629 1.4714L5.81629 5.4714C5.55594 5.73175 5.13383 5.73175 4.87349 5.4714L0.873485 1.4714C0.613135 1.21105 0.613135 0.78894 0.873485 0.52859Z" fill="white"/>
@@ -126,40 +126,49 @@
                                         </div>
                                         <ul class="sub_menu">
                                             <li class="">
-                                                <a href="{{ URL::to('/post/office') }}">Văn Phòng</a>
+                                                <a href="{{ URL::to('/post/office') }}">{{ __('message.office') }}</a>
                                             </li>
                                             <li class="">
-                                                <a href="{{ URL::to('/post/member') }}">Con Người</a>
-                                            </li>
-                                            <li class="">
-                                                <a href="games.html">Trò Chơi</a>
+                                                <a href="{{ URL::to('/post/member') }}">{{ __('message.member') }}</a>
                                             </li>
                                         </ul>
                                     </li>
                                     <li class="level1 {{ request()->segment(1) === 'blog' ? 'active' : '' }}">
-                                        <a class="link_lv1 " href="{{ URL::to('/blog') }}">Hoạt Động</a>
+                                        <a class="link_lv1 " href="{{ URL::to('/blog') }}">{{ __('message.news') }}</a>
                                     </li>
                                     <li class="level1 {{ request()->segment(1) === null ? 'active' : '' }} ">
-                                        <a class="link_lv1" href="{{ URL::to('/') }}">Tuyển Dụng</a>
+                                        <a class="link_lv1" href="{{ URL::to('/') }}">{{ __('message.careers') }}</a>
                                     </li>
                                     <li class="level1 {{ request()->segment(1) === 'contact' ? 'active' : '' }}">
-                                        <a class="link_lv1 "href="{{ URL::to('/contact') }}">Liên Hệ</a>
+                                        <a class="link_lv1 "href="{{ URL::to('/contact') }}">{{ __('message.contact') }}</a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="languages">
                                 <div class="t_flex language_title">
-                                    <div class="name"><a href="index.html">Tiếng Việt</a></div>
+                                    <div class="name">
+                                        @if(App::getLocale() === 'vi')
+                                        <a href="{!! route('user.change-language', ['vi']) !!}">Tiếng Việt</a> 
+                                        @else
+                                        <a href="{!! route('user.change-language', ['en']) !!}">English</a>
+                                        @endif
+                                    </div>
                                     <div class="arrow">
                                         <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L7 5.58579L12.2929 0.292893C12.6834 -0.0976311 13.3166 -0.0976311 13.7071 0.292893C14.0976 0.683417 14.0976 1.31658 13.7071 1.70711L7.70711 7.70711C7.31658 8.09763 6.68342 8.09763 6.29289 7.70711L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z" fill="white"/>
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L7 5.58579L12.2929 0.292893C12.6834 -0.0976311 13.3166 -0.0976311 13.7071 0.292893C14.0976 0.683417 14.0976 1.31658 13.7071 1.70711L7.70711 7.70711C7.31658 8.09763 6.68342 8.09763 6.29289 7.70711L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z" fill="#1D3F92" fill-opacity="0.6"/>
-                        </svg>
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L7 5.58579L12.2929 0.292893C12.6834 -0.0976311 13.3166 -0.0976311 13.7071 0.292893C14.0976 0.683417 14.0976 1.31658 13.7071 1.70711L7.70711 7.70711C7.31658 8.09763 6.68342 8.09763 6.29289 7.70711L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z" fill="white"/>
+                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L7 5.58579L12.2929 0.292893C12.6834 -0.0976311 13.3166 -0.0976311 13.7071 0.292893C14.0976 0.683417 14.0976 1.31658 13.7071 1.70711L7.70711 7.70711C7.31658 8.09763 6.68342 8.09763 6.29289 7.70711L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z" fill="#1D3F92" fill-opacity="0.6"/>
+                                        </svg>
                                     </div>
                                 </div>
                                 <div class="list_language_modal">
                                     <ul>
-                                        <li class="item_modal"><a href="en.html">Tiếng Anh</a></li>
+                                        <li class="item_modal">
+                                            @if(App::getLocale() === 'vi')
+                                            <a href="{!! route('user.change-language', ['en']) !!}">English</a>                                     
+                                            @else
+                                            <a href="{!! route('user.change-language', ['vi']) !!}">Tiếng Việt</a> 
+                                            @endif
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -177,7 +186,7 @@
                             <div class="t_flex footer_above">
                                 <div class="t_flex social_media">
                                     <div class="t_flex social_icon_content">
-                                        <div class="title">FOLLOW US</div>
+                                        <div class="title">{{ __('message.follow') }}</div>
                                         <div class="t_flex social_icon">
                                             <a href="https://www.facebook.com/SonatGameStudio/">
                                                 <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -196,68 +205,32 @@
                                     </div>
                                 </div>
                                 <div class="t_flex menu_footer">
-                                    <div class="box_menu box_menu_1">
-                                        <div class="title">TRÒ CHƠI NỔI BẬT</div>
-                                        <ul class="menu_nav">
-                                            <li>
-                                                <a href="g/witch-cube-blast1-16418012.html">
-                                                    <span class="text">Bubble Shooter: Egg Shoot</span>
-                                                    <span class="icon">
-                                            <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.83333 5.5C5.3731 5.5 5 5.8731 5 6.33333C5 6.79357 5.3731 7.16667 5.83333 7.16667H12.0942L5.24408 14.0774C4.91864 14.4028 4.91864 14.9304 5.24408 15.2559C5.56951 15.5813 6.09715 15.5813 6.42259 15.2559L13.3333 8.28405V14.6667C13.3333 15.1269 13.7064 15.5 14.1667 15.5C14.6269 15.5 15 15.1269 15 14.6667V6.33333C15 5.8731 14.6269 5.5 14.1667 5.5H5.83333Z" fill="white"/>
-                                            </svg>   
-                                        </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="g/sort-water-puzzle-color-game-16475722.html">
-                                                    <span class="text">Sort Water Puzzle</span>
-                                                    <span class="icon">
-                                            <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.83333 5.5C5.3731 5.5 5 5.8731 5 6.33333C5 6.79357 5.3731 7.16667 5.83333 7.16667H12.0942L5.24408 14.0774C4.91864 14.4028 4.91864 14.9304 5.24408 15.2559C5.56951 15.5813 6.09715 15.5813 6.42259 15.2559L13.3333 8.28405V14.6667C13.3333 15.1269 13.7064 15.5 14.1667 15.5C14.6269 15.5 15 15.1269 15 14.6667V6.33333C15 5.8731 14.6269 5.5 14.1667 5.5H5.83333Z" fill="white"/>
-                                            </svg>   
-                                        </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="g/tile-connect-puzzle-mind-game-16475941.html">
-                                                    <span class="text">Tile Connect: Mind Game</span>
-                                                    <span class="icon">
-                                            <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.83333 5.5C5.3731 5.5 5 5.8731 5 6.33333C5 6.79357 5.3731 7.16667 5.83333 7.16667H12.0942L5.24408 14.0774C4.91864 14.4028 4.91864 14.9304 5.24408 15.2559C5.56951 15.5813 6.09715 15.5813 6.42259 15.2559L13.3333 8.28405V14.6667C13.3333 15.1269 13.7064 15.5 14.1667 15.5C14.6269 15.5 15 15.1269 15 14.6667V6.33333C15 5.8731 14.6269 5.5 14.1667 5.5H5.83333Z" fill="white"/>
-                                            </svg>   
-                                        </span>
-                                                </a>
-                                            </li>
-
-                                        </ul>
-                                    </div>
                                     <div class="box_menu box_menu_2">
-                                        <div class="title">CÔNG TY</div>
+                                        <div class="title">{{ __('message.company') }}</div>
                                         <ul class="menu_nav">
                                             <li>
                                                 <a href="about-us.html">
-                                                    <span class="text">Giới Thiệu</span>
+                                                    <span class="text">{{ __('message.home') }}</span>
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="career.html">
-                                                    <span class="text">Tuyển Dụng</span>
+                                                    <span class="text">{{ __('message.careers') }}</span>
                                                 </a>
                                             </li>
                                             <li>
                                                 <a href="contact-us.html">
-                                                    <span class="text">Liên Hệ</span>
+                                                    <span class="text">{{ __('message.contact') }}</span>
                                                 </a>
                                             </li>
                                         </ul>
                                     </div>
                                     <div class="box_menu box_menu_3">
-                                        <div class="title">PHÁP LÝ</div>
+                                        <div class="title">{{ __('message.policy') }}</div>
                                         <ul class="menu_nav">
                                             <li>
                                                 <a href="policy.html">
-                                                    <span class="text">Điều khoản sử dụng</span>
+                                                    <span class="text">{{ __('message.policy') }}</span>
                                                 </a>
                                             </li>
                                         </ul>

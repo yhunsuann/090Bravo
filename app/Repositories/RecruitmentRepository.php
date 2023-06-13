@@ -38,9 +38,7 @@ class RecruitmentRepository implements RecruitmentRepositoryInterface
                                         ->when($dateFrom && $dateTo, function ($query) use ($dateFrom, $dateTo) {
                                             $query->whereBetween('created_at', [$dateFrom, $dateTo]);
                                         })
-                                        ->with(['recruitmentTranslates' => function ($query) {
-                                            $query->where('language_code', 'vi');
-                                        }])
+                                        ->with('recruitmentTranslates')
                                         ->paginate(5);
     
         return $recruitments;

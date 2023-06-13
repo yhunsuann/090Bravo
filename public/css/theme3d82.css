@@ -1165,6 +1165,7 @@ body {
 
 .header {
     background: #fff;
+    position: relative;
 }
 
 .header_wrapper {
@@ -4087,8 +4088,6 @@ body {
 .hero_banner2.on_about_people_page .image_gallery .gallery_row img {
     height: 100%;
     width: 100%;
-    -o-object-fit: cover;
-    object-fit: cover;
 }
 
 .hero_banner2.on_about_people_page .image_gallery .gallery_row:last-child {
@@ -6152,6 +6151,18 @@ figcaption {
 
 .hero_banner2.on_about_people_page .image_gallery .gallery_row .row_content {
     justify-content: center;
+}
+
+.container-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    z-index: 10000;
+}
+
+.page-main {
+    padding-top: 124px;
 }
 
 

@@ -30,9 +30,7 @@ class BlogRepository implements BlogRepositoryInterface
                                         ->when($status, function ($query) use ($status) {
                                             $query->where('status', $status);
                                         })
-                                        ->with(['blogTranslates' => function ($query) {
-                                            $query->where('language_code', 'vi');
-                                        }])
+                                        ->with('blogTranslates')
                                         ->paginate(5);
     
         return $recruitments;

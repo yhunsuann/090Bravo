@@ -10,6 +10,7 @@ use App\Http\Controllers\client\RecruitmentController;
 use App\Http\Controllers\client\BlogController;
 use App\Http\Controllers\client\PostController;
 use App\Http\Controllers\client\ContactController;
+use App\Http\Controllers\client\Langcontroller;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -86,20 +87,23 @@ Route::group(['middleware' => 'CheckLogin'], function() {
         });
     }); 
 });
-Route::get('/',[RecruitmentController::class,'index']);
+Route::group(['middleware' => 'Language'], function() {
+    Route::get('language/{lang?}',[Langcontroller::class,'change_language'])->name('user.change-language');
+    Route::get('/',[RecruitmentController::class,'index']);
 
-Route::group(['prefix' => 'recruitment'], function () {
-    Route::get('/detail/{id}',[RecruitmentController::class,'recruitmentDetails']);
-});
+    Route::group(['prefix' => 'recruitment'], function () {
+        Route::get('/detail/{id}',[RecruitmentController::class,'recruitmentDetails']);
+    });
 
-Route::group(['prefix' => 'blog'], function () {
-    Route::get('/',[BlogController::class,'index']);
-    Route::get('/detail/{id}',[BlogController::class,'recruitmentDetails']);
-});
+    Route::group(['prefix' => 'blog'], function () {
+        Route::get('/',[BlogController::class,'index']);
+        Route::get('/detail/{id}',[BlogController::class,'recruitmentDetails']);
+    });
 
-Route::get('/post/{type}',[PostController::class,'index']);
+    Route::get('/post/{type}',[PostController::class,'index']);
 
-Route::group(['prefix' => 'contact'], function () {
-    Route::get('/',[ContactController::class,'index'])->name('index_contact');
-    Route::post('/submit',[ContactController::class,'submitContact']);
+    Route::group(['prefix' => 'contact'], function () {
+        Route::get('/',[ContactController::class,'index'])->name('index_contact');
+        Route::post('/submit',[ContactController::class,'submitContact']);
+    });
 });

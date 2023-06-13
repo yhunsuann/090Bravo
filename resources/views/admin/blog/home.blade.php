@@ -60,10 +60,12 @@
                 </thead>
                 <tbody class="table-group-divider">
                 @forelse($result as $data)
+                @forelse($data->blogTranslates as $blog)
+                        @if($blog->language_code == 'vi')
                      <tr>
                         <th class="text-center"><input name="ids[]" class="sub_chk" value="{{$data->id}}" id="checkItem" type="checkbox">
-                        </th>
-                        <td class="truncate">{{ $data->blogTranslates->first()->title }}</td>
+                        </th>               
+                        <td>{{ $blog->title }}</td>
                         <td><img width="70px" height="40px" src="{{ asset('assets/img/blog/'.$data->image)}}" alt=""></td>
                         <td>{{ $data->status }}</td>
                         <td>{{ $data->created_at}}</td>
@@ -72,6 +74,10 @@
                             <a href="{{ URL::to('/admin/blog/edit/'.$data->id)}}" type="button" class="btn-search btn btn-primary"><i class="fa fa-solid fa-wrench"></i></a>
                         </td>
                     </tr>
+                    @endif
+                        @empty 
+                        <td>No data</td>
+                        @endforelse
                     @empty
                     <td>No Data</td>
                     @endforelse
