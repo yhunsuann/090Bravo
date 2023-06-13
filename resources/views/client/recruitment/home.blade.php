@@ -92,7 +92,7 @@
                 <div class="message">
                 {!! __('message.content_member_bravo') !!}
                 </div>
-                <a href="people.html">
+                <a href="{{ URL::to('/post/member')}}">
                     <button class="t_flex t_button button_banner" type="button">
                 <span class="text">{{ __('message.btn_member_bravo') }}</span>
                 <span class="icon">
@@ -116,7 +116,7 @@
                 <div class="message">
                 {!! __('message.content_culture') !!}
                 </div>
-                <a href="about-us.html">
+                <a href="{{ URL::to('/about')}}">
                     <button class="t_flex t_button button_banner" type="button">
                 <span class="text">{{ __('message.btn_member_bravo') }}</span>
                 <span class="icon">
