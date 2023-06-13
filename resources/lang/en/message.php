@@ -83,7 +83,5 @@ return [
     'resonance_message' => "Each member is an indispensable part of the organization. Bravo connects our memers on the basis of motivation, enthusiasm and mutual respect. This consensus is forces helping Bravo overcome difficulties and achieve new successes.",
     'sharing_message' => "Each member is an indispensable part of the organization. Bravo connects our memers on the basis of motivation, enthusiasm and mutual respect. This consensus is forces helping Bravo overcome difficulties and achieve new successes.",
     'assertiveness_message' => "With the long-term strategic vision of Bravo's leadership, we always strive to seize opportunities quickly, are ready to accept and conquer all challenges.",
-    
-
 ];
 ?>

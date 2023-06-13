@@ -83,7 +83,6 @@ return [
     'human_values_message' => "Bravo luôn đề cao giá trị con người, tôn trọng sự khác biệt và tạo cơ hội để mọi nhân sự cống hiến và phát triển. Với Bravo, đầu tư xây dựng giá trị con người và văn hóa doạnh nghiệp là đầu tư cho sự phát triển bền vững.",
     'resonance_message' => "Mỗi thành viên là một mắt xích không thể thiếu trong bộ máy tổ chức. Bravo gắn kết các cá nhân bằng sự chủ động, nhiệt tình và tôn trọng lẫn nhau. Sự sẻ chia giúp Bravo vượt mọi khó khăn và vươn tới thành công mới.",
     'sharing_message' => "Thành công không của riêng ai. Thành công đến từ sự đồng lòng và đoàn kết của tập thể. Cho đi để nhận lại, cống hiến hết mình để được đền đáp xứng đáng, đó chính phương châm phát triển tại Bravo.",
-    'assertiveness_message' => "Với tầm nhìn dài hạn mang tính chiến lược của ban lãnh đạo, Bravo luôn nỗ lực nắm bắt cơ hội nhanh chóng, sẵn sàng đón nhận và chinh phục thử thách.",
-    
+    'assertiveness_message' => "Với tầm nhìn dài hạn mang tính chiến lược của ban lãnh đạo, Bravo luôn nỗ lực nắm bắt cơ hội nhanh chóng, sẵn sàng đón nhận và chinh phục thử thách.",  
 ];  
 ?>

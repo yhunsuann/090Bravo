@@ -66,7 +66,7 @@
                 <p>{{ __('message.content_intership_program') }}</p>
                 <div data-cke-hidden-sel="1" data-cke-temp="1" style="position:fixed;top:0;left:-1000px">ảnh widget</div>
             </div>
-            <a href="c/internship-program-16509403.html">
+            <a href="{{ URL::to('/recruitment')}}">
                 <button class="t_flex t_button button_banner" type="button">
             <span class="text">{{ __('message.btn_intership_program') }}</span>
         </button>
