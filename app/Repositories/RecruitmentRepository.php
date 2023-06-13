@@ -38,9 +38,7 @@ class RecruitmentRepository implements RecruitmentRepositoryInterface
                                         ->when($dateFrom && $dateTo, function ($query) use ($dateFrom, $dateTo) {
                                             $query->whereBetween('created_at', [$dateFrom, $dateTo]);
                                         })
-                                        ->with(['recruitmentTranslates' => function ($query) {
-                                            $query->where('language_code', 'vi');
-                                        }])
+                                        ->with('recruitmentTranslates')
                                         ->paginate(5);
     
         return $recruitments;
@@ -54,6 +52,7 @@ class RecruitmentRepository implements RecruitmentRepositoryInterface
         ];
         $recruitment = $this->model->create($recruitmentValue);
         $qty = $data['count'];
+
         for($i = 0; $i < $qty; $i++){
             $recruitmentTranslateValue[] = [
                 'recruitment_id' => $recruitment->id,
@@ -72,17 +71,21 @@ class RecruitmentRepository implements RecruitmentRepositoryInterface
         $recruitmentValue = [
             'status' => $data['status']
         ];
+
         if($data['image']){
             $recruitmentValue['image'] = $data['image'];
         }
+
         $this->model->Where('id', $id)->update($recruitmentValue);
         $qty = $data['count'];
+
         for($i = 0; $i < $qty; $i++){
             $recruitmentTranslateValue[$i] = [
                 'title' => $data['title'][$i],
                 'content' => $data['content'][$i],
                 'description' => $data['description'][$i]
             ];
+
             $this->recruitmentTranslateRepository
             ->updateRecruitmentTranslate($id, $data['language_code'][$i], $recruitmentTranslateValue[$i]);
         } 
@@ -98,6 +101,7 @@ class RecruitmentRepository implements RecruitmentRepositoryInterface
     {
         $recruitment = $this->model->find($id);
         $data = $recruitment->recruitmentTranslates;
+        
         return $data;
 
     } 

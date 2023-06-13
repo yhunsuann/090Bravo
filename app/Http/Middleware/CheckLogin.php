@@ -19,7 +19,8 @@ class CheckLogin
             return $next($request);
         }else{
             session()->put('success','Vui Long Dang Nhap');
-            return redirect('/');
+            
+            return redirect('/admin/login');
         }
     }
 }

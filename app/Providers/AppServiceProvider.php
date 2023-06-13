@@ -3,24 +3,36 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+
 use App\Repositories\Interfaces\RecruitmentRepositoryInterface;
 use App\Repositories\RecruitmentRepository;
-use App\Repositories\Interfaces\LanguageRepositoryInterface;
-use App\Repositories\LanguageRepository;
-use App\Repositories\Interfaces\UserRepositoryInterface;
-use App\Repositories\UserRepository;
 use App\Repositories\Interfaces\RecruitmentTranslateRepositoryInterface;
 use App\Repositories\RecruitmentTranslateRepository;
+
+use App\Repositories\Interfaces\LanguageRepositoryInterface;
+use App\Repositories\LanguageRepository;
+
+use App\Repositories\Interfaces\UserRepositoryInterface;
+use App\Repositories\UserRepository;
+
 use App\Repositories\Interfaces\BlogRepositoryInterface;
 use App\Repositories\BlogRepository;
 use App\Repositories\Interfaces\BlogTranslateRepositoryInterface;
 use App\Repositories\BlogTranslateRepository;
+
 use App\Repositories\Interfaces\PostTranslateRepositoryInterface;
 use App\Repositories\PostTranslateRepository;
 use App\Repositories\Interfaces\PostRepositoryInterface;
 use App\Repositories\PostRepository;
 
+use App\Repositories\Interfaces\ContactRepositoryInteface;
+use App\Repositories\ContactRepository;
+use App\Repositories\Interfaces\ConfigContactRepositoryInterface;
+use App\Repositories\ConfigContactRepository;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Http\Request;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -58,10 +70,21 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(
             PostTranslateRepositoryInterface::class, PostTranslateRepository::class
         );
+        $this->app->bind(
+            ContactRepositoryInteface::class, ContactRepository::class
+        );
+        $this->app->bind(
+            ConfigContactRepositoryInterface::class, ConfigContactRepository::class
+        );
     }
     
-    public function boot(): void
+    public function boot(Request $request)
     {
+        $protocol = $request->header('X-Forwarded-Proto');
+        if ($protocol && strtolower($protocol) === 'https') {
+            URL::forceScheme(scheme:'https');
+        }
+        
         Paginator::useBootstrap();  
     }
 }

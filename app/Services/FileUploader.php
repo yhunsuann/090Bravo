@@ -4,6 +4,7 @@ namespace App\Services;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
+use Illuminate\Http\UploadedFile;
 
 class FileUploader
 {
@@ -24,6 +25,18 @@ class FileUploader
         return null;
     }
     
+    public function uploadFileContact(UploadedFile $file)
+    {
+            $ext = $file->extension();
+            $file_name = time(). '-' . 'img.' .$ext;
+    
+            $image = Image::make($file);
+            $image->fit(535, 480);
+            $image->save(public_path('assets/img/contact') . '/' . $file_name);
+
+            return $file_name;
+    }
+
     public function uploadFileBlog(Request $request)
     {
         if ($request->hasFile('upload_image')) {
@@ -44,6 +57,7 @@ class FileUploader
     {
         if ($request->hasFile('upload_new')) {
             $imageData = [];
+
             foreach ($request->file('upload_new') as $file) {
                 $ext = $file->getClientOriginalExtension();
                 $stringRamdom = bin2hex(Str::random(3));
@@ -55,7 +69,9 @@ class FileUploader
     
                 $imageData[] = $file_name;
             }
+
             $image = json_encode($imageData);
+            
             return $image;
         }
         return null;

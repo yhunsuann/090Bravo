@@ -5,8 +5,6 @@ namespace App\Repositories;
 use App\Repositories\Interfaces\LanguageRepositoryInterface;
 use App\Models\Language;
 
-
-
 class LanguageRepository implements LanguageRepositoryInterface
 {
     protected $model;

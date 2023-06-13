@@ -16,7 +16,7 @@ class RecruitmentTranslateRepository implements RecruitmentTranslateRepositoryIn
     
     public function updateRecruitmentTranslate($id, $languageCode, $data)
     {
-        RecruitmentTranslate::where('recruitment_id', $id)
+        $this->model->where('recruitment_id', $id)
             ->where('language_code', $languageCode)
             ->update($data);
     }

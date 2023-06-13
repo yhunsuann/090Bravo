@@ -31,20 +31,25 @@ class PostRepository implements PostRepositoryInterface
     public function updatePost($data, $type)
     {
         $blogValue = [];
+
         if($data['images']){
             $blogValue['images'] = $data['images'];
         }
+
         if(!empty($blogValue)){
             $this->model->Where('type', $type)->update($blogValue);
         }
+
         $id = $this->model->where('type', $type)->value('id');
         $qty = count($data['language_code']);
+
         for($i = 0; $i < $qty; $i++){
             $postTranslateValue[$i] = [
                 'title' => $data['title'][$i],
                 'content' => $data['content'][$i],
                 'description' => $data['description'][$i]
             ];
+            
             $this->postTranslateRepository
             ->updatePostTranslate($id, $data['language_code'][$i], $postTranslateValue[$i]);
         } 

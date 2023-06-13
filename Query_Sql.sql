@@ -15,12 +15,22 @@ PRIMARY KEY (id)
 );
 INSERT INTO users(email,password) VALUES('mienphi221@gmail.com','$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm');
 
-INSERT INTO blogs(image, status, created_at) VALUES('2.jpg', 'Inactive', now());
-INSERT INTO blog_translates(blog_id, language_code, title, content,description) 
+INSERT INTO recruitments(image, status, created_at) VALUES('2.jpg', 'Inactive', now());
+INSERT INTO recruitment_translates(recruitment_id, language_code, title, content,description) 
 VALUES(LAST_INSERT_ID(),'en','title_en','content_en','description_en'),
 	  (LAST_INSERT_ID(),'vi','nha phat trien full stack','nha phat trien full stack','description_vi');
 
-INSERT INTO languages(language_code,language_name) VALUES ('vi','vietnamese');
+INSERT INTO posts(images, type, created_at) VALUES('1.jpg', 'Office', now());
+INSERT INTO post_translates(post_id, language_code, title, content,description) 
+VALUES(2,'en','title_en','content_en','description_en'),
+	  (2,'vi','nha phat trien full stack','nha phat trien full stack','description_vi');
+
+INSERT INTO languages(language_code,language_name) VALUES ('vi','VietNamese');
+
+INSERT INTO contact(full_name, email, address, phone, message, created_at) VALUES ('tuan','mienphi221@gmail.com','487 cach mang thang 8, Cam le, Da Nang', '+84 799307885', 'Ung tuyen laravel', '2023-05-29 16:21:48');
+
+INSERT INTO config_contact(name, contact_key, type, value) VALUES ('email','email_text','text', 'mienphi221@gmail.com');
+
 
 ALTER TABLE recruitments
 ADD content varchar(255);
@@ -59,7 +69,8 @@ SELECT * FROM recruitments WHERE deleted_at IS NULL;
 TRUNCATE TABLE recruitments;
 TRUNCATE TABLE recruitment_translates;
 TRUNCATE TABLE languages;
-DELETE FROM recruitments where id >0;
+
+DELETE FROM config_contact where contact_key = 'add_text';
 
 SELECT recruitment_translates.id,  recruitment_translates.recruitment_id, recruitment_translates.title, recruitment_translates.content, recruitment_translates.description, created_at, image, recruitments.deleted_at ,recruitment_translates.language_code
 FROM recruitments

@@ -21,6 +21,7 @@ class Recruitment extends Model
     'updated_at',
     'deleted_at'
     ];
+    
     public function recruitmentTranslates()
     {
         return $this->hasMany(RecruitmentTranslate::class, 'recruitment_id', 'id');
