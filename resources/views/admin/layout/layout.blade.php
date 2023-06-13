@@ -59,11 +59,19 @@
                     <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
                         <div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" style="height: 100%; overflow: hidden scroll;">
                             <div class="simplebar-content" style="padding: 0px;">
+                            <li class="nav-item ">
+                                    <a class="nav-link {{ request()->segment(2) === null ? 'active' : '' }}" href="{{ URL::to('/admin')}}">
+                                        <svg class="nav-icon">
+                                            <use
+                                                xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-speedometer') }}">
+                                            </use>
+                                        </svg> Dashboard</a>
+                                </li>
                                 <li class="nav-item ">
                                     <a class="nav-link {{ request()->segment(2) === 'recruitment' ? 'active' : '' }}" href="{{ URL::to('/admin/recruitment')}}">
                                         <svg class="nav-icon">
                                             <use
-                                                xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-speedometer') }}">
+                                                xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-building') }}">
                                             </use>
                                         </svg> Recruitmens</a>
                                 </li>

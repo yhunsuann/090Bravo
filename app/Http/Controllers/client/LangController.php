@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\client;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
-class Langcontroller extends Controller
+class LangController extends Controller
 {
     public function index(){
         return view('welcome');
