@@ -32,7 +32,7 @@ class UserAdminController extends Controller
             ];
 
             if (Auth::attempt($data)) {
-                return redirect()->route('index');
+                return redirect('/admin');
             } else {
                 return redirect()->back()->with('success', 'Wrong account or password, please login again !');
             }

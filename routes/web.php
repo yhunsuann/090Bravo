@@ -29,7 +29,7 @@ Route::get('/admin/login', function () {
     if (Auth::guest()) {
         return view('admin.welcome');
     }else{
-        return redirect()->route('index');  
+        return redirect('/admin');  
     }
 });
 
@@ -51,6 +51,9 @@ Route::group(['middleware' => 'CheckLogin'], function() {
     Route::get('admin/user/log-out', [UserAdminController::class, 'logOut']);
 
     Route::group(['prefix' => 'admin'], function () {
+        Route::get('/',function () {
+            return view('admin.home.home');  
+        });
         Route::group(['prefix' => 'recruitment'], function () {
             Route::get('/',[RecruitmentAdminController::class,'index'])->name('index');
             Route::post('/add',[RecruitmentAdminController::class,'addRecruitment']);
@@ -89,9 +92,15 @@ Route::group(['middleware' => 'CheckLogin'], function() {
 });
 Route::group(['middleware' => 'Language'], function() {
     Route::get('language/{lang?}',[LangController::class,'change_language'])->name('user.change-language');
-    Route::get('/',[RecruitmentController::class,'index']);
-
+    
+    Route::get('/',function () {
+        return view('client.home.home');
+    });
+    Route::get('/about',function () {
+        return view('client.home.about');
+    });
     Route::group(['prefix' => 'recruitment'], function () {
+        Route::get('/',[RecruitmentController::class,'index']);
         Route::get('/detail/{id}',[RecruitmentController::class,'recruitmentDetails']);
     });
 

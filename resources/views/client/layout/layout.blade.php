@@ -67,12 +67,12 @@
                                         </div>
                                         <div class="menu_body">
                                             <ul>
-                                                <li class="level1">
-                                                    <a href="index.html">{{ __('message.home') }}</a>
+                                                <li class="level1 {{ request()->segment(1) === 'null' ? 'active' : '' }}">
+                                                    <a href="{{ URL::to('/') }}">{{ __('message.home') }}</a>
                                                 </li>
                                                 <li class="level1 {{ request()->segment(1) === 'post' ? 'active' : '' }}">
                                                     <div class="sub_menutitle">
-                                                        <a href="about-us.html">{{ __('message.about') }}</a>
+                                                        <a href="{{ URL::to('/about') }}">{{ __('message.about') }}</a>
                                                         <div class="arrow">
                                                             <svg width="10" height="7" viewBox="0 0 10 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M0.528575 1.02859C0.788925 0.768241 1.21103 0.768241 1.47138 1.02859L4.99998 4.55719L8.52858 1.02859C8.78893 0.768241 9.21103 0.768241 9.47138 1.02859C9.73173 1.28894 9.73173 1.71105 9.47138 1.9714L5.47138 5.9714C5.21103 6.23175 4.78892 6.23175 4.52858 5.9714L0.528575 1.9714C0.268226 1.71105 0.268226 1.28894 0.528575 1.02859Z" fill="white"/>
@@ -93,7 +93,7 @@
                                                     <a href="{{ URL::to('/post') }}">{{ __('message.news') }}</a>
                                                 </li>
                                                 <li class="level1 {{ request()->segment(1) === null ? 'active' : '' }}">
-                                                    <a href="{{ URL::to('/') }}">{{ __('message.careers') }}</a>
+                                                    <a href="{{ URL::to('/recuitment') }}">{{ __('message.careers') }}</a>
                                                 </li>
                                                 <li class="level1 {{ request()->segment(1) === 'contact' ? 'active' : '' }}">
                                                     <a href="{{ URL::to('/contact') }}">{{ __('message.contact') }}</a>
@@ -111,12 +111,12 @@
                             </h1>
                             <div class="menu_wrapper">
                                 <ul class="t_nav menu_desk">
-                                    <li class="level1  ">
-                                        <a class="link_lv1" href="index.html">{{ __('message.home') }}</a>
+                                    <li class="level1 {{ request()->segment(1) === null ? 'active' : '' }} ">
+                                        <a class="link_lv1 " href="{{ URL::to('/') }}">{{ __('message.home') }}</a>
                                     </li>
                                     <li class="level1 has_submenu  {{ request()->segment(1) === 'post' ? 'active' : '' }}     ">
                                         <div class="sub_menu_title toggle">
-                                            <a class="link_lv1" href="about-us.html">{{ __('message.about') }}</a>
+                                            <a class="link_lv1" href="{{ URL::to('/about') }}">{{ __('message.about') }}</a>
                                             <div class="icon">
                                                 <svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0.873485 0.52859C1.13383 0.268241 1.55594 0.268241 1.81629 0.52859L5.34489 4.05719L8.87349 0.52859C9.13383 0.268241 9.55594 0.268241 9.81629 0.52859C10.0766 0.78894 10.0766 1.21105 9.81629 1.4714L5.81629 5.4714C5.55594 5.73175 5.13383 5.73175 4.87349 5.4714L0.873485 1.4714C0.613135 1.21105 0.613135 0.78894 0.873485 0.52859Z" fill="white"/>
@@ -136,8 +136,8 @@
                                     <li class="level1 {{ request()->segment(1) === 'blog' ? 'active' : '' }}">
                                         <a class="link_lv1 " href="{{ URL::to('/blog') }}">{{ __('message.news') }}</a>
                                     </li>
-                                    <li class="level1 {{ request()->segment(1) === null ? 'active' : '' }} ">
-                                        <a class="link_lv1" href="{{ URL::to('/') }}">{{ __('message.careers') }}</a>
+                                    <li class="level1 {{ request()->segment(1) === 'recruitment' ? 'active' : '' }} ">
+                                        <a class="link_lv1" href="{{ URL::to('/recruitment') }}">{{ __('message.careers') }}</a>
                                     </li>
                                     <li class="level1 {{ request()->segment(1) === 'contact' ? 'active' : '' }}">
                                         <a class="link_lv1 "href="{{ URL::to('/contact') }}">{{ __('message.contact') }}</a>
