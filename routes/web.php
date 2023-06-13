@@ -10,7 +10,7 @@ use App\Http\Controllers\client\RecruitmentController;
 use App\Http\Controllers\client\BlogController;
 use App\Http\Controllers\client\PostController;
 use App\Http\Controllers\client\ContactController;
-use App\Http\Controllers\client\Langcontroller;
+use App\Http\Controllers\client\LangController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -88,7 +88,7 @@ Route::group(['middleware' => 'CheckLogin'], function() {
     }); 
 });
 Route::group(['middleware' => 'Language'], function() {
-    Route::get('language/{lang?}',[Langcontroller::class,'change_language'])->name('user.change-language');
+    Route::get('language/{lang?}',[LangController::class,'change_language'])->name('user.change-language');
     Route::get('/',[RecruitmentController::class,'index']);
 
     Route::group(['prefix' => 'recruitment'], function () {

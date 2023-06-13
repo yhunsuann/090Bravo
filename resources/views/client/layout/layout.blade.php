@@ -105,7 +105,7 @@
                                 </div>
                             </div>
                             <h1 class="logo_header">
-                                <a href="index.html">
+                                <a href="{{ URL::to('/') }}">
                                     <img src="{{ asset('assets/img_client/layout/logo.png') }}">
                                 </a>
                             </h1>
