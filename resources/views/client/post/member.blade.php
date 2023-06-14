@@ -66,7 +66,7 @@
         <div class="t_container t_flex banner_wrapper">
             <div class="heading">{{ __('message.btn_intership_program')}}</div>
             <div class="message">{{ __('message.content_intership_program')}}</div>
-            <a href="{{ URL::to('/recruitment')}}">
+            <a href="{{ route('recruitment.index') }}">
                 <button class="t_flex t_button button_banner" type="button">
                         <span class="text">{{ __('message.btn_intership_program')}}</span>
                     </button>

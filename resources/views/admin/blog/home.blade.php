@@ -5,7 +5,7 @@
         <h6 class="title">Search</h6>
     </div>
 </div>
-<form class="mb-0" action="{{ URL::to('/admin/blog/search') }}" method="get">
+<form class="mb-0" action="{{ route('admin.blog.search') }}" method="get">
     <div class="row search">
         <div class="col">
             @csrf
@@ -28,15 +28,15 @@
     <div class="row">
         <div class="col p-0 bottom-search">
             <input type="submit" class="py-1 btn-search btn btn-primary float-end m-2 mr-0 " value="Search"></input>
-            <a href="{{URL::to('/admin/blog')}}" class="py-1 btn btn-secondary float-end m-2 text-white btn-size" value="Reset">Reset</a>
+            <a href="{{ route('index_blog')}}" class="py-1 btn btn-secondary float-end m-2 text-white btn-size" value="Reset">Reset</a>
         </div>
     </div>
 </form>
-<form action="{{ URL::to('/admin/blog/delete-select') }}" method="post">
+<form action="{{ route('admin.blog.delete-select') }}" method="post">
     @csrf
     <div class="row my-3">
         <div class="col">
-            <a href="{{ URL::to('/admin/blog/create') }}" type="button" class="btn btn-success float-end m-2 mr-0 text-white btn-size">Create</a>
+            <a href="{{ route('admin.blog.create') }}" type="button" class="btn btn-success float-end m-2 mr-0 text-white btn-size">Create</a>
             <input type="submit" class="delete_all btn-delete btn btn-danger float-end m-2 text-white btn-size" value="Delete all select"></input>
         </div>
     </div>
@@ -71,7 +71,7 @@
                         <td>{{ $data->created_at}}</td>
                         <td class="text-center">
                             <a data-id="{{ $data->id }}" type="button" data-coreui-toggle="modal" data-coreui-target="#deleteBlog" class=" btn-delete btn btn-danger open-modal-blog text-white"><i class="fa fa-solid fa-trash"></i></a>
-                            <a href="{{ URL::to('/admin/blog/edit/'.$data->id)}}" type="button" class="btn-search btn btn-primary"><i class="fa fa-solid fa-wrench"></i></a>
+                            <a href="{{ route('admin.blog.edit',['id' =>$data->id]) }}" type="button" class="btn-search btn btn-primary"><i class="fa fa-solid fa-wrench"></i></a>
                         </td>
                     </tr>
                     @endif

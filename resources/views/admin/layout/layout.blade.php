@@ -60,7 +60,7 @@
                         <div class="simplebar-content-wrapper" tabindex="0" role="region" aria-label="scrollable content" style="height: 100%; overflow: hidden scroll;">
                             <div class="simplebar-content" style="padding: 0px;">
                             <li class="nav-item ">
-                                    <a class="nav-link {{ request()->segment(2) === null ? 'active' : '' }}" href="{{ URL::to('/admin')}}">
+                                    <a class="nav-link {{ request()->segment(2) === null ? 'active' : '' }}" href="{{ route('admin')}}">
                                         <svg class="nav-icon">
                                             <use
                                                 xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-speedometer') }}">
@@ -68,7 +68,7 @@
                                         </svg> Dashboard</a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link {{ request()->segment(2) === 'recruitment' ? 'active' : '' }}" href="{{ URL::to('/admin/recruitment')}}">
+                                    <a class="nav-link {{ request()->segment(2) === 'recruitment' ? 'active' : '' }}" href="{{ route('index') }}">
                                         <svg class="nav-icon">
                                             <use
                                                 xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-building') }}">
@@ -76,17 +76,17 @@
                                         </svg> Recruitmens</a>
                                 </li>
                                 <li class="nav-group">
-                                    <a class="nav-link nav-group-toggle" href="{{ URL::to('/admin/post')}}">
+                                    <a class="nav-link nav-group-toggle">
                                         <svg class="nav-icon">
                                     <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-cursor') }}"></use>
                                     </svg> Post</a>
                                     <ul class="nav-group-items">
-                                        <li class="nav-item"><a class="nav-link" href="{{ URL::to('/admin/post/member')}}"><span class="nav-icon"></span>Member</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="{{ URL::to('/admin/post/office')}}"><span class="nav-icon"></span>Office</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="{{ route('index_member',['type' => 'member']) }}"><span class="nav-icon"></span>Member</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="{{ route('index_member',['type' => 'office']) }}"><span class="nav-icon"></span>Office</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link {{ request()->segment(2) === 'blog' ? 'active' : '' }}" href="{{ URL::to('/admin/blog')}}">
+                                    <a class="nav-link {{ request()->segment(2) === 'blog' ? 'active' : '' }}" href="{{ route('index_blog') }}">
                                         <svg class="nav-icon">
                                             <use
                                                 xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-address-book') }}">
@@ -99,8 +99,8 @@
                                     <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-user') }}"></use>
                                     </svg>Contact</a>
                                     <ul class="nav-group-items">
-                                        <li class="nav-item"><a class="nav-link" href="{{ URL::to('/admin/contact')}}"><span class="nav-icon"></span>Information Contact</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="{{ URL::to('/admin/contact/config')}}"><span class="nav-icon"></span>Config</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="{{ route('contact.index') }}"><span class="nav-icon"></span>Information Contact</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="{{ route('index_config') }}"><span class="nav-icon"></span>Config</a></li>
                                     </ul>
                                 </li>
                             </div>

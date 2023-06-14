@@ -5,7 +5,7 @@
             <div class="t_flex banner_content">
                 <h2 class="heading">{{ __('message.hello_world')}}</h2>
                 <p class="message">{{ __('message.home_description')}}</p>
-                <a href="{{ URL::to('/about')}}">
+                <a href="{{ route('about') }}">
                     <button class="t_flex t_button button_banner" type="button">
                             <span class="text">{{ __('message.home_about')}}</span>
                             <span class="icon">
@@ -49,7 +49,7 @@
                                 <div class="message">
                                     {{ __('message.home_title_vision_message')}}
                                 </div>
-                                <a href="{{ URL::to('/about#our_vison')}}" class="see_more">
+                                <a href="{{ route('about') }}#our_vison" class="see_more">
                                     <span class="text">{{ __('message.btn_member_bravo')}}</span>
                                     <span class="see_more_icon">
                                             <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -80,7 +80,7 @@
                                 <div class="message">
                                     {{ __('message.home_title_mission_message')}}
                                 </div>
-                                <a href="{{ URL::to('/about#our_mission')}}" class="see_more">
+                                <a href="{{ route('about') }}#our_mission" class="see_more">
                                     <span class="text">{{ __('message.btn_member_bravo')}}</span>
                                     <span class="see_more_icon">
                                             <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -111,7 +111,7 @@
                                 <div class="message">
                                     {{ __('message.home_title_core_message')}}
                                 </div>
-                                <a href="{{ URL::to('/about#contact_us_core_value')}}" class="see_more">
+                                <a href="{{ route('about') }}#contact_us_core_value" class="see_more">
                                     <span class="text">{{ __('message.btn_member_bravo')}}</span>
                                     <span class="see_more_icon">
                                             <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -173,7 +173,7 @@
                     <div class="image_below">
                         <img src="{{ asset('assets/img_client/layout/2022-05-04-09-06-03-view-phong-hop-2.png')}}">
                     </div>
-                    <a href="{{ URL::to('/post/member')}}">
+                    <a href="{{ route('post', ['type' => 'member']) }}">
                         <button class="t_flex t_button button_banner" type="button">
                                 <span class="text">{{ __('message.home_about')}}</span>
                                 <span class="icon">
@@ -197,7 +197,7 @@
                 <div class="message">
                 {{ __('message.home_our_team_message')}}
                 </div>
-                <a class="button_desk" href="{{ URL::to('/recruitment')}}">
+                <a class="button_desk"  href="{{ route('recruitment.index') }}">
                     <button class="t_flex t_button button_banner " type="button">
                             <span class="text">Tham gia cùng chúng tôi</span>
                         </button>

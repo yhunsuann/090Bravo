@@ -14,7 +14,7 @@
         <h6 class="title">Search</h6>
     </div>
 </div>
-<form class="mb-0" action="{{ URL::to('/admin/contact/search') }}" method="get">
+<form class="mb-0" action="{{ route('admin.contact.search') }}" method="get">
     <div class="row search">
         <div class="col">
             @csrf
@@ -63,7 +63,7 @@
     <div class="row">
         <div class="col p-0 bottom-search">
             <input type="submit" class="btn-search btn btn-primary float-end m-2 mr-0 py-1" value="Search"></input>
-            <a href="{{URL::to('/admin/contact')}}" class="btn-reset btn btn-secondary text-dark float-end m-2 py-1" value="Reset">Reset</a>
+            <a href="{{ route('contact.index') }}" class="btn-reset btn btn-secondary text-dark float-end m-2 py-1" value="Reset">Reset</a>
         </div>
     </div>
 </form>

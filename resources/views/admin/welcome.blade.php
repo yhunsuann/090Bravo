@@ -59,7 +59,7 @@
                                     </div>
                                     @php Session::forget('success'); @endphp 
                                     @endif
-                                    <form action="{{ URL::to('/admin/user/login')}}" method="post">
+                                    <form action="{{ route('admin.user.login') }}" method="post">
                                         @csrf
                                         <div class="input-group mb-3"><span class="input-group-text">
                                                 <svg class="icon">
@@ -76,7 +76,7 @@
                                         <div class="row">
                                             <div class="col-12">
                                                 <input class="btn btn-primary px-4 mx-auto d-block a-forgetpass" type="submit" value="Login"></input>
-                                                <a href="{{URL::to('/admin/user/forgot-password')}}" class="float-end text-decoration-none a-forgetpass">Forget password</a>
+                                                <a href="{{ route('admin.user.forgot-password') }}" class="float-end text-decoration-none a-forgetpass">Forget password</a>
                                             </div>
                                         </div>
                                     </form>

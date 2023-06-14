@@ -58,7 +58,7 @@
                         <div class="card col-md-7 p-4 mb-0">
                             <div class="card-body">
                                 <h1>Set new Pass</h1>
-                                <form method="POST" action="{{ URL::to('/admin/user/update-new-pass')}}">
+                                <form method="POST" action="{{ route('admin.user.update-new-pass') }}">
                                     @csrf
                                     <div class="input-group mb-3">
                                         <span class="input-group-text">

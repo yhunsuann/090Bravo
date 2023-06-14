@@ -61,7 +61,7 @@
                                 @php Session::forget('success'); @endphp
                                 @endif
                                 <h2 class="text-center">Forget Password</h2>
-                                <form method="POST" action="{{URL::to('/admin/user/recover-pass')}}">
+                                <form method="POST" action="{{ route('admin.user.recover-pass') }}">
                                     @csrf
                                     <div class="input-group mb-3">
                                         <span class="input-group-text">

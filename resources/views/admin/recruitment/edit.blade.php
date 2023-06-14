@@ -6,7 +6,7 @@
 </div>
 @php Session::forget('success'); @endphp @endif
 <h5 class="title-create">Form edit</h5>
-<form class="form-create bg-white p-4" action="{{ URL::to('/admin/recruitment/update/'. request()->segment(4))}}" method="POST" enctype="multipart/form-data">
+<form class="form-create bg-white p-4" action="{{ route('admin.recruitment.update',['id' => request()->segment(4)]) }}" method="POST" enctype="multipart/form-data">
     @csrf
     <ul class="nav nav-pills" id="pills-tab" role="tablist">
         @forelse ($result as $key => $data)
