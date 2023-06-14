@@ -99,6 +99,7 @@ Route::group(['middleware' => 'Language'], function() {
     Route::get('/about',function () {
         return view('client.home.about');
     })->name('about');
+    
     Route::group(['prefix' => 'recruitment'], function () {
         Route::get('/',[RecruitmentController::class,'index'])->name('recruitment.index');
         Route::get('/detail/{id}',[RecruitmentController::class,'recruitmentDetails'])->name('recruitment.detail');
