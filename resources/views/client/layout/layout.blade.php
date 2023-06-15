@@ -209,17 +209,17 @@
                                         <div class="title">{{ __('message.company') }}</div>
                                         <ul class="menu_nav">
                                             <li>
-                                                <a href="about-us.html">
+                                                <a href="{{ route('index_home') }}">
                                                     <span class="text">{{ __('message.home') }}</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="career.html">
+                                                <a href="{{ route('recruitment.index') }}">
                                                     <span class="text">{{ __('message.careers') }}</span>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="contact-us.html">
+                                                <a href="{{ route('index_contact') }}">
                                                     <span class="text">{{ __('message.contact') }}</span>
                                                 </a>
                                             </li>
@@ -229,7 +229,7 @@
                                         <div class="title">{{ __('message.policy') }}</div>
                                         <ul class="menu_nav">
                                             <li>
-                                                <a href="policy.html">
+                                                <a>
                                                     <span class="text">{{ __('message.policy') }}</span>
                                                 </a>
                                             </li>
