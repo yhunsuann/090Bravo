@@ -7,10 +7,26 @@ use App\Repositories\Interfaces\RecruitmentTranslateRepositoryInterface;
 use App\Models\Recruitment;
 use App\Models\RecruitmentTranslate;
 class RecruitmentRepository implements RecruitmentRepositoryInterface
-{
+{    
+    /**
+     * model
+     *
+     * @var mixed
+     */
     protected $model;
+        
+    /**
+     * recruitmentTranslateRepository
+     *
+     * @var mixed
+     */
     protected $recruitmentTranslateRepository;
-
+    
+    /**
+     * __construct
+     *
+     * @return void
+     */
     public function __construct(
         Recruitment $model,  
         RecruitmentTranslateRepositoryInterface $recruitmentTranslateRepository
@@ -18,8 +34,13 @@ class RecruitmentRepository implements RecruitmentRepositoryInterface
         $this->model = $model;
         $this->recruitmentTranslateRepository = $recruitmentTranslateRepository;
     }
-    
-
+        
+    /**
+     * allRecruitments
+     *
+     * @param  mixed $data
+     * @return void
+     */
     public function allRecruitments($data = [])
     {
         $status = $data['status'] ?? null;
@@ -27,23 +48,28 @@ class RecruitmentRepository implements RecruitmentRepositoryInterface
         $dateFrom = $data['dateFrom'] ?? null;
         $dateTo = $data['dateTo'] ?? null;
     
-        $recruitments =  $this->model->whereHas('recruitmentTranslates', function ($query) use ($keyword) {
-                                            $query->when($keyword, function ($q) use ($keyword) {
-                                                $q->where('title', 'like', '%' . $keyword . '%');
-                                            });
-                                        })
-                                        ->when($status, function ($query) use ($status) {
-                                            $query->where('status', $status);
-                                        })
-                                        ->when($dateFrom && $dateTo, function ($query) use ($dateFrom, $dateTo) {
-                                            $query->whereBetween('created_at', [$dateFrom, $dateTo]);
-                                        })
-                                        ->with('recruitmentTranslates')
-                                        ->paginate(5);
-    
-        return $recruitments;
+        return $this->model
+                    ->with(['recruitment_default'])
+                    ->whereHas('recruitmentTranslates', function ($query) use ($keyword) {
+                        $query->when(!empty($keyword), function ($q) use ($keyword) {
+                            $q->where('title', 'like', '%' . $keyword . '%');
+                        });
+                    })
+                    ->when(!empty($status), function ($query) use ($status) {
+                        $query->where('status', $status);
+                    })
+                    ->when($dateFrom && $dateTo, function ($query) use ($dateFrom, $dateTo) {
+                        $query->whereBetween('created_at', [$dateFrom, $dateTo]);
+                    })
+                    ->paginate(5);
     }
-
+    
+    /**
+     * addRecruitments
+     *
+     * @param  mixed $data
+     * @return void
+     */
     public function addRecruitments($data)
     {
         $recruitmentValue = [
@@ -65,7 +91,14 @@ class RecruitmentRepository implements RecruitmentRepositoryInterface
 
         $this->model->recruitmentTranslates()->insert($recruitmentTranslateValue);
     }
-    
+        
+    /**
+     * updateCruitments
+     *
+     * @param  mixed $data
+     * @param  mixed $id
+     * @return void
+     */
     public function updateCruitments($data, $id)
     {
         $recruitmentValue = [
@@ -90,13 +123,25 @@ class RecruitmentRepository implements RecruitmentRepositoryInterface
             ->updateRecruitmentTranslate($id, $data['language_code'][$i], $recruitmentTranslateValue[$i]);
         } 
     }
-
+    
+    /**
+     * deleteCruitments
+     *
+     * @param  mixed $id
+     * @return void
+     */
     public function deleteCruitments($id)
     {
         $recruitments = $this->model->find($id);
         $recruitments->delete();
     }
-   
+       
+    /**
+     * editCruitments
+     *
+     * @param  mixed $id
+     * @return void
+     */
     public function editCruitments($id)
     {
         $recruitment = $this->model->find($id);
@@ -105,7 +150,13 @@ class RecruitmentRepository implements RecruitmentRepositoryInterface
         return $data;
 
     } 
-
+    
+    /**
+     * deleteMutipleBaseIds
+     *
+     * @param  mixed $ids
+     * @return void
+     */
     public function deleteMutipleBaseIds($ids)
     {
         return $this->model->destroy($ids);  

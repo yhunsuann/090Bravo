@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -10,36 +10,73 @@ use App\Repositories\Interfaces\LanguageRepositoryInterface;
 use App\Services\FileUploader;
 use App\Http\Controllers\Controller;
 
-class RecruitmentAdminController extends Controller
-{
-    private $recruitmentRepository;
-    private $languageRepository;
+class RecruitmentController extends Controller
+{    
+    /**
+     * recruitmentRepository
+     *
+     * @var mixed
+     */
+    protected $recruitmentRepository;
+        
+    /**
+     * languageRepository
+     *
+     * @var mixed
+     */
+    protected $languageRepository;
+        
+    /**
+     * fileUploader
+     *
+     * @var mixed
+     */
     protected $fileUploader;
-
+    
+    /**
+     * __construct
+     *
+     * @return void
+     */
     public function __construct(
         RecruitmentRepositoryInterface $recruitmentRepository, 
-        FileUploader $fileUploader,
         LanguageRepositoryInterface $languageRepository
     ) {
         $this->recruitmentRepository = $recruitmentRepository;
         $this->languageRepository = $languageRepository;
-        $this->fileUploader = $fileUploader;
+        $this->fileUploader = new FileUploader;
     }
-
-    public function index()
+    
+    /**
+     * get index page
+     *
+     * @return void
+     */
+    public function index(Request $request)
     { 
-        $value = $this->recruitmentRepository->allRecruitments();
-      
-        return view('admin.recruitment.home', ['result' => $value]);    
-    }
+        $recruitments = $this->recruitmentRepository->allRecruitments($request->all());
 
-    public function createRecruitment()
+        return view('admin.recruitment.index', compact('recruitments'));    
+    }
+    
+    /**
+     * Create recruitment page
+     *
+     * @return void
+     */
+    public function create()
     {
         $data = $this->languageRepository->listLanguageRecruitment();
         return view('admin.recruitment.create')->with('result',$data);
     }
-
-    public function addRecruitment(Request $request)
+    
+    /**
+     * Add recruitment
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function store(Request $request)
     {
         $qty = count($request['count']);
         $time = Carbon::now();
@@ -77,24 +114,43 @@ class RecruitmentAdminController extends Controller
 
         $this->recruitmentRepository->addRecruitments($data);
 
-        return redirect()->route('index')->with('success', 'Create Recruitments Successful');
+        return redirect()->route('admin.recruitment.index')->withSuccess('Create Recruitments Successful');
     }
-
-    public function deleteRecruitment($id)
+    
+    /**
+     * delete
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function delete($id)
     {
         $this->recruitmentRepository->deleteCruitments($id);
 
-        return redirect()->route('index')->with('success', 'Delete Recruitments Successful'); 
+        return back()->withSuccess('Delete Recruitments Successful'); 
     }
-
-    public function editRecruitment($id)
+    
+    /**
+     * edit
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function edit($id)
     {
         $data = $this->recruitmentRepository->editCruitments($id);
 
         return view('admin.recruitment.edit', ['result' => $data]);
     }
-
-    public function updateRecruitment(Request $request,$id)
+    
+    /**
+     * update
+     *
+     * @param  mixed $request
+     * @param  mixed $id
+     * @return void
+     */
+    public function update(Request $request, $id)
     { 
         $validator = Validator::make($request->all(), [
             'title' => 'required',
@@ -103,11 +159,11 @@ class RecruitmentAdminController extends Controller
             'status' => 'required',
         ]);
         if ($validator->fails()) {
-            return redirect()->back()->with('success', 'Please enter full information !'); 
+            return back()->withErrors('Please enter full information !'); 
         }
 
         if (in_array(null, $request['content']) |in_array(null, $request['title']) | in_array(null, $request['description'])  ) {
-            return redirect()->back()->with('success', 'Please enter full information !'); 
+            return back()->withErrors('Please enter full information !'); 
         }
 
         $qty = count($request['count']);
@@ -129,29 +185,24 @@ class RecruitmentAdminController extends Controller
 
         $this->recruitmentRepository->updateCruitments($data,$id);
 
-        return redirect()->route('index')->with('success', 'Edit Recruitments Successful');
+        return redirect()->route('admin.recruitment.index')->withSuccess('Edit Recruitments Successful');
     }
-
-    public function deleteSelect(Request $request)
+    
+    /**
+     * deletes
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function deletes(Request $request)
     {
         if (!$request->filled('ids')) {
-            return redirect()->back()->with('success', 'Please select at least 1 object to delete'); 
+            return back()->withErrors('Please select at least 1 object to delete'); 
         } else {
             $ids = $request->ids;
             $this->recruitmentRepository->deleteMutipleBaseIds($ids);
 
-            return redirect()->route('index')->with('success', 'Delete Recruitments Successful');
+            return back()->withSuccess('Delete Recruitments Successful');
         }
-    }
-
-    public function searchData(Request $request)
-    {
-        if (!$request->filled('keyword') && !$request->filled('status') && !$request->filled('dateTo') && !$request->filled('dateFrom')) {
-            return redirect()->route('index');
-        } else {
-            $result = $this->recruitmentRepository->allRecruitments($request->all());
-            
-            return view('admin.recruitment.home')->with('result',$result);
-        }        
     }
 }

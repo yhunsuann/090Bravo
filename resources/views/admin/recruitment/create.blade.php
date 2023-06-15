@@ -7,9 +7,9 @@
         @php Session::forget('success'); 
         @endphp 
     @endif
-<h4 class="mb-4">Create Cruitments</h4>
+<h4 class="mb-4">Create Recruitments</h4>
 <h5 class="title-create">Form create</h5>
-<form class="form-create bg-white p-4" action="{{ route('admin.recruitment.add')}}" method="POST" enctype="multipart/form-data">
+<form class="form-create bg-white p-4" method="POST" enctype="multipart/form-data">
     @csrf
     <ul class="nav nav-pills" id="pills-tab" role="tablist">
         @forelse ($result as $key => $data)
@@ -82,16 +82,14 @@
             <label for="image" class="form-label">Image</label>
             <input type="file" class="form-control" name="upload_image">
         </div>
-        <div class="mb-3 col-6 pt-4">
+        <div class="mb-3 col-6">
             <label for="status" class="form-label">Status</label>
-            <select name="status" class="form-select" id="status">
-                        <option value="Active">Active</option>
-                        <option value="UnActive">UnActive</option>
-                        <option value="Expired">Expired</option>
-                        <option value="Closed">Closed</option>
+            <select name="status" class="form-select" id="status" style="width: 100%">
+                <option value="active">Active</option>
+                <option value="inactive">Inactive</option>
             </select>
         </div>
     </div>
-    <input type="submit" class="btn-create btn btn-success text-white" value="Create"></input>
+    <input type="submit" class="btn btn-primary btn-save text-white" value="Create"></input>
 </form>
 @endsection
