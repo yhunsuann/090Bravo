@@ -9,7 +9,7 @@
                 @forelse($result as $blog) @forelse($blog->blogTranslates as $data)
                 @if(App::getLocale() === $data->language_code)
                 <div class="item">
-                    <a href="{{ route('blog.detail', [$blog->id]) }}">
+                    <a href="{{ route('blog.detail', $blog->id) }}">
                         <div class="image_item">
                             <img src="{{ asset('assets/img/blog/'.$blog->image)}}">
                         </div>

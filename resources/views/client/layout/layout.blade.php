@@ -82,10 +82,10 @@
                                                     </div>
                                                     <ul class="sub_menu">
                                                         <li class="level2">
-                                                            <a href="{{ route('post',['type' => 'office']) }}">{{ __('message.office') }}</a>
+                                                            <a href="{{ route('post','office') }}">{{ __('message.office') }}</a>
                                                         </li>
                                                         <li class="level2">
-                                                            <a href="{{ route('post',['type' => 'member']) }}">{{ __('message.member') }}</a>
+                                                            <a href="{{ route('post','member') }}">{{ __('message.member') }}</a>
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -126,10 +126,10 @@
                                         </div>
                                         <ul class="sub_menu">
                                             <li class="">
-                                                <a href="{{ route('post', ['type' => 'office']) }}">{{ __('message.office') }}</a>
+                                                <a href="{{ route('post', 'office') }}">{{ __('message.office') }}</a>
                                             </li>
                                             <li class="">
-                                                <a href="{{ route('post', ['type' => 'member']) }}">{{ __('message.member') }}</a>
+                                                <a href="{{ route('post', 'member') }}">{{ __('message.member') }}</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -148,9 +148,9 @@
                                 <div class="t_flex language_title">
                                     <div class="name">
                                         @if(App::getLocale() === 'vi')
-                                        <a href="{!! route('user.change-language', ['vi']) !!}">Tiếng Việt</a> 
+                                        <a href="{!! route('user.change-language', 'vi') !!}">Tiếng Việt</a> 
                                         @else
-                                        <a href="{!! route('user.change-language', ['en']) !!}">English</a>
+                                        <a href="{!! route('user.change-language', 'en') !!}">English</a>
                                         @endif
                                     </div>
                                     <div class="arrow">
@@ -164,9 +164,9 @@
                                     <ul>
                                         <li class="item_modal">
                                             @if(App::getLocale() === 'vi')
-                                            <a href="{!! route('user.change-language', ['en']) !!}">English</a>                                     
+                                            <a href="{!! route('user.change-language', 'en') !!}">English</a>                                     
                                             @else
-                                            <a href="{!! route('user.change-language', ['vi']) !!}">Tiếng Việt</a> 
+                                            <a href="{!! route('user.change-language', 'vi') !!}">Tiếng Việt</a> 
                                             @endif
                                         </li>
                                     </ul>

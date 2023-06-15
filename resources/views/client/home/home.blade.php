@@ -173,7 +173,7 @@
                     <div class="image_below">
                         <img src="{{ asset('assets/img_client/layout/2022-05-04-09-06-03-view-phong-hop-2.png')}}">
                     </div>
-                    <a href="{{ route('post', ['type' => 'member']) }}">
+                    <a href="{{ route('post', 'member') }}">
                         <button class="t_flex t_button button_banner" type="button">
                                 <span class="text">{{ __('message.home_about')}}</span>
                                 <span class="icon">

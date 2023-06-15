@@ -32,7 +32,7 @@
                     @forelse ($recruitment as $recruitment) @forelse ($recruitment->recruitmentTranslates as $data)
                     @if(App::getLocale() === $data->language_code)
                     <div class="item_job">
-                        <a href="{{ route('recruitment.detail', [$data->recruitment_id]) }}" class="name">{{ $data->title}}</a>
+                        <a href="{{ route('recruitment.detail', $data->recruitment_id) }}" class="name">{{ $data->title}}</a>
                         <div class="deadline">{{ $recruitment->created_at}}</div>
                     </div>
                     @endif 
@@ -70,7 +70,7 @@
                                 </a>
                             </div>
                             <div class="t_line"></div>
-                            <a href="{{ route('recruitment.detail', [$data->recruitment_id]) }}" class="t_flex see_more">
+                            <a href="{{ route('recruitment.detail', $data->recruitment_id) }}" class="t_flex see_more">
                                 <span class="text">{{ __('message.btn_member_bravo')}}</span>
                                 <span class="icon">
                                             <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
