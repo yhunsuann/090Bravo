@@ -30,10 +30,12 @@
                 <div class="other_jobs">
                     <div class="title">Các vị trí khác</div>
                     @forelse ($recruitment as $recruitment) @forelse ($recruitment->recruitmentTranslates as $data)
+                    @if(App::getLocale() === $data->language_code)
                     <div class="item_job">
-                        <a href="thuc-tap-sinh-tuyen-dung-16817131.html" class="name">{{ $data->title}}</a>
+                        <a href="{{ route('recruitment.detail', [$data->recruitment_id]) }}" class="name">{{ $data->title}}</a>
                         <div class="deadline">{{ $recruitment->created_at}}</div>
                     </div>
+                    @endif 
                     @empty
                     <div></div>
                     @endforelse @empty
