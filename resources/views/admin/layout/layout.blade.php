@@ -81,8 +81,8 @@
                                     <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-cursor') }}"></use>
                                     </svg> Post</a>
                                     <ul class="nav-group-items">
-                                        <li class="nav-item"><a class="nav-link" href="{{ route('index_member',['type' => 'member']) }}"><span class="nav-icon"></span>Member</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="{{ route('index_member',['type' => 'office']) }}"><span class="nav-icon"></span>Office</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="{{ route('index_member', ['type' => 'member']) }}"><span class="nav-icon"></span>Member</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="{{ route('index_member', ['type' => 'office']) }}"><span class="nav-icon"></span>Office</a></li>
                                     </ul>
                                 </li>
                                 <li class="nav-item">

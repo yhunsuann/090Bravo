@@ -71,7 +71,7 @@
                         <td>{{ $data->created_at}}</td>
                         <td class="text-center">
                             <a data-id="{{ $data->id }}" type="button" data-coreui-toggle="modal" data-coreui-target="#deleteBlog" class=" btn-delete btn btn-danger open-modal-blog text-white"><i class="fa fa-solid fa-trash"></i></a>
-                            <a href="{{ route('admin.blog.edit',['id' =>$data->id]) }}" type="button" class="btn-search btn btn-primary"><i class="fa fa-solid fa-wrench"></i></a>
+                            <a href="{{ route('admin.blog.edit',[$data->id]) }}" type="button" class="btn-search btn btn-primary"><i class="fa fa-solid fa-wrench"></i></a>
                         </td>
                     </tr>
                     @endif
