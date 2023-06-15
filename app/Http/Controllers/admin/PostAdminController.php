@@ -63,7 +63,7 @@ class PostAdminController extends Controller
         $data['description'] = $request->description;
         $data['images'] = $request->image;
         $data['language_code'] = $request->language_code;
-   
+
         $this->postRepository->updatePost($data, $type);
         
         return redirect()->back();

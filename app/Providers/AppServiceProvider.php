@@ -79,12 +79,7 @@ class AppServiceProvider extends ServiceProvider
     }
     
     public function boot(Request $request)
-    {
-        $protocol = $request->header('X-Forwarded-Proto');
-        if ($protocol && strtolower($protocol) === 'https') {
-            URL::forceScheme(scheme:'https');
-        }
-        
+    {      
         Paginator::useBootstrap();  
     }
 }

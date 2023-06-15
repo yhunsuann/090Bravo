@@ -38,7 +38,7 @@
                                     </a>
                                 </div>
                                 <div class="t_line"></div>
-                                <a href="{{ URL::to('/recruitment/detail/'.$data->recruitment_id)}}" class="t_flex see_more">
+                                <a href="{{ route('recruitment.detail', $data->recruitment_id) }}" class="t_flex see_more">
                                     <span class="text">{{ __('message.read_more')}}</span>
                                     <span class="icon">
                                         <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -66,7 +66,7 @@
                 <p>{{ __('message.content_intership_program') }}</p>
                 <div data-cke-hidden-sel="1" data-cke-temp="1" style="position:fixed;top:0;left:-1000px">ảnh widget</div>
             </div>
-            <a href="c/internship-program-16509403.html">
+            <a href="{{ route('recruitment.index')}}">
                 <button class="t_flex t_button button_banner" type="button">
             <span class="text">{{ __('message.btn_intership_program') }}</span>
         </button>
@@ -92,7 +92,7 @@
                 <div class="message">
                 {!! __('message.content_member_bravo') !!}
                 </div>
-                <a href="people.html">
+                <a href="{{ route('post', 'member') }}">
                     <button class="t_flex t_button button_banner" type="button">
                 <span class="text">{{ __('message.btn_member_bravo') }}</span>
                 <span class="icon">
@@ -116,7 +116,7 @@
                 <div class="message">
                 {!! __('message.content_culture') !!}
                 </div>
-                <a href="about-us.html">
+                <a href="{{ route('about')}}">
                     <button class="t_flex t_button button_banner" type="button">
                 <span class="text">{{ __('message.btn_member_bravo') }}</span>
                 <span class="icon">

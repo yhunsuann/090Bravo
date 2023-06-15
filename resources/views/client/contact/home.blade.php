@@ -48,7 +48,7 @@
             <div class="t_flex content_left">
                 <div class="heading">{{ __('message.contact')}}</div>
                 <div class="contact_box">
-                    <form action="{{ URL::to('/contact/submit')}}" method="post">
+                    <form action="{{ route('contact.submit') }}" method="post">
                         @csrf
                         <input name="name" type="text" placeholder="{{ __('message.full_name')}}" class="name">
                         <input type="email" name="email"  placeholder="{{ __('message.email')}}" class="email">
@@ -73,7 +73,7 @@
         <div class="t_container t_flex banner_wrapper">
             <div class="heading">{{ __('message.btn_intership_program')}}</div>
             <div class="message">{{ __('message.content_intership_program')}}</div>
-            <a href="{{ URL::to('/recruitment')}}">
+            <a href="{{ route('recruitment.index') }}">
                 <button class="t_flex t_button button_banner" type="button">
                         <span class="text">{{ __('message.btn_intership_program')}}</span>
                     </button>

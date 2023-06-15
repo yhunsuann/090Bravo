@@ -21,7 +21,7 @@ class BlogController extends Controller
     return view('client.blog.home',['result' => $value]);
   }
 
-  public function recruitmentDetails($id)
+  public function blogDetails($id)
   {
       $data = $this->blogRepository->editBlog($id);
  

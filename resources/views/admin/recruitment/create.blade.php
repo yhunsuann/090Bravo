@@ -9,7 +9,7 @@
     @endif
 <h4 class="mb-4">Create Cruitments</h4>
 <h5 class="title-create">Form create</h5>
-<form class="form-create bg-white p-4" action="{{ URL::to('/admin/recruitment/add')}}" method="POST" enctype="multipart/form-data">
+<form class="form-create bg-white p-4" action="{{ route('admin.recruitment.add')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <ul class="nav nav-pills" id="pills-tab" role="tablist">
         @forelse ($result as $key => $data)

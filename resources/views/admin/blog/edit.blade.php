@@ -1,7 +1,7 @@
 @extends('admin.layout.layout') @section('content')
 <h4 class="mb-4">Edit Blog</h4>
 <h5 class="title-create">Form edit</h5>
-<form class="form-create bg-white p-4" action="{{ URL::to('/admin/blog/update/'. request()->segment(4))}}" method="POST" enctype="multipart/form-data">
+<form class="form-create bg-white p-4" action="{{ route('admin.blog.update', request()->segment(4)) }}" method="POST" enctype="multipart/form-data">
     @csrf
     <ul class="nav nav-pills" id="pills-tab" role="tablist">
         @forelse ($result as $key => $data)

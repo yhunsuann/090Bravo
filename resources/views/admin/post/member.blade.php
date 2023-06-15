@@ -8,7 +8,7 @@
         @php Session::forget('success'); @endphp
     @endif
     <h5 class="title-create">Post office edit</h5>
-    <form class="form-create bg-white p-4" action="{{ URL::to('/admin/post/update/'. request()->segment(3))}}" method="POST" enctype="multipart/form-data">
+    <form class="form-create bg-white p-4" action="{{ route('admin.post.update', request()->segment(3)) }}" method="POST" enctype="multipart/form-data">
         @csrf
         <ul class="nav nav-pills" id="pills-tab" role="tablist">
             <input type="hidden" name="" value="">

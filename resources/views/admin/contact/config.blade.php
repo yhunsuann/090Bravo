@@ -1,6 +1,6 @@
 @extends('admin.layout.layout') @section('content')
 <h5 class="title-create">Contact config</h5>
-<form class="form-create bg-white p-4" action="{{ URL::to('/admin/contact/config/save')}}" method="POST" enctype="multipart/form-data">
+<form class="form-create bg-white p-4" action="{{ route('admin.contact.config.save')}}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="container p-0" id="container-form">
         @forelse($result as $data)
