@@ -56,10 +56,11 @@
             <div class="more_jobs_content">
                 <div class="owl-carousel owl-theme slide_items">
                     @forelse ($allrecruitment as $recruit) @forelse ($recruit->recruitmentTranslates as $data)
+                    @if(App::getLocale() === $data->language_code)
                     <div class="item_wrapper">
                         <div class="item">
                             <div class="content_item">
-                                <a href="admin-officer-16594970.html" class="desc">
+                                <a class="desc">
                                     <div class="heading">{{ $data->title}}</div>
                                     <div class="message">
                                         <p>{{ $data->description }}</p>
@@ -67,7 +68,7 @@
                                 </a>
                             </div>
                             <div class="t_line"></div>
-                            <a href="admin-officer-16594970.html" class="t_flex see_more">
+                            <a href="{{ route('recruitment.detail',['id' => $data->recruitment_id]) }}" class="t_flex see_more">
                                 <span class="text">Đọc thêm</span>
                                 <span class="icon">
                                             <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -78,6 +79,7 @@
                         </div>
 
                     </div>
+                    @endif 
                     @empty
                     <div></div>
                     @endforelse @empty

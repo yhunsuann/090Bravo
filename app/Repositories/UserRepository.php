@@ -45,7 +45,7 @@ class UserRepository implements UserRepositoryInterface
                     'email' => $email
                 );
 
-                Mail::send('admin.forget_pass_notify',['data' => $data],function($message) use($title_mail, $data){
+                Mail::send('admin.recruitment.forget_pass_notify',['data' => $data],function($message) use($title_mail, $data){
                     $message->to($data['email'])->subject($title_mail);
                     $message->from('mienphi221@gmail.com', $title_mail);
                 }); 
