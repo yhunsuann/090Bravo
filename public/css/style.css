@@ -15264,7 +15264,7 @@ th {
 
 .nav-pills .nav-item .active {
     background-color: #d9dbdf;
-    border: 1px solid var(--cui-border-color);
+    /* border: 1px solid var(--cui-border-color); */
     color: rgba(var(--cui-black-rgb));
 }
 
@@ -15420,7 +15420,7 @@ p {
 }
 
 .upload__box {
-    padding: 40px;
+    padding: 40px 0;
 }
 
 .upload__inputfile {
@@ -15434,17 +15434,17 @@ p {
 
 .upload__btn {
     display: inline-block;
-    font-weight: 600;
+    font-weight: 300;
     color: #fff;
     text-align: center;
     min-width: 116px;
-    padding: 5px;
+    padding: 3px 10px;
     transition: all .3s ease;
     cursor: pointer;
-    border: 2px solid;
+    border: 1px solid;
     background-color: #4045ba;
     border-color: #4045ba;
-    border-radius: 10px;
+    border-radius: 3px;
     line-height: 26px;
     font-size: 14px;
     &:hover {

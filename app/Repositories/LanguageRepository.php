@@ -13,12 +13,22 @@ class LanguageRepository implements LanguageRepositoryInterface
     {
         $this->model = $model;
     }
-
+    
+    /**
+     * listLanguageRecruitment
+     *
+     * @return void
+     */
     public function listLanguageRecruitment()
     {
         return  $this->model->get();
     }
-    
+        
+    /**
+     * listLanguageBlog
+     *
+     * @return void
+     */
     public function listLanguageBlog()
     {
         return  $this->model->get();

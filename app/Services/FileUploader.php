@@ -4,11 +4,18 @@ namespace App\Services;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\UploadedFile;
 
 class FileUploader
-{
-    public function uploadFileRecruitment(Request $request)
+{    
+    /**
+     * uploadFileRecruitment
+     *
+     * @param  mixed $request
+     * @return void
+     */
+    public function uploadFile(Request $request, $path = 'recruitments')
     {
         if ($request->hasFile('upload_image')) {
             $ext = $request->file('upload_image')->extension();
@@ -17,14 +24,20 @@ class FileUploader
 
             $image = Image::make($file);
             $image->fit(535, 480);
-            $image->save(public_path('assets/img/cruitments') . '/' . $file_name);
+            $image->save(public_path("assets/img/$path") . '/' . $file_name);
 
             return $file_name;
         }
     
         return null;
     }
-    
+        
+    /**
+     * uploadFileContact
+     *
+     * @param  mixed $file
+     * @return void
+     */
     public function uploadFileContact(UploadedFile $file)
     {
             $ext = $file->extension();
@@ -32,27 +45,17 @@ class FileUploader
     
             $image = Image::make($file);
             $image->fit(535, 480);
-            $image->save(public_path('assets/img/contact') . '/' . $file_name);
+            $image->save(storage_path('contact') . '/' . $file_name);
 
             return $file_name;
     }
-
-    public function uploadFileBlog(Request $request)
-    {
-        if ($request->hasFile('upload_image')) {
-            $ext = $request->file('upload_image')->extension();
-            $file_name = time(). '-' . 'img.' .$ext;
-            $file = $request->file('upload_image');
-
-            $image = Image::make($file);
-            $image->fit(535, 480);
-            $image->save(public_path('assets/img/blog') . '/' . $file_name);
-
-            return $file_name;
-        }
     
-        return null;
-    }
+    /**
+     * uploadFilePost
+     *
+     * @param  mixed $request
+     * @return void
+     */
     public function uploadFilePost(Request $request)
     {
         if ($request->hasFile('upload_new')) {
@@ -77,4 +80,3 @@ class FileUploader
         return null;
     }  
 }
-?>

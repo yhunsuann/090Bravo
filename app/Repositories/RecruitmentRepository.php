@@ -58,10 +58,13 @@ class RecruitmentRepository implements RecruitmentRepositoryInterface
                     ->when(!empty($status), function ($query) use ($status) {
                         $query->where('status', $status);
                     })
-                    ->when($dateFrom && $dateTo, function ($query) use ($dateFrom, $dateTo) {
-                        $query->whereBetween('created_at', [$dateFrom, $dateTo]);
+                    ->when(!empty($dateFrom), function ($query) use ($dateFrom) {
+                        $query->whereDate('created_at', '>=', $dateFrom);
                     })
-                    ->paginate(5);
+                    ->when(!empty($dateTo), function ($query) use ($dateTo) {
+                        $query->whereDate('created_at', '<=', $dateTo);
+                    })
+                    ->paginate();
     }
     
     /**
@@ -105,14 +108,14 @@ class RecruitmentRepository implements RecruitmentRepositoryInterface
             'status' => $data['status']
         ];
 
-        if($data['image']){
+        if ($data['image']) {
             $recruitmentValue['image'] = $data['image'];
         }
 
         $this->model->Where('id', $id)->update($recruitmentValue);
         $qty = $data['count'];
 
-        for($i = 0; $i < $qty; $i++){
+        for ($i = 0; $i < $qty; $i++) {
             $recruitmentTranslateValue[$i] = [
                 'title' => $data['title'][$i],
                 'content' => $data['content'][$i],
@@ -120,7 +123,7 @@ class RecruitmentRepository implements RecruitmentRepositoryInterface
             ];
 
             $this->recruitmentTranslateRepository
-            ->updateRecruitmentTranslate($id, $data['language_code'][$i], $recruitmentTranslateValue[$i]);
+                ->updateRecruitmentTranslate($id, $data['language_code'][$i], $recruitmentTranslateValue[$i]);
         } 
     }
     
@@ -145,10 +148,9 @@ class RecruitmentRepository implements RecruitmentRepositoryInterface
     public function editCruitments($id)
     {
         $recruitment = $this->model->find($id);
-        $data = $recruitment->recruitmentTranslates;
+        $recruitment->load(['recruitmentTranslates']);
         
-        return $data;
-
+        return $recruitment;
     } 
     
     /**

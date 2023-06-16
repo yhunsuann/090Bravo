@@ -46,7 +46,7 @@ class RecruitmentController extends Controller
     {
         $data = $this->recruitmentRepository->editCruitments($id);
         $value = $this->recruitmentRepository->allRecruitments();
-    
+        
         return view('client.recruitment.detail', ['result' => $data , 'recruitment' => $value,'allrecruitment' =>$value]);
     }
 }

@@ -20,7 +20,6 @@
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-118965717-3"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker3.min.css') }}">
-    <link href="{{ asset('vendors/@coreui/chartjs/css/coreui-chartjs.css') }}" rel="stylesheet">
     <link href="{{ asset('css/summernote-bs4.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font/summernote.ttf') }}" rel="stylesheet">
     <link href="{{ asset('css/font/summernote.woff') }}" rel="stylesheet">

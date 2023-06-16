@@ -88,15 +88,15 @@ class RecruitmentController extends Controller
             'status' => 'required',
         ]);
         if ($validator->fails()) {
-            return redirect()->back()->with('success', 'Please enter full information !'); 
+            return back()->withErrors('Please enter full information !'); 
         }
 
-        if (in_array(null, $request['content']) |in_array(null, $request['title']) | in_array(null, $request['description'])  ) {
-            return redirect()->back()->with('success', 'Please enter full information !'); 
+        if (in_array(null, $request['content']) || in_array(null, $request['title']) || in_array(null, $request['description'])) {
+            return back()->withErrors('Please enter full information !'); 
         }
 
         if ($request->has('upload_image')) {
-            $file_name = $this->fileUploader->uploadFileRecruitment($request);
+            $file_name = $this->fileUploader->uploadFile($request);
             if ($file_name !== null) {
                 $request->merge(['image' => $file_name]);
             }
@@ -114,7 +114,7 @@ class RecruitmentController extends Controller
 
         $this->recruitmentRepository->addRecruitments($data);
 
-        return redirect()->route('admin.recruitment.index')->withSuccess('Create Recruitments Successful');
+        return redirect()->route('admin.recruitment.index')->withSuccess('Create Recruitments Successfully');
     }
     
     /**
@@ -127,7 +127,7 @@ class RecruitmentController extends Controller
     {
         $this->recruitmentRepository->deleteCruitments($id);
 
-        return back()->withSuccess('Delete Recruitments Successful'); 
+        return back()->withSuccess('Delete Recruitments Successfully'); 
     }
     
     /**
@@ -169,7 +169,7 @@ class RecruitmentController extends Controller
         $qty = count($request['count']);
         $data = array();
         if ($request->has('upload_image')) {
-            $file_name = $this->fileUploader->uploadFileRecruitment($request);
+            $file_name = $this->fileUploader->uploadFile($request);
             if ($file_name !== null) {
                 $request->merge(['image' => $file_name]);
             }
@@ -185,7 +185,7 @@ class RecruitmentController extends Controller
 
         $this->recruitmentRepository->updateCruitments($data,$id);
 
-        return redirect()->route('admin.recruitment.index')->withSuccess('Edit Recruitments Successful');
+        return redirect()->route('admin.recruitment.index')->withSuccess('Edit Recruitments Successfully');
     }
     
     /**

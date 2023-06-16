@@ -1,6 +1,6 @@
 <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
     <div class="sidebar-brand d-none d-md-flex">
-      BRAVO
+      090BRAVO
     </div>
     <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="init">
         <div class="simplebar-wrapper" style="margin: 0px;">
@@ -40,23 +40,33 @@
                                     <li class="nav-item"><a class="nav-link" href="{{ route('admin.post.office', 'office') }}"><span class="nav-icon"></span>Office</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link {{ request()->segment(2) === 'blog' ? 'active' : '' }}" href="{{ route('admin.blog.index') }}">
+                            <li class="nav-group">
+                                <a class="nav-link nav-group-toggle">
+                                    <svg class="nav-icon">
+                                <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-address-book') }}"></use>
+                                </svg> Blogs</a>
+                                <ul class="nav-group-items">
+                                    <li class="nav-item"><a class="nav-link" href="{{ route('admin.blog.index') }}"><span class="nav-icon"></span>List</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{{ route('admin.blog.create') }}"><span class="nav-icon"></span>Create</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link {{ request()->segment(2) === null ? 'active' : '' }}" href="{{ route('admin.contact.index')}}">
                                     <svg class="nav-icon">
                                         <use
-                                            xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-address-book') }}">
+                                            xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-user') }}">
                                         </use>
-                                    </svg> Blogs</a>
+                                    </svg> Contact
+                                </a>
                             </li>
-                            <li class="nav-group">
-                                <a class="nav-link nav-group-toggle" href="">
+                            <li class="nav-item ">
+                                <a class="nav-link {{ request()->segment(2) === null ? 'active' : '' }}" href="{{ route('admin.config.index')}}">
                                     <svg class="nav-icon">
-                                <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-user') }}"></use>
-                                </svg>Contact</a>
-                                <ul class="nav-group-items">
-                                    <li class="nav-item"><a class="nav-link" href="{{ route('admin.contact.index') }}"><span class="nav-icon"></span>Information Contact</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="{{ route('admin.config.index') }}"><span class="nav-icon"></span>Config</a></li>
-                                </ul>
+                                        <use
+                                            xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-settings') }}">
+                                        </use>
+                                    </svg> Config
+                                </a>
                             </li>
                         </div>
                     </div>

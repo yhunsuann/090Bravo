@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\RecruitmentController;
-use App\Http\Controllers\Admin\BlogAdminController;
-use App\Http\Controllers\Admin\ContactAdminController;
-use App\Http\Controllers\Admin\PostAdminController;
+use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,30 +36,29 @@ Route::group(['middleware' => 'check-login'], function() {
     });
 
     Route::group(['prefix' => 'blog', 'as' => 'blog.'], function () {
-        Route::get('', [BlogAdminController::class, 'index'])->name('index');
-        Route::get('create', [BlogAdminController::class, 'createBlog'])->name('create');
-        Route::post('add', [BlogAdminController::class, 'addBlog'])->name('add');
-        Route::get('search', [BlogAdminController::class, 'searchData'])->name('search');
-        Route::post('delete-select', [BlogAdminController::class, 'deleteSelect'])->name('delete-select');
-        Route::get('delete/{id}', [BlogAdminController::class, 'deleteBlog'])->name('delete');
-        Route::get('edit/{id}', [BlogAdminController::class, 'editBlog'])->name('edit');
-        Route::post('update/{id}', [BlogAdminController::class, 'updateBlog'])->name('update');
+        Route::get('', [BlogController::class, 'index'])->name('index');
+        Route::get('create', [BlogController::class, 'create'])->name('create');
+        Route::post('create', [BlogController::class, 'store'])->name('store');
+        Route::post('deletes', [BlogController::class, 'deletes'])->name('deletes');
+        Route::get('delete/{id}', [BlogController::class, 'delete'])->name('delete');
+        Route::get('edit/{id}', [BlogController::class, 'edit'])->name('edit');
+        Route::post('edit/{id}', [BlogController::class, 'update'])->name('update');
     });
 
     Route::group(['prefix' => 'post', 'as' => 'post.'], function () {
-        Route::get('{type}', [PostAdminController::class, 'index'])->name('office');
-        Route::post('update/{type}',[PostAdminController::class, 'updatePost'])->name('update');
+        Route::get('{type}', [PostController::class, 'index'])->name('office');
+        Route::post('update/{type}',[PostController::class, 'updatePost'])->name('update');
     });
 
     Route::group(['prefix' => 'contact', 'as' => 'contact.'], function () {
-        Route::get('',[ContactAdminController::class, 'index'])->name('index');
-        Route::get('config',[ContactAdminController::class, 'configContact'])->name('config');
-        Route::get('search', [ContactAdminController::class, 'searchData'])->name('search');
-        Route::post('config/save', [ContactAdminController::class, 'save'])->name('save');
+        Route::get('',[ContactController::class, 'index'])->name('index');
+        Route::get('config',[ContactController::class, 'configContact'])->name('config');
+        Route::get('search', [ContactController::class, 'searchData'])->name('search');
+        Route::post('config/save', [ContactController::class, 'save'])->name('save');
     });
 
     Route::group(['prefix' => 'config', 'as' => 'config.'], function () {
-        Route::get('',[ContactAdminController::class, 'config'])->name('index');
-        Route::post('', [ContactAdminController::class, 'configProcess'])->name('config.process');
+        Route::get('',[ContactController::class, 'config'])->name('index');
+        Route::post('', [ContactController::class, 'configProcess'])->name('config.process');
     });
 });

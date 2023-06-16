@@ -18,8 +18,6 @@ class CheckLogin
         if (Auth::check()) {
             return $next($request);
         }else{
-            session()->put('success','Vui Long Dang Nhap');
-            
             return redirect('/admin/login');
         }
     }

@@ -25,4 +25,14 @@ class Blog extends Model
     {
         return $this->hasMany(BlogTranslate::class, 'blog_id', 'id');
     }
+
+    /**
+     * recruitmentTranslates
+     *
+     * @return void
+     */
+    public function blog_default()
+    {
+        return $this->hasOne(BlogTranslate::class, 'blog_id', 'id')->where('language_code', config('app.locale'));
+    }
 }

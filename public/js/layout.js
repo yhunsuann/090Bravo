@@ -6,7 +6,8 @@ $(function(e) {
 
     $('.open-modal').click(function() {
         var id = $(this).data('id');
-        var url = "/admin/recruitment/delete/" + id;
+        let type = $(this).attr('m-type');
+        var url = "/admin/" + type + "/delete/" + id;
         $('#btn-delete-modal').attr("href", url);
     });
 

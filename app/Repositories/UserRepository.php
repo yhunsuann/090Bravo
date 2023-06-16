@@ -9,16 +9,26 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 
-
 class UserRepository implements UserRepositoryInterface
-{
+{    
+    /**
+     * model
+     *
+     * @var mixed
+     */
     protected $model;
 
     public function __construct(User $model)
     {
         $this->model = $model;
     }
-    
+        
+    /**
+     * recoverPass
+     *
+     * @param  mixed $data
+     * @return void
+     */
     public function recoverPass($data)
     {
         $email = $data['email'];
@@ -52,7 +62,13 @@ class UserRepository implements UserRepositoryInterface
             }     
         }
     }
-
+    
+    /**
+     * updatePass
+     *
+     * @param  mixed $data
+     * @return void
+     */
     public function updatePass($data)
     {
         $new_pass = $data['new_pass'];

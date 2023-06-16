@@ -7,27 +7,51 @@ use App\Models\Post;
 use App\Repositories\Interfaces\PostTranslateRepositoryInterface;
 
 class PostRepository implements PostRepositoryInterface
-{
+{    
+    /**
+     * model
+     *
+     * @var mixed
+     */
     protected $model;
+        
+    /**
+     * postTranslateRepository
+     *
+     * @var mixed
+     */
     protected $postTranslateRepository;
-
-    public function __construct(
-        Post $model, 
-        PostTranslateRepositoryInterface $postTranslateRepository
-    ) {
+    
+    /**
+     * __construct
+     *
+     * @return void
+     */
+    public function __construct(Post $model, PostTranslateRepositoryInterface $postTranslateRepository) {
         $this->model = $model;
         $this->postTranslateRepository = $postTranslateRepository;
     }
-
+    
+    /**
+     * allPost
+     *
+     * @param  mixed $type
+     * @return void
+     */
     public function allPost($type)
     {
-        $posts = $this->model->where('type', $type)
-                             ->with('postTranslates', 'postTranslates.language')
-                             ->get();
-
-        return $posts;
+        return $this->model->where('type', $type)
+                            ->with('postTranslates', 'postTranslates.language')
+                            ->get();
     }
-
+    
+    /**
+     * updatePost
+     *
+     * @param  mixed $data
+     * @param  mixed $type
+     * @return void
+     */
     public function updatePost($data, $type)
     {
         $blogValue = [];
@@ -54,5 +78,4 @@ class PostRepository implements PostRepositoryInterface
             ->updatePostTranslate($id, $data['language_code'][$i], $postTranslateValue[$i]);
         } 
     }
-  
 }    

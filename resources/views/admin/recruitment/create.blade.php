@@ -1,29 +1,23 @@
 @extends('admin.layout.layout') 
 @section('content') 
-    @if(session()->has('success'))
-        <div class="alert alert-success">
-            {{ session()->get('success') }}
-        </div>
-        @php Session::forget('success'); 
-        @endphp 
-    @endif
+@include('admin.layout.partials.flag')
 <h4 class="mb-4">Create Recruitments</h4>
 <h5 class="title-create">Form create</h5>
 <form class="form-create bg-white p-4" method="POST" enctype="multipart/form-data">
     @csrf
     <ul class="nav nav-pills" id="pills-tab" role="tablist">
         @forelse ($result as $key => $data)
-        <input type="hidden" name="count[{{ $key }}]" value="{{ $loop->index }}">
+            <input type="hidden" name="count[{{ $key }}]" value="{{ $loop->index }}">
             <li class="nav-item" role="presentation">
                 <button class="nav-link px-5 rounded-0 lang{{ $key == 0 ? ' active' : '' }}" id="{{ $data->language_code }}" data-coreui-toggle="pill" data-coreui-target="#{{ $data->language_name }}" type="button" role="tab" aria-controls="{{ $data->language_name }}" aria-selected="{{ $key == 0 ? 'true' : 'false' }}">{{ $data->language_name }}</button>
             </li>
         @empty
-        <li class="nav-item" role="presentation">
-                <button class="nav-link px-5 rounded-0 lang active" id="vi" data-coreui-toggle="pill" data-coreui-target="#vi" type="button" role="tab" aria-controls="vi" aria-selected="true">Viet Nam</button>
-        </li>
-        <li class="nav-item" role="presentation">
-                <button class="nav-link px-5 rounded-0 lang" id="en" data-coreui-toggle="pill" data-coreui-target="#en" type="button" role="tab" aria-controls="en" aria-selected="false">English</button>
-        </li>
+            <li class="nav-item" role="presentation">
+                    <button class="nav-link px-5 rounded-0 lang active" id="vi" data-coreui-toggle="pill" data-coreui-target="#vi" type="button" role="tab" aria-controls="vi" aria-selected="true">Viet Nam</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                    <button class="nav-link px-5 rounded-0 lang" id="en" data-coreui-toggle="pill" data-coreui-target="#en" type="button" role="tab" aria-controls="en" aria-selected="false">English</button>
+            </li>
         @endforelse
     </ul>
 
@@ -37,7 +31,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label text-black">Description {{ $data->language_code }}</label>
-                    <textarea class="form-control" name="description[]" id="description" rows="3" placeholder="Enter description"></textarea>
+                    <textarea class="form-control" name="description[]" id="description" rows="4" placeholder="Enter description"></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="content" class="form-label text-black">Content {{ $data->language_code }}</label>
@@ -53,7 +47,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="description" class="form-label text-black">Description vi</label>
-                    <textarea class="form-control" name="description[]" id="description" rows="3" placeholder="Enter description"></textarea>
+                    <textarea class="form-control" name="description[]" id="description" rows="4" placeholder="Enter description"></textarea>
                 </div>
                 <div class="mb-3">
                     <label for="content" class="form-label text-black">Content vi</label>

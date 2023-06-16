@@ -17,9 +17,9 @@
 </div>
 
 <script src="{{ asset('vendors/@coreui/coreui/js/coreui.bundle.min.js')}}"></script>
+
 <script src="{{ asset('vendors/simplebar/js/simplebar.min.js')}}"></script>
 <script src="{{ asset('js/main.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="{{ asset('js/summernote-bs4.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
 <script src="{{ asset('js/layout.js') }}"></script>

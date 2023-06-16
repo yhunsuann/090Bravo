@@ -7,10 +7,25 @@ use App\Models\ConfigContact;
 use App\Services\FileUploader;
 
 class ConfigContactRepository implements ConfigContactRepositoryInterface
-{
-    protected $model;
+{    
+    /**
+     * model
+     *
+     * @var mixed
+     */
+    protected $model;  
+    /**
+     * fileUploader
+     *
+     * @var mixed
+     */
     protected $fileUploader;
-
+    
+    /**
+     * __construct
+     *
+     * @return void
+     */
     public function __construct(
         ConfigContact $model, 
         FileUploader $fileUploader
@@ -18,11 +33,22 @@ class ConfigContactRepository implements ConfigContactRepositoryInterface
         $this->model = $model;
         $this->fileUploader = $fileUploader;
     }
-
+    
+    /**
+     * allConfigContact
+     *
+     * @return void
+     */
     public function allConfigContact(){
         return $this->model->all();
     }
-
+    
+    /**
+     * save
+     *
+     * @param  mixed $data
+     * @return void
+     */
     public function save($data)
     {
         foreach ($data as $key => $item) {

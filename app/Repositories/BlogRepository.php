@@ -7,35 +7,60 @@ use App\Models\Blog;
 use App\Repositories\Interfaces\BlogTranslateRepositoryInterface;
 
 class BlogRepository implements BlogRepositoryInterface
-{
+{    
+    /**
+     * model
+     *
+     * @var mixed
+     */
     protected $model;
+        
+    /**
+     * blogTranslateRepository
+     *
+     * @var mixed
+     */
     protected $blogTranslateRepository;
-
-    public function __construct(
-        Blog $model, 
-        BlogTranslateRepositoryInterface $blogTranslateRepository
-    ) {
+    
+    /**
+     * __construct
+     *
+     * @return void
+     */
+    public function __construct(Blog $model, BlogTranslateRepositoryInterface $blogTranslateRepository) {
         $this->model = $model;
         $this->blogTranslateRepository = $blogTranslateRepository;
     }
-   
+       
+    /**
+     * allBlog
+     *
+     * @param  mixed $data
+     * @return void
+     */
     public function allBlog($data = [])
     {
         $status = $data['status'] ?? null;
         $keyword = $data['keyword'] ?? null;
  
-        $recruitments = $this->model->whereHas('blogTranslates', function ($query) use ($keyword) {
-                                            $query->where('title', 'like', '%' . $keyword . '%');
-                                        })
-                                        ->when($status, function ($query) use ($status) {
-                                            $query->where('status', $status);
-                                        })
-                                        ->with('blogTranslates')
-                                        ->paginate(5);
-    
-        return $recruitments;
+        return $this->model->with(['blog_default'])
+                            ->whereHas('blogTranslates', function ($query) use ($keyword) {
+                                $query->when(!empty($keyword), function ($query) use ($keyword) {
+                                    $query->where('title', 'like', '%' . $keyword . '%');
+                                });
+                            })
+                            ->when(!empty($status), function ($query) use ($status) {
+                                $query->where('status', $status);
+                            })
+                            ->paginate();
     }
-
+    
+    /**
+     * addBlog
+     *
+     * @param  mixed $data
+     * @return void
+     */
     public function addBlog($data){
         $BlogValue = [
             'image' => $data['image'],
@@ -56,25 +81,49 @@ class BlogRepository implements BlogRepositoryInterface
 
         $this->model->blogTranslates()->insert($blogTranslateValue);
     }
-
+    
+    /**
+     * deleteMutipleBaseIds
+     *
+     * @param  mixed $ids
+     * @return void
+     */
     public function deleteMutipleBaseIds($ids)
     {
         return $this->model->destroy($ids);  
     } 
-
+    
+    /**
+     * deleteBlog
+     *
+     * @param  mixed $id
+     * @return void
+     */
     public function deleteBlog($id)
     {
         $blog = $this->model->find($id);
         $blog->delete();
     } 
-
+    
+    /**
+     * editBlog
+     *
+     * @param  mixed $id
+     * @return void
+     */
     public function editBlog($id)
     {
         $blog = $this->model->find($id);
-        $data = $blog->blogTranslates;
-        return $data;
+        return $blog->load(['blogTranslates']);
     }
-
+    
+    /**
+     * updateBlog
+     *
+     * @param  mixed $data
+     * @param  mixed $id
+     * @return void
+     */
     public function updateBlog($data, $id)
     {
         $blogValue = [
