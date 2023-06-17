@@ -9,5 +9,6 @@ Interface BlogRepositoryInterface
     public function deleteBlog($id);
     public function editBlog($id);
     public function updateBlog($data, $id);
+    public function getBlogs($data = []);
+    public function getInfoById(int $id);
 } 
-?>

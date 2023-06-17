@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use App\Repositories\Interfaces\ContactRepositoryInteface;
 use App\Repositories\Interfaces\ConfigContactRepositoryInterface;
+use App\Repositories\Interfaces\LanguageRepositoryInterface;
 use App\Http\Controllers\Controller;
 
 class ContactController extends Controller
@@ -22,6 +23,13 @@ class ContactController extends Controller
      * @var mixed
      */
     protected $configContactRepository;
+
+    /**
+     * languageRepository
+     *
+     * @var mixed
+     */
+    protected $languageRepository;
     
     /**
      * __construct
@@ -31,9 +39,11 @@ class ContactController extends Controller
     public function __construct(
         ContactRepositoryInteface $contactRepository,
         ConfigContactRepositoryInterface $configContactRepository,
+        LanguageRepositoryInterface $languageRepository
     ) {
         $this->contactRepository = $contactRepository;
         $this->configContactRepository = $configContactRepository;
+        $this->languageRepository = $languageRepository;
     }
     
     /**
@@ -72,8 +82,11 @@ class ContactController extends Controller
      */
     public function config(){
         $result = $this->configContactRepository->allConfigContact();
- 
-        return view('admin.contact.config')->with('result', $result);
+        $languages = $this->languageRepository->listLanguageRecruitment();
+
+        return view('admin.contact.config')
+                    ->withResult($result)
+                    ->withLanguages($languages);
     }
     
     /**
@@ -83,8 +96,11 @@ class ContactController extends Controller
      * @return void
      */
     public function configProcess(Request $request)
-    {
-        $this->configContactRepository->save($request->all());
+    {   
+        $params = $request->except('_token');
+        foreach ($params as $key => $value) {
+            $this->configContactRepository->save($key, $value);
+        }
 
         return redirect()->route('admin.config.index')->with('success', 'Successfully');
     }

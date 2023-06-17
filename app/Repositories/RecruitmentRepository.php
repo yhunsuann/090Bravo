@@ -66,6 +66,49 @@ class RecruitmentRepository implements RecruitmentRepositoryInterface
                     })
                     ->paginate();
     }
+
+    /**
+     * allBlog
+     *
+     * @param  mixed $data
+     * @return void
+     */
+    public function getCarrers($data = [])
+    {
+        return $this->model
+                ->select([
+                    'recruitments.*',
+                    'title',
+                    'description',
+                    'content'
+                ])
+                ->join('recruitment_translates', 'recruitments.id', 'recruitment_translates.recruitment_id')
+                ->where('status', 'active')
+                ->where('language_code', app()->getLocale())
+                ->get();
+    }
+
+    /**
+     * allBlog
+     *
+     * @param  mixed $data
+     * @return void
+     */
+    public function getInfoById(int $id)
+    {
+        return $this->model
+                ->select([
+                    'recruitments.*',
+                    'title',
+                    'description',
+                    'content'
+                ])
+                ->join('recruitment_translates', 'recruitments.id', 'recruitment_translates.recruitment_id')
+                ->where('recruitments.id', $id) 
+                ->where('status', 'active')
+                ->where('language_code', app()->getLocale())
+                ->first();
+    }
     
     /**
      * addRecruitments

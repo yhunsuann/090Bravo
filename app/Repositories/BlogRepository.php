@@ -44,15 +44,58 @@ class BlogRepository implements BlogRepositoryInterface
         $keyword = $data['keyword'] ?? null;
  
         return $this->model->with(['blog_default'])
-                            ->whereHas('blogTranslates', function ($query) use ($keyword) {
-                                $query->when(!empty($keyword), function ($query) use ($keyword) {
-                                    $query->where('title', 'like', '%' . $keyword . '%');
-                                });
-                            })
-                            ->when(!empty($status), function ($query) use ($status) {
-                                $query->where('status', $status);
-                            })
-                            ->paginate();
+                    ->whereHas('blogTranslates', function ($query) use ($keyword) {
+                        $query->when(!empty($keyword), function ($query) use ($keyword) {
+                            $query->where('title', 'like', '%' . $keyword . '%');
+                        });
+                    })
+                    ->when(!empty($status), function ($query) use ($status) {
+                        $query->where('status', $status);
+                    })
+                    ->paginate();
+    }
+
+    /**
+     * allBlog
+     *
+     * @param  mixed $data
+     * @return void
+     */
+    public function getBlogs($data = [])
+    {
+        return $this->model
+                ->select([
+                    'blogs.*',
+                    'title',
+                    'description',
+                    'content'
+                ])
+                ->join('blog_translates', 'blogs.id', 'blog_translates.blog_id')
+                ->where('status', 'active')
+                ->where('language_code', app()->getLocale())
+                ->get();
+    }
+
+    /**
+     * allBlog
+     *
+     * @param  mixed $data
+     * @return void
+     */
+    public function getInfoById(int $id)
+    {
+        return $this->model
+                ->select([
+                    'blogs.*',
+                    'title',
+                    'description',
+                    'content'
+                ])
+                ->join('blog_translates', 'blogs.id', 'blog_translates.blog_id')
+                ->where('blogs.id', $id) 
+                ->where('status', 'active')
+                ->where('language_code', app()->getLocale())
+                ->first();
     }
     
     /**

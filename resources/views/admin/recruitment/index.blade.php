@@ -104,7 +104,7 @@
                                 <td>{{ $item->status }}</td>
                                 <td>{{ $item->created_at}}</td>
                                 <td class="text-center action-form">
-                                    <a data-id="{{ $item->id }}" m-type="recruitment"><i class="fa fa-solid fa-trash"></i></a> &nbsp;
+                                    <a data-id="{{ $item->id }}" m-type="recruitment" type="button" data-coreui-toggle="modal" data-coreui-target="#exampleModal" class="open-modal"><i class="fa fa-solid fa-trash"></i></a> &nbsp;
                                     <a href="{{ route('admin.recruitment.edit', $item->id) }}" class="cursor-pointer"><i class="fa fa-solid fa-wrench"></i></a>
                                 </td>
                             </tr>

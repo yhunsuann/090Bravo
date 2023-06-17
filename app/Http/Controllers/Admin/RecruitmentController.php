@@ -67,6 +67,7 @@ class RecruitmentController extends Controller
     public function create()
     {
         $data = $this->languageRepository->listLanguageRecruitment();
+        
         return view('admin.recruitment.create')->with('result',$data);
     }
     

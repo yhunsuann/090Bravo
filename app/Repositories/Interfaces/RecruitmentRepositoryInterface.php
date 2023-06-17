@@ -9,5 +9,6 @@ Interface RecruitmentRepositoryInterface
     public function deleteCruitments($id);
     public function editCruitments($id);
     public function deleteMutipleBaseIds($ids);
+    public function getCarrers($data = []);
+    public function getInfoById(int $id);
 } 
-?>

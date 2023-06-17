@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use View;
 use App\Repositories\Interfaces\RecruitmentRepositoryInterface;
 use App\Repositories\RecruitmentRepository;
 use App\Repositories\Interfaces\RecruitmentTranslateRepositoryInterface;
@@ -79,7 +79,7 @@ class AppServiceProvider extends ServiceProvider
     }
     
     public function boot(Request $request)
-    {      
+    {
         Paginator::useBootstrap();  
     }
 }

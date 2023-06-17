@@ -25,7 +25,7 @@ $(document).ready(function() {
         nav: true,
         dots: true,
         margin: 20,
-        items: 3,
+        items: 4,
         responsiveClass:true,
         mouseDrag: true,
         touchDrag: false,
@@ -46,7 +46,7 @@ $(document).ready(function() {
                 stagePadding: 20,
             },
             1000:{
-                items:3,
+                items:4,
                 nav:true,
                 loop:false,
                 mouseDrag: true,

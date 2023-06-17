@@ -3,10 +3,10 @@
 use App\Http\Controllers\Client\RecruitmentController;
 use App\Http\Controllers\Client\BlogController;
 use App\Http\Controllers\Client\PostController;
+use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\ContactController;
 use App\Http\Controllers\Client\LangController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,29 +20,27 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::group(['middleware' => 'Language'], function() {
-    Route::get('language/{lang?}',[LangController::class,'change_language'])->name('user.change-language');
+    Route::get('language/{lang?}', [LangController::class,'change_language'])->name('user.change-language');
     
-    Route::get('/',function () {
-        return view('client.home.home');
-    })->name('index_home');
-    Route::get('/about',function () {
-        return view('client.home.about');
-    })->name('about');
+    Route::get('', [HomeController::class, 'index'])->name('index');
+
+    Route::group(['prefix' => 'about-us'], function () {
+        Route::get('', [HomeController::class,'aboutUs'])->name('about');
+        Route::get('{type}', [PostController::class,'index'])->name('about-us');
+    });
     
-    Route::group(['prefix' => 'recruitment'], function () {
-        Route::get('/',[RecruitmentController::class,'index'])->name('recruitment.index');
-        Route::get('/detail/{id}',[RecruitmentController::class,'recruitmentDetails'])->name('recruitment.detail');
+    Route::group(['prefix' => 'career', 'as' => 'career.'], function () {
+        Route::get('', [RecruitmentController::class, 'index'])->name('index');
+        Route::get('{id}', [RecruitmentController::class, 'detail'])->name('detail');
     });
 
-    Route::group(['prefix' => 'blog'], function () {
-        Route::get('/',[BlogController::class,'index'])->name('blog.index');
-        Route::get('/detail/{id}',[BlogController::class,'blogDetails'])->name('blog.detail');
+    Route::group(['prefix' => 'article', 'as' => 'article.'], function () {
+        Route::get('', [BlogController::class,'index'])->name('index');
+        Route::get('{id}', [BlogController::class,'detail'])->name('detail');
     });
-
-    Route::get('/post/{type}',[PostController::class,'index'])->name('post');
-
-    Route::group(['prefix' => 'contact'], function () {
-        Route::get('/',[ContactController::class,'index'])->name('index_contact');
-        Route::post('/submit',[ContactController::class,'submitContact'])->name('contact.submit');
+    
+    Route::group(['prefix' => 'contact-us'], function () {
+        Route::get('', [ContactController::class,'index'])->name('index_contact');
+        Route::post('', [ContactController::class,'submitContact'])->name('contact.submit');
     });
 });

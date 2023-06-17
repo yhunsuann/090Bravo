@@ -46,6 +46,21 @@ class PostRepository implements PostRepositoryInterface
     }
     
     /**
+     * getPost
+     *
+     * @param  mixed $type
+     * @return void
+     */
+    public function getPost($type)
+    {
+        return $this->model
+                ->join('post_translates', 'posts.id', 'post_translates.post_id')
+                ->where('type', $type)
+                ->where('language_code', app()->getLocale())
+                ->first();
+    }
+    
+    /**
      * updatePost
      *
      * @param  mixed $data
@@ -75,7 +90,7 @@ class PostRepository implements PostRepositoryInterface
             ];
             
             $this->postTranslateRepository
-            ->updatePostTranslate($id, $data['language_code'][$i], $postTranslateValue[$i]);
+                ->updatePostTranslate($id, $data['language_code'][$i], $postTranslateValue[$i]);
         } 
     }
 }    

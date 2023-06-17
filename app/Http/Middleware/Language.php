@@ -2,9 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use Closure;
+use Closure, View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use App\Repositories\Interfaces\ConfigContactRepositoryInterface;
 
 class Language
 {
@@ -18,7 +19,11 @@ class Language
     public function handle(Request $request, Closure $next)
     {
         if (session()->has('lang_code')) {
-            App::setLocale(session()->get('lang_code'));
+            $lang_code = session()->get('lang_code');
+            $trans = resolve(ConfigContactRepositoryInterface::class)->getByLang($lang_code);
+
+            App::setLocale($lang_code);
+            View::share('trans', $trans);
         }
         return $next($request);
     }

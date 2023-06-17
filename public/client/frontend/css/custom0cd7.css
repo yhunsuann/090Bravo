@@ -1,0 +1,172 @@
+.article_content_wrapper{
+    color: #000B25;
+    font-size: 18px;
+    line-height: 168%;
+    margin-bottom: 16px;
+}
+.cke_widget_drag_handler_container {
+    display: none !important;
+  }
+strong {
+    font-weight: bold;
+}
+
+.cke_widget_inline{
+    display: table-cell;
+}
+.header-bg{
+    background-image: url(images/header-bg.png);
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+}
+.header-bg .hero_banner .banner_content .heading,
+.header-bg .hero_banner .banner_content .message {
+    color : #fff !important;
+}
+
+.header-bg  .hero_banner .banner_content .button_banner{
+    background: transparent !important;
+    border: 1px solid #fff !important;
+}
+@media (min-width: 576px) {
+.about_us_hero_banner.careers_page .banner_content {
+    position: absolute;
+    top: 0;
+    /* left: 0; */
+    width: 100%;
+    /* height: 100%; */
+    /* z-index: 10; */
+    padding: 80px 16px !important; 
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    color: #fff;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    text-align: center;
+    padding-right: 30% !important;
+    padding-left: 10% !important;
+}
+}
+
+@media (min-width: 576px) {
+    .career-hot img{
+        height: auto !important;
+    }
+    .career-hot{
+        height: auto !important;
+    }
+
+    
+}
+.career-hot .banner_content{
+    padding: 0px 16px !important;
+}
+
+.career-hot .button_banner {
+    color: #fff !important;
+    border: 2px solid #fff !important;
+    padding: 10px 15px !important;
+    background: transparent !important;
+    margin: auto !important;
+}
+
+.career-hot .banner_content .heading,
+.career-hot .banner_content .message {
+    text-align: center !important;
+}
+
+.career-hot .banner_content .message{
+    margin-bottom:32px !important;
+}
+
+.career-hot .banner_wrapper .heading{
+    margin-bottom: 10px !important;
+}
+
+.find_more_jobs .find_more_job_wrapper .title .message{
+    font-size: 20px !important;    
+}
+
+div[data-cke-hidden-sel="1"]{
+    display:none !important;
+}
+
+.article_content .article_content_wrapper ol{
+    list-style: auto !important;
+    padding: 0 40px;
+}
+
+.article_content .article_content_wrapper h1 b{
+    font-weight: bold !important;
+}
+
+.article_content .article_content_wrapper h1 {
+    font-weight: normal !important;
+    line-height: 1.2;
+    margin: revert;
+}
+
+.article_content .article_content_wrapper strong a {
+    display: revert;
+}
+
+.footer_wrapper .footer_content .box_menu_1{
+    width: 170%;
+}
+
+.footer_wrapper .footer_content .box_menu_2, .footer_wrapper .footer_content .box_menu_3{
+    width: 100%;
+}
+
+.footer_wrapper .footer_content .box_menu ul.menu_nav li a{
+    font-size: 18px;
+}
+/* @media (min-width: 768px){ */
+.our_cultural .message, .our_vison .message, .our_mission .message, .contact_us_core_value .message, .hero_banner .banner_content .message, 
+.featuared_list_wrraper .featured_list_content .item .message, .featuared_list_wrraper .featured_list_content .item .message,
+.featuared_list_wrraper .featured_list_content .item .message, .infos .infos_wrapper .infos_title .message,
+.hero_banner2.on_about_people_page .banner_content .message, .history_infos .history_infos_wrapper .line .content, .article_content_wrapper
+{
+    text-align: justify;
+}
+/* } */
+.address b{
+    font-weight: bold;
+}
+
+/* @media (max-width: 576px){
+    .find_more_jobs .find_more_job_wrapper .more_jobs_content .slide_items .owl-nav button.owl-next {
+        right: calc(100% / 2 - 180px);
+        top: 32px;
+    }
+
+    .find_more_jobs .find_more_job_wrapper .more_jobs_content .slide_items .owl-nav button.owl-prev {
+        left: calc(100% / 2 - 180px);
+        top: 32px;
+    }
+} */
+
+.find_more_jobs .find_more_job_wrapper .more_jobs_content .slide_items .owl-nav button.owl-next {
+    right: calc(100% / 2 - 50px);
+    top: 32px;
+}
+
+.find_more_jobs .find_more_job_wrapper .more_jobs_content .slide_items .owl-nav button.owl-prev {
+    left: calc(100% / 2 - 50px);
+    top: 32px;
+}
+
+.find_more_jobs .find_more_job_wrapper .more_jobs_content .slide_items .owl-dots{
+    visibility: hidden;
+}

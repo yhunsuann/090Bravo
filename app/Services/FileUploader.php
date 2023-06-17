@@ -45,7 +45,7 @@ class FileUploader
     
             $image = Image::make($file);
             $image->fit(535, 480);
-            $image->save(storage_path('contact') . '/' . $file_name);
+            $image->save(public_path('assets/img/contact') . '/' . $file_name);
 
             return $file_name;
     }
