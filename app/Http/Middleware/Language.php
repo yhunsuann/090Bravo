@@ -20,11 +20,14 @@ class Language
     {
         if (session()->has('lang_code')) {
             $lang_code = session()->get('lang_code');
-            $trans = resolve(ConfigContactRepositoryInterface::class)->getByLang($lang_code);
-
             App::setLocale($lang_code);
-            View::share('trans', $trans);
+        } else {
+            $lang_code = app()->getLocale();
         }
+
+        $trans = resolve(ConfigContactRepositoryInterface::class)->getByLang($lang_code);
+        View::share('trans', $trans);
+
         return $next($request);
     }
 }
