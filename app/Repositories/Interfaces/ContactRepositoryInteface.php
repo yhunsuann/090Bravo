@@ -5,4 +5,5 @@ Interface ContactRepositoryInteface
 {    
     public function allContact($data = []);
     public function submitContact($data);
+    public function deleteContact($id);
 } 

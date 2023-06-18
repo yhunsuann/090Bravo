@@ -76,4 +76,17 @@ class ContactRepository implements ContactRepositoryInteface
 
         $this->model->create($submitContact);
     }
+
+     /**
+     * submitContact
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function deleteContact($id)
+    {
+        $contact = $this->model->find($id);
+        $contact->delete();
+    }
+
 }    

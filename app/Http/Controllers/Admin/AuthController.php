@@ -43,7 +43,7 @@ class AuthController extends Controller
             ];
 
             if (Auth::attempt($data)) {
-                return redirect()->route('admin.dashboard');
+                return redirect()->route('admin.recruitment.index');
             }
 
             return back()->withErrors('Wrong account or password, please login again!');

@@ -34,7 +34,7 @@
                                 <a class="nav-link nav-group-toggle">
                                     <svg class="nav-icon">
                                 <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-cursor') }}"></use>
-                                </svg> Post</a>
+                                </svg> About Us</a>
                                 <ul class="nav-group-items">
                                     <li class="nav-item"><a class="nav-link" href="{{ route('admin.post.office', 'member') }}"><span class="nav-icon"></span>Member</a></li>
                                     <li class="nav-item"><a class="nav-link" href="{{ route('admin.post.office', 'office') }}"><span class="nav-icon"></span>Office</a></li>

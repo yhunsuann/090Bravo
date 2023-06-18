@@ -52,6 +52,7 @@ Route::group(['middleware' => 'check-login'], function() {
 
     Route::group(['prefix' => 'contact', 'as' => 'contact.'], function () {
         Route::get('',[ContactController::class, 'index'])->name('index');
+        Route::get('delete/{id}',[ContactController::class, 'delete'])->name('delete');
         Route::get('config',[ContactController::class, 'configContact'])->name('config');
         Route::get('search', [ContactController::class, 'searchData'])->name('search');
         Route::post('config/save', [ContactController::class, 'save'])->name('save');
