@@ -78,7 +78,7 @@ class ContactRepository implements ContactRepositoryInteface
     }
 
      /**
-     * submitContact
+     * deleteContact
      *
      * @param  mixed $id
      * @return void
