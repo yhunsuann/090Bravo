@@ -104,4 +104,17 @@ class ContactController extends Controller
 
         return redirect()->route('admin.config.index')->with('success', 'Successfully');
     }
+
+    /**
+     * delete
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function delete($id)
+    {
+        $this->contactRepository->deleteContact($id);
+
+        return back()->withSuccess('Delete Contact Successfully'); 
+    }
 }

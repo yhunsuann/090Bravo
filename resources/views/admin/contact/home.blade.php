@@ -93,7 +93,10 @@
                     <td>{{ $data->email }}</td>
                     <td>{{ $data->phone }}</td>
                     <td class="text-center">{{ $data->created_at }}</td>
-                    <td class="text-center"><button data-coreui-toggle="modal" data-coreui-target="#contact_{{ $data->id }}" class="btn-search btn btn-primary m-2 py-1 btn-see-detail"><i class="fa fa-eye" aria-hidden="true"></i></button> </td>
+                    <td class="text-center">
+                        <a data-id="{{ $data->id }}" m-type="contact" type="button" data-coreui-toggle="modal" data-coreui-target="#exampleModal" class="open-modal"><i class="fa fa-solid fa-trash delete-contact"></i></a>
+                        <button data-coreui-toggle="modal" data-coreui-target="#contact_{{ $data->id }}" class="btn btn-primary m-2 py-1 btn-see-detail"><i class="fa fa-eye" aria-hidden="true"></i></button>
+                    </td>
                 </tr>
                 @empty
                     <td align="center" colspan="5">No data</td>

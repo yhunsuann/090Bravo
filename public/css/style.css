@@ -2580,6 +2580,7 @@ html:not([dir=rtl]) .form-select {
     }
 }
 
+
 /* .form-select:focus {
     border-color: var(--cui-form-select-focus-border-color, #998fed);
     outline: 0;
@@ -3669,17 +3670,17 @@ fieldset:disabled .btn {
 .btn-primary {
     --cui-btn-bg: #5234a3;
     --cui-btn-border-color: #4c3ecb;
-    --cui-btn-color: hsla(0,0%,100%,.87);
+    --cui-btn-color: hsla(0, 0%, 100%, .87);
     --cui-btn-hover-bg: #5141e0;
     --cui-btn-hover-border-color: #4735df;
-    --cui-btn-hover-color: hsla(0,0%,100%,.87);
+    --cui-btn-hover-color: hsla(0, 0%, 100%, .87);
     --cui-btn-active-bg: #5b4ce2;
     --cui-btn-active-border-color: #4735df;
-    --cui-btn-active-color: hsla(0,0%,100%,.87);
+    --cui-btn-active-color: hsla(0, 0%, 100%, .87);
     --cui-btn-disabled-bg: #321fdb;
     --cui-btn-disabled-border-color: #321fdb;
-    --cui-btn-disabled-color: hsla(0,0%,100%,.87);
-    --cui-btn-shadow: rgba(50,31,219,.5);
+    --cui-btn-disabled-color: hsla(0, 0%, 100%, .87);
+    --cui-btn-shadow: rgba(50, 31, 219, .5);
 }
 
 .btn-secondary {
@@ -15522,7 +15523,7 @@ p {
 }
 
 .see-details {
-    width: 100px;
+    width: 150px;
 }
 
 .th-table {
@@ -15574,9 +15575,8 @@ p {
 }
 
 .form-label {
-   font-size: 13px;
+    font-size: 13px;
 }
-
 
 .type-contact {
     width: 100%;
@@ -15599,4 +15599,15 @@ p {
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
 }
+
+.delete-contact {
+    background-color: var(--cui-danger);
+    padding: 4px 12px;
+    color: white;
+    border-radius: 5px;
+    font-size: 12px !important;
+    margin-top: 1px;
+}
+
+
 /*# sourceMappingURL=style.css.ma.btn-searchw
