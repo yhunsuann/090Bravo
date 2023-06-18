@@ -37,27 +37,27 @@
             @if ($result->isEmpty())
                 <div class="tab-pane fade show active" id="en" role="tabpanel" tabindex="0">
                     <div class="mb-3">
-                        <label for="title" class="form-label text-black">Title Default</label>
+                        <label for="title" class="form-label text-black">Title</label>
                         <input type="text" class="form-control" name="title[]" id="title" placeholder="Enter title" value="">
                         <input type="hidden" class="form-control" name="language_code[]" id="title" placeholder="Enter title" value="">
                     </div>
                     <div class="mb-3">
-                        <label for="description" class="form-label text-black">Description Default</label>
+                        <label for="description" class="form-label text-black">Description</label>
                         <textarea class="form-control" name="description[]" id="description" rows="3" placeholder="Enter description"></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="content" class="form-label text-black">Content Default</label>
+                        <label for="content" class="form-label text-black">Content</label>
                         <textarea class="summernote" name="content[]"></textarea>
                     </div>
                 </div>
                 <div class="tab-pane fade" id="vi" role="tabpanel" tabindex="0">
                     <div class="mb-3">
-                        <label for="title" class="form-label text-black">Title Default</label>
+                        <label for="title" class="form-label text-black">Title</label>
                         <input type="text" class="form-control" name="title[]" id="title" placeholder="Enter title" value="">
                         <input type="hidden" class="form-control" name="language_code[]" id="title" placeholder="Enter title" value="">
                     </div>
                     <div class="mb-3">
-                        <label for="description" class="form-label text-black">Description Default</label>
+                        <label for="description" class="form-label text-black">Description</label>
                         <textarea class="form-control" name="description[]" id="description" rows="3" placeholder="Enter description"></textarea>
                     </div>
                     <div class="mb-3">
@@ -70,16 +70,16 @@
                     @foreach ($post->postTranslates as $key => $postTranslate)
                         <div class="tab-pane fade{{ $key == 0 ? ' show active' : '' }}" id="1{{ $postTranslate->language_code}}" role="tabpanel" aria-labelledby="{{ $postTranslate->language_code }}" tabindex="0">
                             <div class="mb-3">
-                                <label for="title" class="form-label text-black">Title {{ $postTranslate->language_code }}</label>
+                                <label for="title" class="form-label text-black">{{ config('constants.' . $postTranslate->language_code . '.title') }}</label>
                                 <input type="text" class="form-control" name="title[]" id="title" placeholder="Enter title" value="{{ $postTranslate->title }}">
                                 <input type="hidden" class="form-control" name="language_code[]" id="title" placeholder="Enter title" value="{{ $postTranslate->language_code }}">
                             </div>
                             <div class="mb-3">
-                                <label for="description" class="form-label text-black">Description {{ $postTranslate->language_code }}</label>
+                                <label for="description" class="form-label text-black">{{ config('constants.' . $postTranslate->language_code . '.description') }}</label>
                                 <textarea class="form-control" name="description[]" id="description" rows="3" placeholder="Enter description">{{ $postTranslate->description }}</textarea>
                             </div>
                             <div class="mb-3">
-                                <label for="content" class="form-label text-black">Content {{ $postTranslate->language_code }}</label>
+                                <label for="content" class="form-label text-black">{{ config('constants.' . $postTranslate->language_code . '.content') }}</label>
                                 <textarea class="summernote" name="content[]">{{ $postTranslate->content }}</textarea>
                             </div>
                         </div>

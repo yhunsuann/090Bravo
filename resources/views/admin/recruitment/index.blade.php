@@ -64,13 +64,12 @@
             </div>
         </div>
     </form>
-    <form action="{{ route('admin.recruitment.deletes') }}" method="post">
+    <form action="{{ route('admin.recruitment.deletes') }}" id="form-delete" method="post">
         @csrf
-    
         <div class="row mt-3">
             <div class="col p-0">
                 <h6 class="title">List Recruitments
-                    <input type="submit" class="delete_all btn-sm btn-delete btn btn-outline-danger float-end btn-size" value="Delete all select"></input>
+                    <input type="button" m-type="recruitment" type="button" data-coreui-toggle="modal" data-coreui-target="#exampleModal" class="open-modal delete_all btn-sm btn-delete btn btn-outline-danger float-end btn-size" value="Delete all select"></input>
                 </h6>
             </div>
         </div>
@@ -129,5 +128,4 @@
             </div>
         </div>
     </form>
-
 @endsection

@@ -20,16 +20,16 @@
             @forelse ($result as $key => $data)
                 <div class="tab-pane fade{{ $key == 0 ? ' show active' : '' }}" id="{{ $data->language_name }}" role="tabpanel" aria-labelledby="{{ $data->language_code }}" tabindex="0">
                     <div class="mb-3">
-                        <label for="title" class="form-label text-black">Title {{ $data->language_code }}</label>
+                        <label for="title" class="form-label text-black">{{ config('constants.' . $data->language_code . '.title') }}</label>
                         <input type="text" class="form-control" name="title[]" id="title" placeholder="Enter title">
                         <input type="hidden" class="form-control" name="language_code[]" id="title" placeholder="Enter title" value="{{ $data->language_code }}">
                     </div>
                     <div class="mb-3">
-                        <label for="description" class="form-label text-black">Description {{ $data->language_code }}</label>
+                        <label for="description" class="form-label text-black">{{ config('constants.' . $data->language_code . '.description') }}</label>
                         <textarea class="form-control" name="description[]" id="description" rows="3" placeholder="Enter description"></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="content" class="form-label text-black">Content {{ $data->language_code }}</label>
+                        <label for="content" class="form-label text-black">{{ config('constants.' . $data->language_code . '.content') }}</label>
                         <textarea class="summernote" name="content[]"></textarea>
                     </div>
                 </div>

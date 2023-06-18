@@ -24,7 +24,7 @@
                                 <a class="nav-link nav-group-toggle">
                                     <svg class="nav-icon">
                                 <use xlink:href="{{ asset('vendors/@coreui/icons/svg/free.svg#cil-building') }}"></use>
-                                </svg> Recruitmens</a>
+                                </svg>Recruitments</a>
                                 <ul class="nav-group-items">
                                     <li class="nav-item"><a class="nav-link" href="{{ route('admin.recruitment.index') }}"><span class="nav-icon"></span>List</a></li>
                                     <li class="nav-item"><a class="nav-link" href="{{ route('admin.recruitment.create') }}"><span class="nav-icon"></span>Create</a></li>

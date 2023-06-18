@@ -7,8 +7,19 @@ $(function(e) {
     $('.open-modal').click(function() {
         var id = $(this).data('id');
         let type = $(this).attr('m-type');
-        var url = "/admin/" + type + "/delete/" + id;
+        url = '';
+        if (id !== undefined) {
+            var url = "/admin/" + type + "/delete/" + id;
+        }
         $('#btn-delete-modal').attr("href", url);
+    });
+
+    $('#btn-delete-modal').on('click', function () {
+        if ($(this).attr('href') == '') {
+            $('#form-delete').submit();
+
+            return false;
+        }
     });
 
     $(function() {

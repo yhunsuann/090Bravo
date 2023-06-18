@@ -28,16 +28,16 @@
     <div class="row">
         <div class="col p-0 bottom-search">
             <input type="submit" class="py-1 btn-search btn btn-primary float-end m-2 mr-0 " value="Search"></input>
-            <input type="reset" class="py-1 btn btn-secondary float-end m-2 text-white btn-size" value="Reset">Reset</a>
+            <input type="reset" class="py-1 btn btn-secondary float-end m-2 text-white btn-size" value="Reset" />
         </div>
     </div>
 </form>
-<form action="{{ route('admin.blog.deletes') }}" method="post">
+<form action="{{ route('admin.blog.deletes') }}" id="form-delete" method="post">
     @csrf
     <div class="row mt-3">
         <div class="col p-0">
             <h6 class="title">List blogs
-                <input type="submit" class="delete_all btn-sm btn-delete btn btn-outline-danger float-end btn-size" value="Delete all select"></input>
+                <input type="button" m-type="recruitment" type="button" data-coreui-toggle="modal" data-coreui-target="#exampleModal" class="open-modal delete_all btn-sm btn-delete btn btn-outline-danger float-end btn-size" value="Delete all select"></input>
             </h6>
         </div>
     </div>

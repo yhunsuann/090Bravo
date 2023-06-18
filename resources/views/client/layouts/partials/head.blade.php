@@ -36,5 +36,8 @@
             border-bottom-right-radius: 200px;
             border: 1px solid #1e3f92;
         }
+        .language_title a {
+            white-space: nowrap;
+        }
     </style>
 </head>
