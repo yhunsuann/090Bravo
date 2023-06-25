@@ -6,9 +6,7 @@
             </svg>
         </button>
         <a class="header-brand d-md-none" href="javascript:{0}">
-            <svg width="118" height="46" alt="CoreUI Logo">
-                <use xlink:href="{{ asset('assets/brand/coreui.svg#full') }}"></use>
-            </svg>
+           090Bravo
         </a>
         <ul class="nav nav-pills header-nav ms-auto">
             <li class="nav-item">

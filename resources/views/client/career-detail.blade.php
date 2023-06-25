@@ -43,13 +43,13 @@
                             <div class="item_wrapper">
                                 <div class="item">
                                     <div class="content_item">
-                                        <a href="market-research-intern-16704004.html" class="desc">
+                                        <a href="/career/{{ $career->id }}" class="desc">
                                             <div class="heading">{{ $career->title }}</div>
                                             <div class="message">{{ $career->description }}</div>
                                         </a>
                                     </div>
                                     <div class="t_line"></div>
-                                    <a href="/carrer/{{ $carrer->id }}" class="t_flex see_more">
+                                    <a href="/career/{{ $career->id }}" class="t_flex see_more">
                                         <span class="text">{{ __('message.read_more') }}</span>
                                         <span class="icon">
                                             <svg width="8" height="14" viewBox="0 0 8 14" fill="none" xmlns="http://www.w3.org/2000/svg">

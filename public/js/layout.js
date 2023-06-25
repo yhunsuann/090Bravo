@@ -14,7 +14,7 @@ $(function(e) {
         $('#btn-delete-modal').attr("href", url);
     });
 
-    $('#btn-delete-modal').on('click', function () {
+    $('#btn-delete-modal').on('click', function() {
         if ($(this).attr('href') == '') {
             $('#form-delete').submit();
 
@@ -28,6 +28,9 @@ $(function(e) {
             autoclose: true,
             format: "yyyy-mm-dd"
         });
+    });
+    $('input:reset').click(function() {
+        $(this).closest('form').find('input:text').attr('value', '');
     });
 
     $('.language').click(function() {
