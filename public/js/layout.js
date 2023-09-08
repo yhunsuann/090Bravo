@@ -44,10 +44,9 @@ $(function(e) {
         height: 100
     });
 
-    $('.dropdown-toggle').dropdown()
-    jQuery(document).ready(function() {
-        ImgUpload();
-    });
+
+    ImgUpload();
+
 
     var allImages = [];
     var imagesList = $('.images-list');

@@ -73,7 +73,7 @@ class PostController extends Controller
             if ($image !== null) {
                 $request->merge(['image' => $image]);
             }
-
+            
         }else{
             if(empty($request->upload_image)){
                 return back()->withErrors('Please select at least 1 photo');

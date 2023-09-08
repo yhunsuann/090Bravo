@@ -94,7 +94,7 @@
                             <input name="ids[]" class="sub_chk" value="{{ $item->id }}" id="checkItem" type="checkbox">
                         </th>
                         <td>{{ $item->recruitment_default->title }}</td>
-                        <td><img height="40px" src="{{ asset('assets/img/recruitments/' . $item->image)}}" alt=""></td>
+                        <td><img height="40px" src="{{ asset('/assets/img/recruitments/' . $item->image)}}" alt=""></td>
                         <td>{{ $item->status }}</td>
                         <td>{{ $item->created_at}}</td>
                         <td class="text-center action-form">
